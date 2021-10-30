@@ -16,7 +16,16 @@ class SocketNode: WireframeNode {
         
         didSet {
             
-            socket.geometry?.firstMaterial?.diffuse.contents = material == .air ? Color.clear.osColor : material.colors.primary.osColor
+            guard material != .air else {
+                
+                isHidden = true
+                
+                return
+            }
+            
+            isHidden = false
+            
+            socket.geometry?.firstMaterial?.diffuse.contents = material.colors.primary.osColor
         }
     }
     
