@@ -17,6 +17,7 @@ class EditorViewModel: ObservableObject {
         didSet {
             
             scene.model.geometry = SCNGeometry(tileset.mesh)
+            scene.sockets.setup(sockets: tileset.sockets)
         }
     }
     
@@ -25,6 +26,14 @@ class EditorViewModel: ObservableObject {
         didSet {
             
             scene.wireframe.isHidden = !showWireframes
+        }
+    }
+    
+    @Published var showSockets: Bool = true {
+        
+        didSet {
+            
+            scene.sockets.isHidden = !showSockets
         }
     }
 }

@@ -23,6 +23,7 @@ struct EditorView: View {
                 Menu {
                     
                     Toggle("Show wireframes", isOn: $model.editorModel.showWireframes)
+                    Toggle("Show sockets", isOn: $model.editorModel.showSockets)
                     
                 } label: {
                     

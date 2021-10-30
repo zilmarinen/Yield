@@ -32,7 +32,7 @@ class EditorScene: SCNScene {
         return node
     }()
     
-    let sockets = SocketNode()
+    let sockets = SocketSet()
     
     let model = SCNNode()
     
