@@ -31,6 +31,8 @@
 		187213CE27214B3400FAC4E0 /* Sockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* Sockets.swift */; };
 		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
 		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
+		18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
+		18AE8C0B272D7DCB00E21E7F /* CompoundTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C0A272D7DCB00E21E7F /* CompoundTile.swift */; };
 		18B196072725740B00FBF50D /* Meadow in Frameworks */ = {isa = PBXBuildFile; productRef = 18B196062725740B00FBF50D /* Meadow */; };
 		18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960827269A4200FBF50D /* PrototypePlateau.swift */; };
 		18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960B2726A06C00FBF50D /* EditorScene.swift */; };
@@ -74,6 +76,8 @@
 		187213CD27214B3400FAC4E0 /* Sockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sockets.swift; sourceTree = "<group>"; };
 		187213CF27214BBC00FAC4E0 /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
 		189F0EB3271B1B680077B81D /* Tileset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
+		18AE8C08272D778700E21E7F /* SocketSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketSet.swift; sourceTree = "<group>"; };
+		18AE8C0A272D7DCB00E21E7F /* CompoundTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundTile.swift; sourceTree = "<group>"; };
 		18B196042725740200FBF50D /* Meadow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Meadow; path = ../Meadow; sourceTree = "<group>"; };
 		18B1960827269A4200FBF50D /* PrototypePlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypePlateau.swift; sourceTree = "<group>"; };
 		18B1960B2726A06C00FBF50D /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				186B7D3E272AAE3E001731C2 /* PrototypeInnerCorner.swift */,
 				186B7D40272AAE5C001731C2 /* PrototypeOuterCorner.swift */,
 				18B1960827269A4200FBF50D /* PrototypePlateau.swift */,
+				18AE8C0A272D7DCB00E21E7F /* CompoundTile.swift */,
 			);
 			path = Tiles;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				18B1960B2726A06C00FBF50D /* EditorScene.swift */,
 				186B7D55272D5E57001731C2 /* WireframeNode.swift */,
 				186B7D57272D5E6E001731C2 /* SocketNode.swift */,
+				18AE8C08272D778700E21E7F /* SocketSet.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -315,7 +321,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					18EC26242719BFDE00049C13 = {
 						CreatedOnToolsVersion = 13.0;
@@ -378,6 +384,7 @@
 				18D31AD42719C9F5006312BF /* ToolView.swift in Sources */,
 				18D31AD62719C9FC006312BF /* EditorView.swift in Sources */,
 				186B7D52272BE1AE001731C2 /* InnerCornerBiscuit.swift in Sources */,
+				18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */,
 				186B7D3F272AAE3E001731C2 /* PrototypeInnerCorner.swift in Sources */,
 				186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */,
 				186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */,
@@ -387,6 +394,7 @@
 				186B7D50272BDD1E001731C2 /* PrototypeGroove.swift in Sources */,
 				18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */,
 				18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */,
+				18AE8C0B272D7DCB00E21E7F /* CompoundTile.swift in Sources */,
 				186B7D3827299547001731C2 /* ColorPalette.swift in Sources */,
 				186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */,
 				187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */,
@@ -521,6 +529,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Yield/Yield.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -547,6 +556,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Yield/Yield.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
