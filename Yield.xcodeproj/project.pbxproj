@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1827F1252722ADAA0030B099 /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1242722ADAA0030B099 /* Corner.swift */; };
 		1827F1282725706F0030B099 /* Prototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1272725706F0030B099 /* Prototype.swift */; };
 		1827F12A2725717B0030B099 /* PrototypeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1292725717B0030B099 /* PrototypeEdge.swift */; };
 		18643046271DACBB003575D4 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18643045271DACBB003575D4 /* Tile.swift */; };
@@ -51,7 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1827F1242722ADAA0030B099 /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
 		1827F1272725706F0030B099 /* Prototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype.swift; sourceTree = "<group>"; };
 		1827F1292725717B0030B099 /* PrototypeEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeEdge.swift; sourceTree = "<group>"; };
 		18643045271DACBB003575D4 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		189F0EB2271B1B550077B81D /* Tileset */ = {
 			isa = PBXGroup;
 			children = (
-				1827F1242722ADAA0030B099 /* Corner.swift */,
 				186B7D53272D545E001731C2 /* SocketPattern.swift */,
 				187213CD27214B3400FAC4E0 /* Sockets.swift */,
 				186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */,
@@ -385,7 +382,6 @@
 				186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */,
 				186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */,
 				186B7D41272AAE5C001731C2 /* PrototypeOuterCorner.swift in Sources */,
-				1827F1252722ADAA0030B099 /* Corner.swift in Sources */,
 				18D31AE32719CCD6006312BF /* BadgeModel.swift in Sources */,
 				18D31ADC2719CC74006312BF /* ToolPropertySection.swift in Sources */,
 				186B7D50272BDD1E001731C2 /* PrototypeGroove.swift in Sources */,
