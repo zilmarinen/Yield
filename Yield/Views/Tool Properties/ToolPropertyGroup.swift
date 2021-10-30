@@ -8,10 +8,10 @@ import SwiftUI
 
 struct ToolPropertyGroup<Content: View>: View {
     
-    let model: ToolPropertyGroupModel
+    let model: ToolPropertyGroupModel?
     let content: Content
 
-    init(model: ToolPropertyGroupModel, @ViewBuilder content: () -> Content) {
+    init(model: ToolPropertyGroupModel? = nil, @ViewBuilder content: () -> Content) {
         
         self.model = model
         self.content = content()
@@ -23,17 +23,20 @@ struct ToolPropertyGroup<Content: View>: View {
             
             HStack {
 
-                if let imageName = model.imageName {
+                if let imageName = model?.imageName {
                     
                     Image(systemName: imageName)
                         .foregroundColor(.primary)
                 }
 
-                Text(model.title)
-                    .font(.headline)
-                    .foregroundColor(.primary)
+                if let title = model?.title {
+                    
+                    Text(title)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                }
             
-                if let badge = model.badge {
+                if let badge = model?.badge {
                     
                     Spacer()
                     
