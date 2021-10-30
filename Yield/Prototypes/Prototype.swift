@@ -42,10 +42,10 @@ extension Prototype {
         
         switch tile {
             
-        case .edge: return PrototypeEdge(cardinal: .north, material: material, style: style, volume: volume)
+        case .edge: return PrototypeEdge(cardinal: .north, material: material, volume: volume, style: style)
         case .groove: return PrototypeGroove(ordinal: .northWest, material: material, volume: volume, style: style)
         case .innerCorner: return PrototypeInnerCorner(ordinal: .southWest, material: material, volume: volume, style: style)
-        case .outerCorner: return PrototypeOuterCorner(ordinal: .northWest, material: material, style: style, volume: volume)
+        case .outerCorner: return PrototypeOuterCorner(ordinal: .northWest, material: material, volume: volume, style: style)
         case .plateau: return PrototypePlateau(material: material, volume: volume)
         }
     }

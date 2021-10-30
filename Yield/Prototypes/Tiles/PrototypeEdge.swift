@@ -11,8 +11,8 @@ struct PrototypeEdge: PrototypeTile {
     
     let cardinal: Cardinal
     let material: SurfaceMaterial
-    let style: BiscuitStyle
     let volume: Volume
+    let style: BiscuitStyle
     
     var sockets: Sockets {
         
