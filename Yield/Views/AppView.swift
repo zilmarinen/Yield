@@ -14,9 +14,9 @@ struct AppView: View {
         
         HStack {
             
-            ToolView(tileset: .init())
+            ToolView(model: document.model, tileset: document.model.editorModel.tileset)
             
-            EditorView()
+            EditorView(model: document.model)
                 .frame(idealWidth: YieldApp.Constants.editorWidth, idealHeight: YieldApp.Constants.editorWidth)
         }
     }

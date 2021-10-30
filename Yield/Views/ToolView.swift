@@ -8,62 +8,48 @@ import SwiftUI
 
 struct ToolView: View {
     
-    @ObservedObject var tileset: Tileset
+    @ObservedObject private(set) var model: AppViewModel
+    
+    @ObservedObject private(set) var tileset: Tileset
 
     var body: some View {
         
         ScrollView {
 
             VStack {
-
+                
                 ToolPropertySection {
 
-                    ToolPropertyGroup(model: .init(title: "Tileset", imageName: "square.grid.3x3", badge: .init(title: "0", color: .pink))) {
+                    ToolPropertyGroup(model: .init(title: "Tileset", imageName: "square.grid.3x3")) {
 
                         ToolPropertyView(title: "Name", color: .pink) {
 
-                            TextField("Name", text: $tileset.name)
+                            TextField("Name", text: $tileset.identifier)
                         }
 
-                        ToolPropertyView(title: "Tile", color: .pink) {
+                        ToolPropertyView(title: "Shape", color: .pink) {
 
-                            HStack {
+                            Picker("Shape", selection: $model.editorModel.tileset.tile) {
 
-                                BadgeView(model: .init(title: "\(tileset.tile)", color: .pink))
+                                ForEach(Tile.allCases, id: \.self) { tile in
 
-                                Stepper("Elevation", value: $tileset.tile, in: 0...15)
-                            }
-                        }
-                    }
-                }
-
-                ToolPropertySection {
-
-                    ToolPropertyGroup(model: .init(title: "Properties", badge: .init(title: "0", color: .pink))) {
-
-                        ToolPropertyView(title: "Style", color: .pink) {
-
-                            Picker("Style", selection: $tileset.style) {
-
-                                ForEach(Tileset.Style.allCases, id: \.self) { style in
-
-                                    Text(style.id.capitalized).tag(style)
+                                    Text(tile.id.capitalized).tag(tile)
                                 }
                             }
                         }
-
-                        ToolPropertyView(title: "Inset", color: .pink) {
-
-//                            Picker("Inset", selection: $tileset.inset) {
-//
-//                                ForEach(Tileset.Inset.allCases, id: \.self) { inset in
-//
-//                                    Text(inset.id.capitalized).tag(inset)
-//                                }
-//                            }
-                        }
                     }
                 }
+                
+                switch tileset.tile {
+                    
+                case .edge: PrototypeToolView(title: "Edge", model: model, hasStyle: true, hasVolume: true)
+                case .groove: PrototypeToolView(title: "Groove", model: model, hasStyle: true, hasVolume: true)
+                case .innerCorner: PrototypeToolView(title: "Inner Corner", model: model, hasStyle: true, hasVolume: true)
+                case .outerCorner: PrototypeToolView(title: "Outer Corner", model: model, hasStyle: true, hasVolume: true)
+                case .plateau: PrototypeToolView(title: "Plateau", model: model, hasStyle: false, hasVolume: true)
+                }
+                
+                SocketsView(tileset: tileset)
 
                 Spacer()
             }
