@@ -7,7 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1827F1252722ADAA0030B099 /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1242722ADAA0030B099 /* Corner.swift */; };
+		1827F1282725706F0030B099 /* Prototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1272725706F0030B099 /* Prototype.swift */; };
+		1827F12A2725717B0030B099 /* PrototypeEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1292725717B0030B099 /* PrototypeEdge.swift */; };
+		18643046271DACBB003575D4 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18643045271DACBB003575D4 /* Tile.swift */; };
+		186B7D2D27298CBE001731C2 /* Surface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2C27298CBE001731C2 /* Surface.swift */; };
+		186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */; };
+		186B7D3227298E8E001731C2 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3127298E8E001731C2 /* Volume.swift */; };
+		186B7D3827299547001731C2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3727299547001731C2 /* ColorPalette.swift */; };
+		186B7D3B272A7FC4001731C2 /* OuterCornerBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3A272A7FC4001731C2 /* OuterCornerBiscuit.swift */; };
+		186B7D3D272A8295001731C2 /* WobblyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3C272A8295001731C2 /* WobblyLine.swift */; };
+		186B7D3F272AAE3E001731C2 /* PrototypeInnerCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3E272AAE3E001731C2 /* PrototypeInnerCorner.swift */; };
+		186B7D41272AAE5C001731C2 /* PrototypeOuterCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D40272AAE5C001731C2 /* PrototypeOuterCorner.swift */; };
+		186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */; };
+		186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D49272ADBF0001731C2 /* PrototypeToolView.swift */; };
+		186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */; };
+		186B7D4E272BDCB9001731C2 /* GrooveBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */; };
+		186B7D50272BDD1E001731C2 /* PrototypeGroove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4F272BDD1E001731C2 /* PrototypeGroove.swift */; };
+		186B7D52272BE1AE001731C2 /* InnerCornerBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D51272BE1AE001731C2 /* InnerCornerBiscuit.swift */; };
+		186B7D54272D545E001731C2 /* SocketPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D53272D545E001731C2 /* SocketPattern.swift */; };
+		186B7D56272D5E57001731C2 /* WireframeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D55272D5E57001731C2 /* WireframeNode.swift */; };
+		186B7D58272D5E6E001731C2 /* SocketNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D57272D5E6E001731C2 /* SocketNode.swift */; };
+		187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CB272149D500FAC4E0 /* EditorViewModel.swift */; };
+		187213CE27214B3400FAC4E0 /* Sockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* Sockets.swift */; };
+		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
 		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
+		18B196072725740B00FBF50D /* Meadow in Frameworks */ = {isa = PBXBuildFile; productRef = 18B196062725740B00FBF50D /* Meadow */; };
+		18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960827269A4200FBF50D /* PrototypePlateau.swift */; };
+		18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960B2726A06C00FBF50D /* EditorScene.swift */; };
 		18D31AD42719C9F5006312BF /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D31AD32719C9F5006312BF /* ToolView.swift */; };
 		18D31AD62719C9FC006312BF /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D31AD52719C9FC006312BF /* EditorView.swift */; };
 		18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D31AD82719CC74006312BF /* ToolPropertyGroup.swift */; };
@@ -20,12 +47,38 @@
 		18EC262B2719BFDE00049C13 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC262A2719BFDE00049C13 /* Document.swift */; };
 		18EC262D2719BFDF00049C13 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC262C2719BFDF00049C13 /* AppView.swift */; };
 		18EC262F2719BFE000049C13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EC262E2719BFE000049C13 /* Assets.xcassets */; };
-		18EC26322719BFE000049C13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18EC26312719BFE000049C13 /* Preview Assets.xcassets */; };
 		18EC263D2719C05C00049C13 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EC263C2719C05C00049C13 /* AppViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1827F1242722ADAA0030B099 /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
+		1827F1272725706F0030B099 /* Prototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype.swift; sourceTree = "<group>"; };
+		1827F1292725717B0030B099 /* PrototypeEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeEdge.swift; sourceTree = "<group>"; };
+		18643045271DACBB003575D4 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		186B7D2C27298CBE001731C2 /* Surface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surface.swift; sourceTree = "<group>"; };
+		186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceMaterial.swift; sourceTree = "<group>"; };
+		186B7D3127298E8E001731C2 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		186B7D3727299547001731C2 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		186B7D3A272A7FC4001731C2 /* OuterCornerBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OuterCornerBiscuit.swift; sourceTree = "<group>"; };
+		186B7D3C272A8295001731C2 /* WobblyLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WobblyLine.swift; sourceTree = "<group>"; };
+		186B7D3E272AAE3E001731C2 /* PrototypeInnerCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeInnerCorner.swift; sourceTree = "<group>"; };
+		186B7D40272AAE5C001731C2 /* PrototypeOuterCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeOuterCorner.swift; sourceTree = "<group>"; };
+		186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiscuitStyle.swift; sourceTree = "<group>"; };
+		186B7D49272ADBF0001731C2 /* PrototypeToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeToolView.swift; sourceTree = "<group>"; };
+		186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBiscuit.swift; sourceTree = "<group>"; };
+		186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrooveBiscuit.swift; sourceTree = "<group>"; };
+		186B7D4F272BDD1E001731C2 /* PrototypeGroove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeGroove.swift; sourceTree = "<group>"; };
+		186B7D51272BE1AE001731C2 /* InnerCornerBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerCornerBiscuit.swift; sourceTree = "<group>"; };
+		186B7D53272D545E001731C2 /* SocketPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketPattern.swift; sourceTree = "<group>"; };
+		186B7D55272D5E57001731C2 /* WireframeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireframeNode.swift; sourceTree = "<group>"; };
+		186B7D57272D5E6E001731C2 /* SocketNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketNode.swift; sourceTree = "<group>"; };
+		187213CB272149D500FAC4E0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		187213CD27214B3400FAC4E0 /* Sockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sockets.swift; sourceTree = "<group>"; };
+		187213CF27214BBC00FAC4E0 /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
 		189F0EB3271B1B680077B81D /* Tileset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
+		18B196042725740200FBF50D /* Meadow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Meadow; path = ../Meadow; sourceTree = "<group>"; };
+		18B1960827269A4200FBF50D /* PrototypePlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypePlateau.swift; sourceTree = "<group>"; };
+		18B1960B2726A06C00FBF50D /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
 		18D31AD32719C9F5006312BF /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		18D31AD52719C9FC006312BF /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		18D31AD82719CC74006312BF /* ToolPropertyGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolPropertyGroup.swift; sourceTree = "<group>"; };
@@ -39,7 +92,6 @@
 		18EC262A2719BFDE00049C13 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		18EC262C2719BFDF00049C13 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		18EC262E2719BFE000049C13 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		18EC26312719BFE000049C13 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18EC26332719BFE000049C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18EC26342719BFE000049C13 /* Yield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yield.entitlements; sourceTree = "<group>"; };
 		18EC263C2719C05C00049C13 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -50,18 +102,95 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B196072725740B00FBF50D /* Meadow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1827F126272570640030B099 /* Prototypes */ = {
+			isa = PBXGroup;
+			children = (
+				186B7D39272A7FB7001731C2 /* Biscuits */,
+				186B7D3727299547001731C2 /* ColorPalette.swift */,
+				1827F1272725706F0030B099 /* Prototype.swift */,
+				186B7D2C27298CBE001731C2 /* Surface.swift */,
+				186B7D2E27298CC4001731C2 /* Tiles */,
+				186B7D3127298E8E001731C2 /* Volume.swift */,
+				186B7D3C272A8295001731C2 /* WobblyLine.swift */,
+			);
+			path = Prototypes;
+			sourceTree = "<group>";
+		};
+		186B7D2E27298CC4001731C2 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				1827F1292725717B0030B099 /* PrototypeEdge.swift */,
+				186B7D4F272BDD1E001731C2 /* PrototypeGroove.swift */,
+				186B7D3E272AAE3E001731C2 /* PrototypeInnerCorner.swift */,
+				186B7D40272AAE5C001731C2 /* PrototypeOuterCorner.swift */,
+				18B1960827269A4200FBF50D /* PrototypePlateau.swift */,
+			);
+			path = Tiles;
+			sourceTree = "<group>";
+		};
+		186B7D39272A7FB7001731C2 /* Biscuits */ = {
+			isa = PBXGroup;
+			children = (
+				186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */,
+				186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */,
+				186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */,
+				186B7D51272BE1AE001731C2 /* InnerCornerBiscuit.swift */,
+				186B7D3A272A7FC4001731C2 /* OuterCornerBiscuit.swift */,
+			);
+			path = Biscuits;
+			sourceTree = "<group>";
+		};
+		186B7D44272ADB01001731C2 /* Prototypes */ = {
+			isa = PBXGroup;
+			children = (
+				186B7D49272ADBF0001731C2 /* PrototypeToolView.swift */,
+			);
+			path = Prototypes;
+			sourceTree = "<group>";
+		};
+		187213CA272149C800FAC4E0 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				187213CB272149D500FAC4E0 /* EditorViewModel.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
 		189F0EB2271B1B550077B81D /* Tileset */ = {
 			isa = PBXGroup;
 			children = (
+				1827F1242722ADAA0030B099 /* Corner.swift */,
+				186B7D53272D545E001731C2 /* SocketPattern.swift */,
+				187213CD27214B3400FAC4E0 /* Sockets.swift */,
+				186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */,
+				18643045271DACBB003575D4 /* Tile.swift */,
 				189F0EB3271B1B680077B81D /* Tileset.swift */,
 			);
 			path = Tileset;
+			sourceTree = "<group>";
+		};
+		18B196052725740B00FBF50D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		18B1960A2726A05F00FBF50D /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				18B1960B2726A06C00FBF50D /* EditorScene.swift */,
+				186B7D55272D5E57001731C2 /* WireframeNode.swift */,
+				186B7D57272D5E6E001731C2 /* SocketNode.swift */,
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		18D31AD72719CC74006312BF /* Tool Properties */ = {
@@ -101,8 +230,10 @@
 		18EC261C2719BFDE00049C13 = {
 			isa = PBXGroup;
 			children = (
+				18B196042725740200FBF50D /* Meadow */,
 				18EC26272719BFDE00049C13 /* Yield */,
 				18EC26262719BFDE00049C13 /* Products */,
+				18B196052725740B00FBF50D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +248,8 @@
 		18EC26272719BFDE00049C13 /* Yield */ = {
 			isa = PBXGroup;
 			children = (
+				18B1960A2726A05F00FBF50D /* Scene */,
+				1827F126272570640030B099 /* Prototypes */,
 				189F0EB2271B1B550077B81D /* Tileset */,
 				18EC263B2719BFEA00049C13 /* View Models */,
 				18EC263A2719BFE600049C13 /* Views */,
@@ -125,26 +258,19 @@
 				18EC262E2719BFE000049C13 /* Assets.xcassets */,
 				18EC26332719BFE000049C13 /* Info.plist */,
 				18EC26342719BFE000049C13 /* Yield.entitlements */,
-				18EC26302719BFE000049C13 /* Preview Content */,
 			);
 			path = Yield;
-			sourceTree = "<group>";
-		};
-		18EC26302719BFE000049C13 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				18EC26312719BFE000049C13 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		18EC263A2719BFE600049C13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				18D31AE42719CCE0006312BF /* Badge */,
-				18D31AD72719CC74006312BF /* Tool Properties */,
 				18EC262C2719BFDF00049C13 /* AppView.swift */,
+				18D31AE42719CCE0006312BF /* Badge */,
 				18D31AD52719C9FC006312BF /* EditorView.swift */,
+				186B7D44272ADB01001731C2 /* Prototypes */,
+				187213CF27214BBC00FAC4E0 /* SocketView.swift */,
+				18D31AD72719CC74006312BF /* Tool Properties */,
 				18D31AD32719C9F5006312BF /* ToolView.swift */,
 			);
 			path = Views;
@@ -153,6 +279,7 @@
 		18EC263B2719BFEA00049C13 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				187213CA272149C800FAC4E0 /* Editor */,
 				18D31AE12719CCD6006312BF /* Badge */,
 				18D31ADE2719CCAB006312BF /* Tools */,
 				18EC263C2719C05C00049C13 /* AppViewModel.swift */,
@@ -176,6 +303,9 @@
 			dependencies = (
 			);
 			name = Yield;
+			packageProductDependencies = (
+				18B196062725740B00FBF50D /* Meadow */,
+			);
 			productName = Yield;
 			productReference = 18EC26252719BFDE00049C13 /* Yield.app */;
 			productType = "com.apple.product-type.application";
@@ -218,7 +348,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18EC26322719BFE000049C13 /* Preview Assets.xcassets in Resources */,
 				18EC262F2719BFE000049C13 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,18 +360,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D31AE62719CCE0006312BF /* BadgeView.swift in Sources */,
+				186B7D2D27298CBE001731C2 /* Surface.swift in Sources */,
+				18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */,
+				1827F12A2725717B0030B099 /* PrototypeEdge.swift in Sources */,
 				18D31ADD2719CC74006312BF /* ToolPropertyView.swift in Sources */,
+				186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */,
 				18EC262B2719BFDE00049C13 /* Document.swift in Sources */,
+				18643046271DACBB003575D4 /* Tile.swift in Sources */,
+				186B7D3227298E8E001731C2 /* Volume.swift in Sources */,
+				186B7D54272D545E001731C2 /* SocketPattern.swift in Sources */,
+				187213CE27214B3400FAC4E0 /* Sockets.swift in Sources */,
 				18D31AE02719CCB3006312BF /* ToolPropertyGroupModel.swift in Sources */,
 				189F0EB4271B1B680077B81D /* Tileset.swift in Sources */,
+				186B7D3D272A8295001731C2 /* WobblyLine.swift in Sources */,
+				186B7D58272D5E6E001731C2 /* SocketNode.swift in Sources */,
+				186B7D3B272A7FC4001731C2 /* OuterCornerBiscuit.swift in Sources */,
 				18EC26292719BFDE00049C13 /* YieldApp.swift in Sources */,
+				186B7D56272D5E57001731C2 /* WireframeNode.swift in Sources */,
+				186B7D4E272BDCB9001731C2 /* GrooveBiscuit.swift in Sources */,
 				18D31AD42719C9F5006312BF /* ToolView.swift in Sources */,
 				18D31AD62719C9FC006312BF /* EditorView.swift in Sources */,
+				186B7D52272BE1AE001731C2 /* InnerCornerBiscuit.swift in Sources */,
+				186B7D3F272AAE3E001731C2 /* PrototypeInnerCorner.swift in Sources */,
+				186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */,
+				186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */,
+				186B7D41272AAE5C001731C2 /* PrototypeOuterCorner.swift in Sources */,
+				1827F1252722ADAA0030B099 /* Corner.swift in Sources */,
 				18D31AE32719CCD6006312BF /* BadgeModel.swift in Sources */,
 				18D31ADC2719CC74006312BF /* ToolPropertySection.swift in Sources */,
+				186B7D50272BDD1E001731C2 /* PrototypeGroove.swift in Sources */,
 				18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */,
+				18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */,
+				186B7D3827299547001731C2 /* ColorPalette.swift in Sources */,
+				186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */,
+				187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */,
+				1827F1282725706F0030B099 /* Prototype.swift in Sources */,
 				18EC263D2719C05C00049C13 /* AppViewModel.swift in Sources */,
 				18EC262D2719BFDF00049C13 /* AppView.swift in Sources */,
+				187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,8 +528,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Yield/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yield/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -400,8 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Yield/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Yield/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -440,6 +593,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		18B196062725740B00FBF50D /* Meadow */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Meadow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 18EC261D2719BFDE00049C13 /* Project object */;
 }

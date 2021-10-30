@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Euclid",
+        "repositoryURL": "https://github.com/zilmarinen/Euclid.git",
+        "state": {
+          "branch": "feature/vertex_color_component",
+          "revision": "0adc8f121579851e67f48b5fdea925c333519f9f",
+          "version": null
+        }
+      },
+      {
+        "package": "PeakOperation",
+        "repositoryURL": "git@github.com:3Squared/PeakOperation.git",
+        "state": {
+          "branch": "develop",
+          "revision": "35811e5f3dc539a185601c6b3d54e0a9f9481cb1",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
