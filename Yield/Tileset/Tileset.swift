@@ -4,30 +4,21 @@
 //  Created by Zack Brown on 16/10/2021.
 //
 
-import Foundation
+import Combine
+import Euclid
 
 class Tileset: ObservableObject {
     
-    enum Style: String, CaseIterable, Identifiable {
-        
-        case block
-        case layered
-        
-        var id: String { rawValue }
-    }
+    @Published var identifier: String = "Tileset"
+    @Published var tile: Tile = .outerCorner
     
-    enum Inset: String, CaseIterable, Identifiable {
-        
-        case bottom
-        case none
-        case top
-        
-        var id: String { rawValue }
-    }
+    @Published var material: SurfaceMaterial = .dirt
+    @Published var style: BiscuitStyle = .rounded
+    @Published var volume: Volume = .crown
     
-    @Published var name: String = "Tileset"
-    @Published var tile: Int = 0
+    var prototype: PrototypeTile { Prototype(tile: tile, material: material, style: style, volume: volume) }
     
-    @Published var style: Style = .layered
-    @Published var inset: Inset = .none
+    var sockets: Sockets { prototype.sockets }
+    
+    var mesh: Mesh { Mesh(prototype.polygons) }
 }
