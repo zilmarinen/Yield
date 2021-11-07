@@ -19,6 +19,15 @@ class AppViewModel: ObservableObject {
     
     @Published var viewState: ViewState = .editing
     
+    lazy var operationQueue: OperationQueue = {
+            
+        let queue = OperationQueue()
+        
+        queue.maxConcurrentOperationCount = 1
+        
+        return queue
+    }()
+    
     init() {
         
         //
@@ -65,22 +74,32 @@ extension AppViewModel {
             
         case .OK:
             
-            guard let url = panel.url else { return }
+            guard let url = panel.url else {
+                
+                DispatchQueue.main.async { [weak self] in
+
+                    guard let self = self else { return }
+
+                    self.viewState = .editing
+                }
+                
+                return
+            }
             
-//            let exportOperation = TilemapExportOperation(url: url, tilemap: tilemap)
-//            let writeOperation = WriteOperation(url: url);
-//
-//            let progress = exportOperation.passesResult(to: writeOperation).enqueueWithProgress(on: operationQueue) { result in
-//
-//                DispatchQueue.main.async { [weak self] in
-//
-//                    guard let self = self else { return }
-//
-//                    self.viewState = .idle
-//                }
-//            }
+            let exportOperation = TilesetExportOperation()
+            let writeOperation = WriteOperation(url: url)
+
+            let progress = exportOperation.passesResult(to: writeOperation).enqueueWithProgress(on: operationQueue) { result in
+
+                DispatchQueue.main.async { [weak self] in
+
+                    guard let self = self else { return }
+
+                    self.viewState = .editing
+                }
+            }
             
-            //viewState = .exporting(progress: progress)
+            viewState = .exporting(progress: progress)
             
         default: break
         }
