@@ -8,6 +8,11 @@ import Euclid
 
 enum SurfaceMaterial: String, CaseIterable, Codable, Identifiable {
     
+    static let solids: [SurfaceMaterial] = [.dirt,
+                                            .sand,
+                                            .stone,
+                                            .undergrowth]
+    
     case air
     case dirt
     case sand
@@ -28,21 +33,31 @@ enum SurfaceMaterial: String, CaseIterable, Codable, Identifiable {
         }
     }
     
-    var insetCrown: Bool {
+    func inset(volume: Volume) -> Inset {
         
-        switch self {
-            
-        case .dirt: return true
-        default: return false
+        switch volume {
+        case .crown: return self == .dirt ? .inner : .none
+        case .throne: return self == .stone ? .inner : .none
+        case .mantle: return self == .stone ? .inner : .none
+        default: return .none
         }
     }
     
-    var insetThrone: Bool {
+    func adjacentInset(volume: Volume, material: SurfaceMaterial) -> Inset {
         
-        switch self {
+        switch volume {
             
-        case .stone: return true
-        default: return false
+        case .throne:
+            
+            guard inset(volume: volume) != .inner else { return .inner }
+            
+            return material.inset(volume: volume).opposite
+            
+        default: return inset(volume: volume)
         }
     }
+    
+    func apexColor(volume: Volume) -> Color { volume == .crown ? colors.primary : colors.tertiary }
+    func edgeColor(volume: Volume) -> Color { volume == .crown ? colors.secondary : colors.quaternary }
+    func baseColor(volume: Volume) -> Color { volume == .crown ? colors.tertiary : colors.quaternary }
 }

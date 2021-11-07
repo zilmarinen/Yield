@@ -9,9 +9,11 @@ import Meadow
 
 protocol PrototypeTile {
     
+    var rotations: [Ordinal] { get }
+    
     var sockets: Sockets { get }
     
-    var polygons: [Euclid.Polygon] { get }
+    var mesh: Mesh { get }
 }
 
 struct Prototype: PrototypeTile {
@@ -28,25 +30,55 @@ struct Prototype: PrototypeTile {
     }
     
     let tile: Tile
-    let material: SurfaceMaterial
-    let style: BiscuitStyle
-    let volume: Volume
+    let type: TileType
+    let primary: SocketConfig
+    let secondary: SocketConfig
+    let tertiary: SocketConfig
+    let quaternary: SocketConfig
     
+    var rotations: [Ordinal] { prototype.rotations }
     var sockets: Sockets { prototype.sockets }
-    var polygons: [Euclid.Polygon] { prototype.polygons }
+    var mesh: Mesh { prototype.mesh }
 }
 
 extension Prototype {
     
     var prototype: PrototypeTile {
         
+        switch type {
+            
+        case .mono: return monoPrototype
+        case .duo: return duoPrototype
+        case .tri: return monoPrototype
+        case .tetra: return monoPrototype
+        }
+    }
+    
+    var monoPrototype: PrototypeTile {
+        
         switch tile {
             
-        case .edge: return PrototypeEdge(cardinal: .north, material: material, volume: volume, style: style)
-        case .groove: return PrototypeGroove(ordinal: .northWest, material: material, volume: volume, style: style)
-        case .innerCorner: return PrototypeInnerCorner(ordinal: .southWest, material: material, volume: volume, style: style)
-        case .outerCorner: return PrototypeOuterCorner(ordinal: .northWest, material: material, volume: volume, style: style)
-        case .plateau: return PrototypePlateau(material: material, volume: volume)
+        case .edge: return MonoEdge(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .edge(.north)))
+        case .groove: return MonoGroove(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
+        case .innerCorner: return MonoInnerCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.southWest)))
+        case .outerCorner: return MonoOuterCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
+        case .plateau: return MonoPlateau(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .plateau))
+        }
+    }
+    
+    var duoPrototype: PrototypeTile {
+        
+        switch tile {
+            
+        case .edge: return DuoEdge(primary: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .edge(.north)),
+                                   secondary: secondary)
+            
+        case .groove: return DuoGroove(primary: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)),
+                                       secondary: secondary)
+            
+        case .innerCorner: return MonoInnerCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.southWest)))
+        case .outerCorner: return MonoOuterCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
+        case .plateau: return MonoPlateau(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .plateau))
         }
     }
 }
