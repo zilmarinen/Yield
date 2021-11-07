@@ -6,7 +6,7 @@
 
 import Meadow
 
-public struct SocketPattern<T: Codable & Equatable>: Equatable {
+public struct SocketPattern<T: Codable & Equatable>: Codable, Equatable {
     
     public var northWest: T
     public var northEast: T
@@ -65,6 +65,9 @@ public struct SocketPattern<T: Codable & Equatable>: Equatable {
 
 extension SocketPattern where T == SurfaceMaterial {
     
+    var isEmpty: Bool { count == 0 }
+    var isFull: Bool { count == 4 }
+    
     var count: Int {
         
         return  (northWest == .air ? 0 : 1) +
@@ -86,5 +89,15 @@ extension SocketPattern where T == SurfaceMaterial {
         }
         
         return result
+    }
+    
+    func rotate(ordinal: Ordinal) -> Self {
+        
+        switch ordinal {
+        case .northEast: return Self(northWest: southWest, northEast: northWest, southEast: northEast, southWest: southEast)
+        case .southEast: return Self(northWest: southEast, northEast: southWest, southEast: northWest, southWest: northEast)
+        case .southWest: return Self(northWest: northEast, northEast: southEast, southEast: southWest, southWest: northWest)
+        default: return self
+        }
     }
 }

@@ -11,40 +11,40 @@ struct SocketView: View {
     
     let title: String
     
-    let socket: SurfaceMaterial
+    let material: SurfaceMaterial
 
     var body: some View {
         
         ToolPropertyView(title: title, color: .pink) {
 
-            BadgeView(model: .init(title: "\(socket)", color: (socket != .air ? .pink : .gray)))
+            BadgeView(model: .init(title: "\(material)", color: (material != .air ? .pink : .gray)))
         }
     }
 }
 
 struct SocketsView: View {
     
-    @ObservedObject private(set) var tileset: Tileset
+    @ObservedObject private(set) var prototype: EditorTile
 
     var body: some View {
         
         ToolPropertySection {
 
-            ToolPropertyGroup(model: .init(title: "Sockets", badge: .init(title: "\(tileset.sockets.count)", color: .pink))) {
+            ToolPropertyGroup(model: .init(title: "Sockets", badge: .init(title: "\(prototype.sockets.count)", color: .pink))) {
 
-                SocketView(title: "[nX, pY, pZ]", socket: tileset.sockets.upper.value(for: .northWest))
-                SocketView(title: "[pX, pY, pZ]", socket: tileset.sockets.upper.value(for: .northEast))
-                SocketView(title: "[pX, pY, nZ]", socket: tileset.sockets.upper.value(for: .southEast))
-                SocketView(title: "[nX, pY, nZ]", socket: tileset.sockets.upper.value(for: .southWest))
+                SocketView(title: "[nX, pY, pZ]", material: prototype.sockets.upper.value(for: .northWest))
+                SocketView(title: "[pX, pY, pZ]", material: prototype.sockets.upper.value(for: .northEast))
+                SocketView(title: "[pX, pY, nZ]", material: prototype.sockets.upper.value(for: .southEast))
+                SocketView(title: "[nX, pY, nZ]", material: prototype.sockets.upper.value(for: .southWest))
             }
             .padding(.bottom, YieldApp.Constants.padding)
             
             ToolPropertyGroup() {
                 
-                SocketView(title: "[nX, nY, pZ]", socket: tileset.sockets.lower.value(for: .northWest))
-                SocketView(title: "[pX, nY, pZ]", socket: tileset.sockets.lower.value(for: .northEast))
-                SocketView(title: "[pX, nY, nZ]", socket: tileset.sockets.lower.value(for: .southEast))
-                SocketView(title: "[nX, nY, nZ]", socket: tileset.sockets.lower.value(for: .southWest))
+                SocketView(title: "[nX, nY, pZ]", material: prototype.sockets.lower.value(for: .northWest))
+                SocketView(title: "[pX, nY, pZ]", material: prototype.sockets.lower.value(for: .northEast))
+                SocketView(title: "[pX, nY, nZ]", material: prototype.sockets.lower.value(for: .southEast))
+                SocketView(title: "[nX, nY, nZ]", material: prototype.sockets.lower.value(for: .southWest))
             }
         }
     }
