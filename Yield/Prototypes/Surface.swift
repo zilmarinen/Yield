@@ -9,23 +9,22 @@ import Meadow
 
 struct Surface {
     
-    let material: SurfaceMaterial
-    let volume: Volume
+    let config: SocketConfig
     
-    var polygons: [Euclid.Polygon] {
+    var mesh: Mesh {
         
-        guard volume != .empty else { return [] }
+        guard config.volume != .empty else { return Mesh([]) }
         
-        let floor = Vector(x: 0, y: (volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
-        let ceiling = Vector(x: 0, y: (volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
-                                        (volume == .throne ? Prototype.Constants.throneHeight : Prototype.Constants.ceiling)), z: 0)
+        let floor = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
+        let ceiling = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
+                                        (config.volume == .throne ? Prototype.Constants.throneHeight : Prototype.Constants.ceiling)), z: 0)
         
         let lowerCorners = Ordinal.Coordinates.map { (Vector(coordinate: $0) * World.Constants.volumeSize) + floor }
         let upperCorners = Ordinal.Coordinates.map { (Vector(coordinate: $0) * World.Constants.volumeSize) + ceiling }
         
-        let apexColor = volume == .crown ? material.colors.primary : material.colors.tertiary
-        let edgeColor = volume == .crown ? material.colors.secondary : material.colors.quaterniary
-        let baseColor = volume == .crown ? material.colors.tertiary : material.colors.quaterniary
+        let apexColor = config.material.apexColor(volume: config.volume)
+        let edgeColor = config.material.edgeColor(volume: config.volume)
+        let baseColor = config.material.baseColor(volume: config.volume)
         
         var polygons: [Euclid.Polygon] = []
         
@@ -47,8 +46,8 @@ struct Surface {
         let upperVertices = upperCorners.reversed().map { Vertex($0, .up, .zero, apexColor) }
         
         guard let lowerPolygon = Polygon(lowerVertices),
-              let upperPolygon = Polygon(upperVertices) else { return polygons }
+              let upperPolygon = Polygon(upperVertices) else { return Mesh(polygons) }
         
-        return polygons + [lowerPolygon, upperPolygon]
+        return Mesh(polygons + [lowerPolygon, upperPolygon])
     }
 }
