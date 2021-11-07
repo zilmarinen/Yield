@@ -4,58 +4,72 @@
 //  Created by Zack Brown on 28/10/2021.
 //
 
+import Meadow
 import SwiftUI
 
 struct PrototypeToolView: View {
     
     let title: String
     
-    @ObservedObject private(set) var model: AppViewModel
-    
-    let hasStyle: Bool
-    let hasVolume: Bool
+    @Binding private(set) var prototype: EditorTile
 
     var body: some View {
         
         ToolPropertySection {
 
-            ToolPropertyGroup(model: .init(title: title)) {
+            ToolPropertyGroup(model: .init(title: "Tileset", imageName: "square.grid.3x3")) {
                 
-                ToolPropertyView(title: "Material", color: .pink) {
+                ToolPropertyView(title: "Shape", color: .pink) {
 
-                    Picker("Material", selection: $model.editorModel.tileset.material) {
+                    Picker("Shape", selection: $prototype.tile) {
 
-                        ForEach(SurfaceMaterial.allCases, id: \.self) { material in
+                        ForEach(Tile.allCases, id: \.self) { tile in
 
-                            Text(material.id.capitalized).tag(material)
+                            Text(tile.id.capitalized).tag(tile)
                         }
                     }
                 }
                 
-                if hasStyle {
+                ToolPropertyView(title: "Type", color: .pink) {
 
-                    ToolPropertyView(title: "Style", color: .pink) {
+                    Picker("Type", selection: $prototype.type) {
 
-                        Picker("Style", selection: $model.editorModel.tileset.style) {
+                        ForEach(TileType.allCases, id: \.self) { type in
 
-                            ForEach(BiscuitStyle.allCases, id: \.self) { style in
-
-                                Text(style.id.capitalized).tag(style)
-                            }
+                            Text(type.id.capitalized).tag(type)
                         }
                     }
                 }
                 
-                if hasVolume {
+                ToolPropertyView(title: "Format", color: .pink) {
+
+                    Picker("Format", selection: $prototype.format) {
+
+                        ForEach(EditorTile.Format.allCases, id: \.self) { format in
+
+                            Text(format.id.capitalized).tag(format)
+                        }
+                    }
+                }
                 
-                    ToolPropertyView(title: "Volume", color: .pink) {
+                ToolPropertyView(title: "Cardinal", color: .pink) {
 
-                        Picker("Volume", selection: $model.editorModel.tileset.volume) {
+                    Picker("Cardinal", selection: $prototype.cardinal) {
 
-                            ForEach(Volume.allCases, id: \.self) { volume in
+                        ForEach(Cardinal.allCases, id: \.self) { cardinal in
 
-                                Text(volume.id.capitalized).tag(volume)
-                            }
+                            Text(cardinal.id.capitalized).tag(cardinal)
+                        }
+                    }
+                }
+                
+                ToolPropertyView(title: "Ordinal", color: .pink) {
+
+                    Picker("Ordinal", selection: $prototype.ordinal) {
+
+                        ForEach(Ordinal.allCases, id: \.self) { ordinal in
+
+                            Text(ordinal.id.capitalized).tag(ordinal)
                         }
                     }
                 }

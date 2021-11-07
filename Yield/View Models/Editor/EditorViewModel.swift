@@ -12,12 +12,12 @@ class EditorViewModel: ObservableObject {
     
     let scene = EditorScene()
     
-    @Published var tileset = Tileset() {
+    @ObservedObject var prototype = EditorTile() {
         
         didSet {
             
-            scene.model.geometry = SCNGeometry(tileset.mesh)
-            scene.sockets.setup(sockets: tileset.sockets)
+            scene.model.geometry = SCNGeometry(prototype.mesh)
+            scene.sockets.setup(sockets: prototype.sockets)
         }
     }
     

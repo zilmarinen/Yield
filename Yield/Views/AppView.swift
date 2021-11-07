@@ -14,10 +14,13 @@ struct AppView: View {
         
         HStack {
             
-            ToolView(model: document.model, tileset: document.model.editorModel.tileset)
+            ToolView(prototype: $document.model.editorModel.prototype)
             
             EditorView(model: document.model)
-                .frame(idealWidth: YieldApp.Constants.editorWidth, idealHeight: YieldApp.Constants.editorWidth)
+                .frame(minWidth: YieldApp.Constants.editorWidth,
+                       idealWidth: YieldApp.Constants.editorWidth,
+                       minHeight: YieldApp.Constants.editorWidth,
+                       idealHeight: YieldApp.Constants.editorWidth)
         }
     }
 }
