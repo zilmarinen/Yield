@@ -9,106 +9,102 @@ import Meadow
 
 struct OuterCornerBiscuit {
     
-    let ordinal: Ordinal
+    let config: SocketConfig
     
-    let material: SurfaceMaterial
-    let volume: Volume
-    let style: BiscuitStyle
+    let insets: Insets
     
-    let inset: Bool
-    
-    var polygons: [Euclid.Polygon] {
+    var mesh: Mesh {
         
-        let apexColor = volume == .crown ? material.colors.primary : material.colors.tertiary
-        let edgeColor = volume == .crown ? material.colors.secondary : material.colors.quaterniary
-        let baseColor = volume == .crown ? material.colors.tertiary : material.colors.quaterniary
+        guard case let .corner(ordinal) = config.type else { return Mesh([]) }
         
-        let corners = Ordinal.Coordinates.map { Vector(coordinate: $0) * World.Constants.volumeSize }
+        let apexColor = config.material.apexColor(volume: config.volume)
+        let edgeColor = config.material.edgeColor(volume: config.volume)
+        let baseColor = config.material.baseColor(volume: config.volume)
+        
+        let grid = SurfaceGrid()
+        
         let ceiling = Vector(x: 0, y: 1, z: 0)
         
         let (c0, c1) = ordinal.cardinals
-        let (o0, o1) = ordinal.ordinals
         
-        let lv1 = corners[ordinal.corner]
-        let lv0 = corners[o0.corner].lerp(lv1, 0.5 + (inset ? Prototype.Constants.insetDepth : 0))
-        let lv2 = lv1.lerp(corners[o1.corner], 0.5 - (inset ? Prototype.Constants.insetDepth : 0))
-        
-        let uv0 = lv0 + ceiling
-        let uv1 = lv1 + ceiling
-        let uv2 = lv2 + ceiling
-        
-        let c0c = [uv0, uv1, lv1, lv0]
-        let c1c = [uv1, uv2, lv2, lv1]
-        
-        let c0v = c0c.map { Vertex($0, c0.normal, nil, edgeColor) }
-        let c1v = c1c.map { Vertex($0, c1.normal, nil, edgeColor) }
-        
-        guard let c0p = Polygon(c0v),
-              let c1p = Polygon(c1v) else { return [] }
+        let lv1 = grid.corner(ordinal: ordinal)
+        let lv0 = grid.edge(cardinal: c0, ordinal: ordinal, inset: insets.left)
+        let lv2 = grid.edge(cardinal: c1, ordinal: ordinal, inset: insets.right)
+        let lv3 = grid.edge(cardinal: c1.opposite, ordinal: ordinal, inset: insets.right)
+        let lv4 = grid.edge(cardinal: c0.opposite, ordinal: ordinal, inset: insets.left)
         
         var lowerFace = [lv1]
-        var edges = [c0p, c1p]
+        var edges: [Euclid.Polygon] = []
         
-        switch style {
-        case .rounded:
+        switch config.style {
+            
+        case .convex:
+            
+            let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.normal, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.normal, steps: 4, variance: Prototype.Constants.insetDepth)
+            
+            switch (insets.left, insets.right) {
+                
+            case (.inner, .inner),
+                (.inner, .none),
+                (.none, .inner):
+                
+                guard let lv5 = l0.points.dropLast().last,
+                      let lv6 = l1.points.dropFirst().first else { break }
+                
+                let lv7 = grid.inner(corner: ordinal)
+                
+                let l2 = StraightLine(start: lv5, end: lv7)
+                let l3 = StraightLine(start: lv7, end: lv6)
+                
+                guard let e2p = l2.polygon(color: edgeColor),
+                      let e3p = l3.polygon(color: edgeColor) else { break }
+                
+                lowerFace.append(contentsOf: l0.points.dropLast() + [lv7] + l1.points.dropFirst())
+                
+                edges.append(contentsOf: [e2p, e3p] + l0.polygons(color: edgeColor).dropLast() + l1.polygons(color: edgeColor).dropFirst())
+                
+            case (.none, .none):
+                
+                lowerFace.append(contentsOf: l0.points + l1.points.dropFirst())
+                
+                edges.append(contentsOf: l0.polygons(color: edgeColor) + l1.polygons(color: edgeColor))
+                
+            default:
+                
+                let l2 = StraightLine(start: l0.end, end: l1.start)
+                
+                guard let e2p = l2.polygon(color: edgeColor) else { break }
+                
+                lowerFace.append(contentsOf: l0.points + l1.points)
+                
+                edges.append(contentsOf: [e2p] + l0.polygons(color: edgeColor) + l1.polygons(color: edgeColor))
+            }
+            
+        default:
             
             let normal = -(c0.normal + c1.normal)
             
             let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: 4, variance: Prototype.Constants.insetDepth)
             
             lowerFace.append(contentsOf: line.points)
-        
+            
             edges.append(contentsOf: line.polygons(color: edgeColor))
-            
-        case .squared:
-            
-            let lv3 = c1.normal * (inset ? Prototype.Constants.insetDepth : 0)
-            let lv4 = c0.normal * (inset ? Prototype.Constants.insetDepth : 0)
-            let lv5 = (c0.normal + c1.normal) * (inset ? Prototype.Constants.insetDepth : 0)
-         
-            let lc0 = WobblyLine(start: lv2, end: lv4, normal: c0.opposite.normal, steps: 4, variance: Prototype.Constants.insetDepth)
-            let lc1 = WobblyLine(start: lv3, end: lv0, normal: c1.normal, steps: 4, variance: Prototype.Constants.insetDepth)
-            
-            if inset {
-                
-                lowerFace.append(contentsOf: lc0.points.dropLast() + [lv5] + lc1.points.dropFirst())
-                
-                edges.append(contentsOf: lc0.polygons(color: edgeColor).dropLast() + lc1.polygons(color: edgeColor).dropFirst())
-                
-                guard let v0 = lc0.points.dropLast().last,
-                      let v1 = lc1.points.dropFirst().first else { return edges }
-                
-                let c0f = [v0 + ceiling, lv5 + ceiling, lv5, v0]
-                let c1f = [lv5 + ceiling, v1 + ceiling, v1, lv5]
-                
-                let c0fn = c0f.normal()
-                let c1fn = c1f.normal()
-                
-                let lhv = c0f.map { Vertex($0, c0fn, nil, edgeColor) }
-                let rhv = c1f.map { Vertex($0, c1fn, nil, edgeColor) }
-                
-                guard let lhs = Polygon(lhv),
-                      let rhs = Polygon(rhv) else { return edges }
-                
-                edges.append(contentsOf: [lhs, rhs])
-            }
-            else {
-                
-                lowerFace = [lv1] + lc0.points + lc1.points.dropFirst()
-                
-                edges.append(contentsOf: lc0.polygons(color: edgeColor))
-                edges.append(contentsOf: lc1.polygons(color: edgeColor))
-            }
         }
+        
+        let e0 = StraightLine(start: lv0, end: lv1)
+        let e1 = StraightLine(start: lv1, end: lv2)
         
         let upperFace = lowerFace.reversed().map { $0 + ceiling }
         
         let lowerVertices = lowerFace.map { Vertex($0, -.up, nil, baseColor) }
         let upperVertices = upperFace.map { Vertex($0, .up, nil, apexColor) }
         
-        guard let lowerPolygon = Polygon(lowerVertices),
-              let upperPolygon = Polygon(upperVertices) else { return edges }
+        guard let e0p = e0.polygon(color: edgeColor),
+              let e1p = e1.polygon(color: edgeColor),
+              let lowerPolygon = Polygon(lowerVertices),
+              let upperPolygon = Polygon(upperVertices) else { return Mesh(edges) }
         
-        return [lowerPolygon, upperPolygon] + edges
+        return Mesh([lowerPolygon, upperPolygon] + edges + [e0p, e1p])
     }
 }

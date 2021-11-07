@@ -9,36 +9,36 @@ import Meadow
 
 struct GrooveBiscuit {
     
-    let ordinal: Ordinal
+    let config: SocketConfig
     
-    let material: SurfaceMaterial
-    let volume: Volume
-    let style: BiscuitStyle
+    let insets: Insets
     
-    let inset: Bool
-    
-    var polygons: [Euclid.Polygon] {
+    var mesh: Mesh {
         
-        var surface = Mesh(Surface(material: material, volume: volume).polygons)
+        guard case let .corner(ordinal) = config.type else { return Mesh([]) }
+        
+        var surface = Surface(config: config).mesh
         
         let (o0, o1) = ordinal.ordinals
         
-        let b0 = Mesh(InnerCornerBiscuit(ordinal: o0, material: material, volume: volume, style: style, inset: inset).polygons)
+        let b0 = InnerCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets).mesh
         
         surface = surface.subtract(b0)
         
-        switch style {
-        case .rounded:
-        
-            let b1 = Mesh(InnerCornerBiscuit(ordinal: o1, material: material, volume: volume, style: style, inset: inset).polygons)
+        switch config.style {
             
-            return surface.subtract(b1).polygons
+        case .convex,
+                .straight:
+                
+            let b1 = InnerCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets).mesh
             
-        case .squared:
+            return surface.subtract(b1)
             
-            let b1 = Mesh(InnerCornerBiscuit(ordinal: o1, material: material, volume: volume, style: .rounded, inset: inset).polygons)
+        default:
             
-            return surface.subtract(b1).polygons
+            let b1 = InnerCornerBiscuit(config: .init(material: config.material, style: .convex, volume: config.volume, type: .corner(o1)), insets: insets).mesh
+            
+            return surface.subtract(b1)
         }
     }
 }
