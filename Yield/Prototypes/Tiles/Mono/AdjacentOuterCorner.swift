@@ -1,5 +1,5 @@
 //
-//  AdjacentEdge.swift
+//  AdjacentOuterCorner.swift
 //
 //  Created by Zack Brown on 07/11/2021.
 //
@@ -7,7 +7,7 @@
 import Euclid
 import Meadow
 
-struct AdjacentEdge {
+struct AdjacentOuterCorner {
     
     let primary: SocketConfig
     let lhs: SocketConfig
@@ -21,16 +21,16 @@ struct AdjacentEdge {
         
         for volume in volumes {
             
-            let config = SocketConfig(material: primary.material, style: primary.style, volume: volume, type: primary.type)
+            let vc0 = primary.with(volume: volume)
             
-            let surface = Surface(config: config).mesh
+            let surface = Surface(config: vc0).mesh
             
             let insets = Insets(left: primary.material.adjacentInset(volume: volume, material: lhs.material),
                                 right: primary.material.adjacentInset(volume: volume, material: rhs.material))
             
-            let edge = EdgeBiscuit(config: config, insets: insets).mesh
+            let biscuit = CornerBiscuit(config: vc0, insets: insets).mesh
             
-            result = result.union(surface.intersect(edge))
+            result = result.union(surface.intersect(biscuit))
         }
         
         return result

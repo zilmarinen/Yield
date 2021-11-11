@@ -54,15 +54,15 @@ struct MonoEdge: PrototypeTile {
         
         for volume in volumes {
             
-            let surface = Surface(config: .init(material: config.material, style: config.style, volume: volume, type: config.type)).mesh
+            let vc0 = config.with(volume: volume)
+            
+            let surface = Surface(config: vc0).mesh
             
             let insets = Insets(value: config.material.inset(volume: volume))
             
-            let biscuit = EdgeBiscuit(config: .init(material: config.material, style: config.style, volume: volume, type: config.type), insets: insets).mesh
+            let biscuit = EdgeBiscuit(config: vc0, insets: insets).mesh
             
-            let mesh = surface.intersect(biscuit)
-            
-            result = result.union(mesh)
+            result = result.union(surface.intersect(biscuit))
         }
         
         return result

@@ -57,15 +57,15 @@ struct MonoInnerCorner: PrototypeTile {
         
         for volume in volumes {
             
-            let surface = Surface(config: .init(material: config.material, style: config.style, volume: volume, type: .plateau)).mesh
+            let vc0 = config.with(volume: volume)
+            
+            let surface = Surface(config: vc0).mesh
             
             let insets = Insets(value: config.material.inset(volume: volume))
             
-            let biscuit = InnerCornerBiscuit(config: .init(material: config.material, style: config.style, volume: volume, type: config.type), insets: insets).mesh
+            let biscuit = CornerBiscuit(config: vc0, insets: insets.opposite).mesh
             
-            let mesh = surface.subtract(biscuit)
-            
-            result = result.union(mesh)
+            result = result.union(surface.subtract(biscuit))
         }
         
         return result

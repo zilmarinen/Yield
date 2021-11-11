@@ -46,7 +46,7 @@ struct MonoPlateau: PrototypeTile {
         
         for volume in volumes {
             
-            let mesh = Surface(config: .init(material: config.material, style: config.style, volume: volume, type: .plateau)).mesh
+            let mesh = Surface(config: config.with(volume: volume)).mesh
             
             result = result.union(mesh)
         }
