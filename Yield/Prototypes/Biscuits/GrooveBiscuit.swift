@@ -21,7 +21,7 @@ struct GrooveBiscuit {
         
         let (o0, o1) = ordinal.ordinals
         
-        let b0 = InnerCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets).mesh
+        let b0 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets.rhs.opposite).mesh
         
         surface = surface.subtract(b0)
         
@@ -30,13 +30,13 @@ struct GrooveBiscuit {
         case .convex,
                 .straight:
                 
-            let b1 = InnerCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets).mesh
+            let b1 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets.lhs.opposite).mesh
             
             return surface.subtract(b1)
             
         default:
             
-            let b1 = InnerCornerBiscuit(config: .init(material: config.material, style: .convex, volume: config.volume, type: .corner(o1)), insets: insets).mesh
+            let b1 = CornerBiscuit(config: .init(material: config.material, style: .convex, volume: config.volume, type: .corner(o1)), insets: insets.lhs.opposite).mesh
             
             return surface.subtract(b1)
         }

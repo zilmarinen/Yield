@@ -1,5 +1,5 @@
 //
-//  OuterCornerBiscuit.swift
+//  CornerBiscuit.swift
 //
 //  Created by Zack Brown on 28/10/2021.
 //
@@ -7,7 +7,7 @@
 import Euclid
 import Meadow
 
-struct OuterCornerBiscuit {
+struct CornerBiscuit {
     
     let config: SocketConfig
     

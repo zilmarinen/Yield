@@ -25,8 +25,8 @@ struct EdgeBiscuit {
             
             let surface = Surface(config: config).mesh
             
-            let b0 = OuterCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets.lhs).mesh
-            let b1 = OuterCornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets.rhs).mesh
+            let b0 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets.lhs).mesh
+            let b1 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets.rhs).mesh
             
             return surface.intersect(b0).union(surface.intersect(b1))
             
@@ -36,8 +36,8 @@ struct EdgeBiscuit {
             
             let surface = Surface(config: config).mesh
             
-            let b0 = InnerCornerBiscuit(config: .init(material: config.material, style: .concave, volume: config.volume, type: .corner(o0)), insets: insets.lhs).mesh
-            let b1 = InnerCornerBiscuit(config: .init(material: config.material, style: .concave, volume: config.volume, type: .corner(o1)), insets: insets.rhs).mesh
+            let b0 = CornerBiscuit(config: .init(material: config.material, style: .concave, volume: config.volume, type: .corner(o0)), insets: insets.lhs.opposite).mesh
+            let b1 = CornerBiscuit(config: .init(material: config.material, style: .concave, volume: config.volume, type: .corner(o1)), insets: insets.rhs.opposite).mesh
             
             return surface.subtract(b0).subtract(b1)
             
