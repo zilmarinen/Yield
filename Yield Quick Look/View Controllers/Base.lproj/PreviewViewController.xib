@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.SceneKitIBPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreviewViewController" customModule="Yield_Quick_Look" customModuleProvider="target">
+            <connections>
+                <outlet property="sceneView" destination="Unz-s1-dga" id="AqE-zZ-nuE"/>
+                <outlet property="view" destination="c22-O7-iKe" id="NRM-P4-wb6"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" userLabel="Preview View">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <sceneView allowsCameraControl="YES" preferredRenderingAPI="1" translatesAutoresizingMaskIntoConstraints="NO" id="Unz-s1-dga">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                </sceneView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Unz-s1-dga" firstAttribute="height" secondItem="c22-O7-iKe" secondAttribute="height" id="2PM-Nb-otN"/>
+                <constraint firstItem="Unz-s1-dga" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="ZyA-h1-i8E"/>
+                <constraint firstItem="Unz-s1-dga" firstAttribute="width" secondItem="c22-O7-iKe" secondAttribute="width" id="ksi-4w-W4u"/>
+                <constraint firstItem="Unz-s1-dga" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="qso-XW-T2E"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </customView>
+    </objects>
+</document>
