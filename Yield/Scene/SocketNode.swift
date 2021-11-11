@@ -10,7 +10,12 @@ import SceneKit
 
 class SocketNode: WireframeNode {
     
-    lazy var socket: SCNNode = { SCNNode(geometry: SCNBox(width: Prototype.Constants.socketSize.x, height: Prototype.Constants.socketSize.y, length: Prototype.Constants.socketSize.z, chamferRadius: 0)) }()
+    enum Constants {
+        
+        static let socketSize = Vector(x: 0.1, y: 0.1, z: 0.1)
+    }
+    
+    lazy var socket: SCNNode = { SCNNode(geometry: SCNBox(width: Constants.socketSize.x, height: Constants.socketSize.y, length: Constants.socketSize.z, chamferRadius: 0)) }()
     
     var material: SurfaceMaterial = .air {
         
@@ -31,7 +36,7 @@ class SocketNode: WireframeNode {
     
     init(position: SCNVector3) {
         
-        super.init(position: position, size: Prototype.Constants.socketSize)
+        super.init(position: position, size: Constants.socketSize)
         
         addChildNode(socket)
     }

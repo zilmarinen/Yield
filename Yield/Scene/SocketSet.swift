@@ -15,10 +15,10 @@ class SocketSet: SCNNode {
     private let lc2 = SocketNode(position: SCNVector3(x: 0.5, y: 0, z: 0.5))
     private let lc3 = SocketNode(position: SCNVector3(x: -0.5, y: 0, z: 0.5))
     
-    private let uc0 = SocketNode(position: SCNVector3(x: -0.5, y: Prototype.Constants.ceiling, z: -0.5))
-    private let uc1 = SocketNode(position: SCNVector3(x: 0.5, y: Prototype.Constants.ceiling, z: -0.5))
-    private let uc2 = SocketNode(position: SCNVector3(x: 0.5, y: Prototype.Constants.ceiling, z: 0.5))
-    private let uc3 = SocketNode(position: SCNVector3(x: -0.5, y: Prototype.Constants.ceiling, z: 0.5))
+    private let uc0 = SocketNode(position: SCNVector3(x: -0.5, y: 1.0, z: -0.5))
+    private let uc1 = SocketNode(position: SCNVector3(x: 0.5, y: 1.0, z: -0.5))
+    private let uc2 = SocketNode(position: SCNVector3(x: 0.5, y: 1.0, z: 0.5))
+    private let uc3 = SocketNode(position: SCNVector3(x: -0.5, y: 1.0, z: 0.5))
     
     override init() {
         
