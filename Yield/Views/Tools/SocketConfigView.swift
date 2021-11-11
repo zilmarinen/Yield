@@ -4,6 +4,7 @@
 //  Created by Zack Brown on 03/11/2021.
 //
 
+import Meadow
 import SwiftUI
 
 struct SocketConfigView: View {
@@ -12,6 +13,7 @@ struct SocketConfigView: View {
     
     @Binding private(set) var config: SocketConfig
     
+    let hasFormat: Bool
     let hasStyle: Bool
     let hasVolume: Bool
 
@@ -55,6 +57,48 @@ struct SocketConfigView: View {
                             ForEach(Volume.allCases, id: \.self) { volume in
 
                                 Text(volume.id.capitalized).tag(volume)
+                            }
+                        }
+                    }
+                }
+                
+                if hasFormat {
+                 
+                    ToolPropertyView(title: "Format", color: .pink) {
+
+                        Picker("Format", selection: $config.format) {
+
+                            ForEach(SocketConfig.Format.allCases, id: \.self) { format in
+
+                                Text(format.id.capitalized).tag(format)
+                            }
+                        }
+                    }
+                    
+                    if config.format == .edge {
+                        
+                        ToolPropertyView(title: "Cardinal", color: .pink) {
+
+                            Picker("Cardinal", selection: $config.cardinal) {
+
+                                ForEach(Cardinal.allCases, id: \.self) { cardinal in
+
+                                    Text(cardinal.id.capitalized).tag(cardinal)
+                                }
+                            }
+                        }
+                    }
+                    
+                    if config.format == .corner {
+                    
+                        ToolPropertyView(title: "Ordinal", color: .pink) {
+
+                            Picker("Ordinal", selection: $config.ordinal) {
+
+                                ForEach(Ordinal.allCases, id: \.self) { ordinal in
+
+                                    Text(ordinal.id.capitalized).tag(ordinal)
+                                }
                             }
                         }
                     }

@@ -8,15 +8,15 @@ import SwiftUI
 
 struct AppView: View {
     
-    @Binding var document: Document
+    let model: AppViewModel
 
     var body: some View {
         
         HStack {
             
-            ToolView(prototype: $document.model.editorModel.prototype)
+            ToolView(model: model.editorModel)
             
-            EditorView(model: document.model)
+            EditorView(model: model)
                 .frame(minWidth: YieldApp.Constants.editorWidth,
                        idealWidth: YieldApp.Constants.editorWidth,
                        minHeight: YieldApp.Constants.editorWidth,

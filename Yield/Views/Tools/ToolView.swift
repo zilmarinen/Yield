@@ -8,7 +8,7 @@ import SwiftUI
 
 struct ToolView: View {
     
-    @Binding private(set) var prototype: EditorTile
+    @ObservedObject var model: EditorViewModel
 
     var body: some View {
         
@@ -16,24 +16,34 @@ struct ToolView: View {
 
             VStack {
                     
-                PrototypeToolView(title: prototype.tile.id.capitalized, prototype: $prototype)
+                PrototypeToolView(title: model.prototype.tile.id.capitalized, prototype: $model.prototype)
                 
-                switch prototype.type {
+                switch model.prototype.type {
                     
                 case .mono:
                     
-                    SocketConfigView(title: "Mono", config: $prototype.primary, hasStyle: prototype.tile != .plateau, hasVolume: true)
+                    SocketConfigView(title: "Primary", config: $model.prototype.primary, hasFormat: true, hasStyle: model.prototype.tile != .plateau, hasVolume: true)
                     
                 case .duo:
                     
-                    SocketConfigView(title: "Mono", config: $prototype.primary, hasStyle: prototype.tile != .plateau, hasVolume: true)
-                    SocketConfigView(title: "Duo", config: $prototype.secondary, hasStyle: false, hasVolume: true)
+                    SocketConfigView(title: "Primary", config: $model.prototype.primary, hasFormat: true, hasStyle: model.prototype.tile != .plateau, hasVolume: true)
+                    SocketConfigView(title: "Seconary", config: $model.prototype.secondary, hasFormat: true, hasStyle: false, hasVolume: true)
                     
-                case .tri: EmptyView()
-                case .tetra: EmptyView()
+                case .tri:
+                    
+                    SocketConfigView(title: "Primary", config: $model.prototype.primary, hasFormat: true, hasStyle: model.prototype.tile != .plateau, hasVolume: true)
+                    SocketConfigView(title: "Seconary", config: $model.prototype.secondary, hasFormat: true, hasStyle: false, hasVolume: true)
+                    SocketConfigView(title: "Tertiary", config: $model.prototype.tertiary, hasFormat: true, hasStyle: false, hasVolume: true)
+                    
+                case .tetra:
+                    
+                    SocketConfigView(title: "Primary", config: $model.prototype.primary, hasFormat: false, hasStyle: true, hasVolume: true)
+                    SocketConfigView(title: "Seconary", config: $model.prototype.secondary, hasFormat: false, hasStyle: false, hasVolume: true)
+                    SocketConfigView(title: "Tertiary", config: $model.prototype.tertiary, hasFormat: false, hasStyle: false, hasVolume: true)
+                    SocketConfigView(title: "Quaternary", config: $model.prototype.quaternary, hasFormat: false, hasStyle: false, hasVolume: true)
                 }
                 
-                SocketsView(prototype: prototype)
+                SocketsView(prototype: model.prototype)
 
                 Spacer()
             }

@@ -22,9 +22,9 @@ struct YieldApp: App {
     
     var body: some Scene {
         
-        DocumentGroup(newDocument: Document(model: .init())) { file in
+        WindowGroup() {
             
-            AppView(document: file.$document)
+            AppView(model: .init())
         }
     }
 }

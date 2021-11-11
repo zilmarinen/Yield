@@ -12,10 +12,10 @@ class EditorViewModel: ObservableObject {
     
     let scene = EditorScene()
     
-    @ObservedObject var prototype = EditorTile() {
+    @Published var prototype = EditorTile() {
         
         didSet {
-            
+
             scene.model.geometry = SCNGeometry(prototype.mesh)
             scene.sockets.setup(sockets: prototype.sockets)
         }
