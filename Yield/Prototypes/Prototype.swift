@@ -49,8 +49,8 @@ extension Prototype {
             
         case .mono: return monoPrototype
         case .duo: return duoPrototype
-        case .tri: return monoPrototype
-        case .tetra: return monoPrototype
+        case .tri: return triPrototype
+        case .tetra: return tetraPrototype
         }
     }
     
@@ -58,11 +58,11 @@ extension Prototype {
         
         switch tile {
             
-        case .edge: return MonoEdge(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .edge(.north)))
-        case .groove: return MonoGroove(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
-        case .innerCorner: return MonoInnerCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.southWest)))
-        case .outerCorner: return MonoOuterCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
-        case .plateau: return MonoPlateau(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .plateau))
+        case .edge: return MonoEdge(config: primary)
+        case .groove: return MonoGroove(config: primary)
+        case .innerCorner: return MonoInnerCorner(config: primary)
+        case .outerCorner: return MonoOuterCorner(config: primary)
+        case .plateau: return MonoPlateau(config: primary)
         }
     }
     
@@ -70,15 +70,41 @@ extension Prototype {
         
         switch tile {
             
-        case .edge: return DuoEdge(primary: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .edge(.north)),
+        case .groove: return TriGroove(primary: primary,
+                                       secondary: secondary,
+                                       tertiary: tertiary)
+            
+        case .innerCorner: return DuoInnerCorner(primary: primary,
+                                                 secondary: secondary)
+            
+        case .outerCorner: return DuoOuterCorner(primary: primary,
+                                                 secondary: secondary)
+            
+        default: return DuoPlateau(primary: primary,
                                    secondary: secondary)
-            
-        case .groove: return DuoGroove(primary: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)),
-                                       secondary: secondary)
-            
-        case .innerCorner: return MonoInnerCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.southWest)))
-        case .outerCorner: return MonoOuterCorner(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .corner(.northWest)))
-        case .plateau: return MonoPlateau(config: .init(material: primary.material, style: primary.style, volume: primary.volume, type: .plateau))
         }
+    }
+    
+    var triPrototype: PrototypeTile {
+        
+        switch tile {
+            
+        case .edge: return TriEdge(primary: primary,
+                                   secondary: secondary,
+                                   tertiary: tertiary)
+            
+        default: return TriGroove(primary: primary,
+                                  secondary: secondary,
+                                  tertiary: tertiary)
+            
+        }
+    }
+    
+    var tetraPrototype: PrototypeTile {
+        
+        return TetraPlateau(primary: primary.with(type: .corner(.northWest)),
+                            secondary: secondary.with(type: .corner(.northEast)),
+                            tertiary: tertiary.with(type: .corner(.southEast)),
+                            quaternary: quaternary.with(type: .corner(.southWest)))
     }
 }
