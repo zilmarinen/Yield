@@ -10,20 +10,8 @@ import Meadow
 
 class EditorTile: ObservableObject {
     
-    enum Format: String, CaseIterable, Identifiable {
-        
-        case corner
-        case edge
-        
-        var id: String { rawValue }
-    }
-    
     @Published var tile: Tile = .edge
-    @Published var type: TileType = .duo
-    
-    @Published var format: Format = .corner
-    @Published var cardinal: Cardinal = .north
-    @Published var ordinal: Ordinal = .southEast
+    @Published var type: TileType = .mono
     
     @Published var primary = SocketConfig(material: .dirt)
     @Published var secondary = SocketConfig(material: .sand)
@@ -33,7 +21,7 @@ class EditorTile: ObservableObject {
     var prototype: PrototypeTile { Prototype(tile: tile,
                                              type: type,
                                              primary: primary,
-                                             secondary: .init(material: secondary.material, style: primary.style.opposite, volume: secondary.volume, type: format == .corner ? .corner(ordinal) : .edge(cardinal)),
+                                             secondary: secondary,
                                              tertiary: tertiary,
                                              quaternary: quaternary) }
     

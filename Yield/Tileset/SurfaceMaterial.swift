@@ -5,21 +5,9 @@
 //
 
 import Euclid
+import Meadow
 
-enum SurfaceMaterial: String, CaseIterable, Codable, Identifiable {
-    
-    static let solids: [SurfaceMaterial] = [.dirt,
-                                            .sand,
-                                            .stone,
-                                            .undergrowth]
-    
-    case air
-    case dirt
-    case sand
-    case stone
-    case undergrowth
-    
-    var id: String { rawValue }
+extension SurfaceMaterial {
     
     var colors: ColorPalette {
         
@@ -48,8 +36,6 @@ enum SurfaceMaterial: String, CaseIterable, Codable, Identifiable {
         switch volume {
             
         case .throne:
-            
-            guard inset(volume: volume) != .inner else { return .inner }
             
             return material.inset(volume: volume).opposite
             
