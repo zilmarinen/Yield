@@ -14,13 +14,16 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
     
     let type: TileType
     let prototypes: [PrototypeTile]
-    let startIndex: Int
     
-    init(type: TileType, prototypes: [PrototypeTile], startIndex: Int) {
+    var tileCache: Tileset
+    var fileCache: [String : FileWrapper]
+    
+    init(type: TileType, prototypes: [PrototypeTile], tileCache: Tileset, fileCache: [String : FileWrapper]) {
         
         self.type = type
         self.prototypes = prototypes
-        self.startIndex = startIndex
+        self.tileCache = tileCache
+        self.fileCache = fileCache
         
         super.init()
     }
@@ -29,25 +32,31 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
         
         do {
             
-            var tileset = Tileset()
-            var wrappers: [String : FileWrapper] = [:]
-            var id = startIndex
+            var id = tileCache.tiles.count
             let encoder = JSONEncoder()
             
-            for tile in prototypes {
+            for prototype in prototypes {
                 
-                let sockets = tile.rotations.map { tile.sockets.rotate(ordinal: $0) }
+                let sockets = prototype.rotations.map { prototype.sockets.rotate(ordinal: $0) }
                 
-                tileset.tiles.append(TilesetTile(id: id, sockets: sockets))
+                let tile = TilesetTile(id: id, sockets: sockets)
                 
-                let data = try encoder.encode(tile.mesh)
+                tileCache.tiles.append(tile)
                 
-                wrappers["\(type)_surface_tile_\(id).mesh"] = FileWrapper(regularFileWithContents: data)
+                if !prototype.sockets.isEmpty,
+                   !prototype.sockets.isFull {
+                    
+                    let model = Model(mesh: prototype.mesh, tile: tile)
+                
+                    let data = try encoder.encode(model)
+                    
+                    fileCache["\(type)_surface_tile_\(id).mesh"] = FileWrapper(regularFileWithContents: data)
+                }
                 
                 id += 1
             }
             
-            output = .success((tileset, wrappers))
+            output = .success((tileCache, fileCache))
         }
         catch {
             

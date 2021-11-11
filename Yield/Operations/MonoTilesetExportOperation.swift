@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Meadow
 import PeakOperation
 
 class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
@@ -13,18 +14,18 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
     
     override func execute() {
         
-        var tiles: [PrototypeTile] = []
+        var prototypes: [PrototypeTile] = []
         
         for material in SurfaceMaterial.solids {
             
-            tiles.append(contentsOf: edges(with: material))
-            tiles.append(contentsOf: grooves(with: material))
-            tiles.append(contentsOf: innerCorners(with: material))
-            tiles.append(contentsOf: outerCorners(with: material))
-            tiles.append(contentsOf: plateau(with: material))
+            prototypes.append(contentsOf: edges(with: material))
+            prototypes.append(contentsOf: grooves(with: material))
+            prototypes.append(contentsOf: innerCorners(with: material))
+            prototypes.append(contentsOf: outerCorners(with: material))
+            prototypes.append(contentsOf: plateau(with: material))
         }
         
-        let exportOperation = PrototypeTileExportOperation(type: .mono, prototypes: tiles, startIndex: 0)
+        let exportOperation = PrototypeTileExportOperation(type: .mono, prototypes: prototypes, tileCache: Tileset(), fileCache: [:])
         
         let group = DispatchGroup()
         
@@ -37,11 +38,7 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
             switch result {
                 
             case .failure(let error): self.output = .failure(error)
-            case .success(let output):
-                
-                let (tileset, wrappers) = output
-                
-                self.output = .success((tileset, wrappers))
+            case .success(let output): self.output = .success(output)
             }
             
             group.leave()
@@ -55,41 +52,61 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
 
 extension MonoTilesetExportOperation {
     
-    func edges(with material: SurfaceMaterial) -> [PrototypeTile] { [MonoEdge(config: .init(material: material, style: .concave, volume: .crown, type: .edge(.north))),
-                                                                     MonoEdge(config: .init(material: material, style: .convex, volume: .crown, type: .edge(.north))),
-                                                                     MonoEdge(config: .init(material: material, style: .straight, volume: .crown, type: .edge(.north))),
-                                                                     
-                                                                     MonoEdge(config: .init(material: material, style: .concave, volume: .mantle, type: .edge(.north))),
-                                                                     MonoEdge(config: .init(material: material, style: .convex, volume: .mantle, type: .edge(.north))),
-                                                                     MonoEdge(config: .init(material: material, style: .straight, volume: .mantle, type: .edge(.north))),
-                                                                     
-                                                                     DuoEdge(primary: .init(material: material, style: .concave, volume: .crown, type: .edge(.north)),
-                                                                             secondary: .init(material: material, style: .concave, volume: .mantle, type: .edge(.south))),
-                                                                     DuoEdge(primary: .init(material: material, style: .convex, volume: .crown, type: .edge(.north)),
-                                                                             secondary: .init(material: material, style: .convex, volume: .mantle, type: .edge(.south))),
-                                                                     DuoEdge(primary: .init(material: material, style: .straight, volume: .crown, type: .edge(.north)),
-                                                                             secondary: .init(material: material, style: .straight, volume: .mantle, type: .edge(.south)))]
+    private func edges(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
+        return [Volume.crown, .mantle].flatMap {
+            
+            edges(with: .init(material: material, style: .straight, volume: $0, type: .edge(.north)))
+        }
     }
     
-    func grooves(with material: SurfaceMaterial) -> [PrototypeTile] { [MonoGroove(config: .init(material: material, style: .concave, volume: .crown, type: .corner(.northWest))),
-                                                                       MonoGroove(config: .init(material: material, style: .convex, volume: .crown, type: .corner(.northWest))),
+    private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
+        return [Volume.crown, .mantle].flatMap {
+            
+            grooves(with: .init(material: material, style: .straight, volume: $0, type: .corner(.northWest)))
+        }
+    }
     
-                                                                       MonoGroove(config: .init(material: material, style: .concave, volume: .mantle, type: .corner(.northWest))),
-                                                                       MonoGroove(config: .init(material: material, style: .convex, volume: .mantle, type: .corner(.northWest)))] }
+    private func innerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
     
-    func innerCorners(with material: SurfaceMaterial) -> [PrototypeTile] { [MonoInnerCorner(config: .init(material: material, style: .concave, volume: .crown, type: .corner(.southWest))),
-                                                                            MonoInnerCorner(config: .init(material: material, style: .convex, volume: .crown, type: .corner(.southWest))),
+        return [Volume.crown, .mantle].flatMap {
+            
+            innerCorners(with: .init(material: material, style: .straight, volume: $0, type: .corner(.southWest)))
+        }
+    }
     
-                                                                            MonoInnerCorner(config: .init(material: material, style: .concave, volume: .mantle, type: .corner(.southWest))),
-                                                                            MonoInnerCorner(config: .init(material: material, style: .convex, volume: .mantle, type: .corner(.southWest)))] }
+    private func outerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
+        return [Volume.crown, .mantle].flatMap {
+            
+            outerCorners(with: .init(material: material, style: .straight, volume: $0, type: .corner(.northWest)))
+        }
+    }
     
-    func outerCorners(with material: SurfaceMaterial) -> [PrototypeTile] { [MonoOuterCorner(config: .init(material: material, style: .concave, volume: .crown, type: .corner(.northWest))),
-                                                                            MonoOuterCorner(config: .init(material: material, style: .convex, volume: .crown, type: .corner(.northWest))),
+    private func plateau(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
+        return [Volume.crown, .mantle].flatMap {
+            
+            plateau(with: .init(material: material, style: .straight, volume: $0, type: .plateau))
+        }
+    }
+}
+
+extension MonoTilesetExportOperation {
     
-                                                                            MonoOuterCorner(config: .init(material: material, style: .concave, volume: .mantle, type: .corner(.northWest))),
-                                                                            MonoOuterCorner(config: .init(material: material, style: .convex, volume: .mantle, type: .corner(.northWest)))] }
+    private func edges(with primary: SocketConfig) -> [PrototypeTile] { [MonoEdge(config: primary.with(style: .concave)),
+                                                                         MonoEdge(config: primary.with(style: .convex)),
+                                                                         MonoEdge(config: primary.with(style: .straight))] }
     
-    func plateau(with material: SurfaceMaterial) -> [PrototypeTile] { [MonoPlateau(config: .init(material: material, style: .straight, volume: .crown, type: .plateau)),
-                                                                       
-                                                                       MonoPlateau(config: .init(material: material, style: .straight, volume: .mantle, type: .plateau))] }
+    private func grooves(with primary: SocketConfig) -> [PrototypeTile] { [MonoGroove(config: primary.with(style: .concave)),
+                                                                           MonoGroove(config: primary.with(style: .convex))] }
+    
+    private func innerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoInnerCorner(config: primary.with(style: .concave)),
+                                                                                MonoInnerCorner(config: primary.with(style: .convex))] }
+    
+    private func outerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoOuterCorner(config: primary.with(style: .concave)),
+                                                                                MonoOuterCorner(config: primary.with(style: .convex))] }
+    
+    private func plateau(with primary: SocketConfig) -> [PrototypeTile] { [MonoPlateau(config: primary.with(style: .straight))] }
 }
