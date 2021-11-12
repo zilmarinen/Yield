@@ -9,7 +9,7 @@ Yield is a macOS application written with SwiftUI to facilitate the visualisatio
 Yield was built as a prototyping tool to allow for rapid development and visual feedback of terrain tilesets that are generated programmatically. Considering the volume of tile variations and the amount of time it would take to create a complete set by hand, building a tool that can easily generate both the model and any appropriate socket/rotation information is a more sustainable strategy.
 
 # Inspiration
-Heavily inspired by [Oskar Stålberg](https://oskarstalberg.tumblr.com)'s work on WFC systems for [Townscaper](https://www.townscapergame.com) and [Bad North](https://twitter.com/BadNorthGame), the aim of this project is to generate complex geometric shapes that tesselate correctly on a 3D grid system without the use of any third party modelling tools.
+Heavily inspired by [Oskar Stålberg](https://oskarstalberg.tumblr.com)'s work on [WFC](https://www.youtube.com/watch?v=0bcZb-SsnrA) systems for [Townscaper](https://www.townscapergame.com) and [Bad North](https://twitter.com/BadNorthGame) and also [BorisTheBrave](https://twitter.com/boris_brave)'s superb tutorials on [WFC](https://www.boristhebrave.com/2020/04/13/wave-function-collapse-explained/) and [Model Synthesis](https://www.boristhebrave.com/2021/10/26/model-synthesis-and-modifying-in-blocks/), the aim of this project is to generate complex geometric shapes that tesselate correctly on a 3D grid system without the use of any third party modelling tools.
 
 # Meshes
 
