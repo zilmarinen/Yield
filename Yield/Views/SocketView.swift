@@ -4,6 +4,7 @@
 //  Created by Zack Brown on 21/10/2021.
 //
 
+import Meadow
 import SceneKit
 import SwiftUI
 

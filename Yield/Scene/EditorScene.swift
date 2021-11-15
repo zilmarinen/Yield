@@ -23,11 +23,11 @@ class EditorScene: SCNScene {
     
     lazy var wireframe: SCNNode = {
         
-        let node = WireframeNode(position: SCNVector3(x: 0, y: 0.5, z: 0), size: .one)
+        let node = WireframeNode(position: SCNVector3(x: 0, y: 0.5, z: 0), size: .init(x: 1, y: 1, z: 1))
         
-        node.addChildNode(WireframeNode(position: SCNVector3(x: 0.25, y: 0, z: 0), size: Vector(x: 0.5, y: 1, z: 1)))
-        node.addChildNode(WireframeNode(position: SCNVector3(x: 0, y: 0, z: 0.25), size: Vector(x: 1, y: 1, z: 0.5)))
-        node.addChildNode(WireframeNode(position: SCNVector3(x: 0, y: 0.25, z: 0), size: Vector(x: 1, y: 0.5, z: 1)))
+        node.addChildNode(WireframeNode(position: SCNVector3(x: 0.25, y: 0, z: 0), size: Distance(x: 0.5, y: 1, z: 1)))
+        node.addChildNode(WireframeNode(position: SCNVector3(x: 0, y: 0, z: 0.25), size: Distance(x: 1, y: 1, z: 0.5)))
+        node.addChildNode(WireframeNode(position: SCNVector3(x: 0, y: 0.25, z: 0), size: Distance(x: 1, y: 0.5, z: 1)))
         
         return node
     }()

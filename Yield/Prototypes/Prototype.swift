@@ -26,7 +26,7 @@ struct Prototype: PrototypeTile {
         
         static let ceiling = 1.0
         
-        static let socketSize = Vector(x: 0.1, y: 0.1, z: 0.1)
+        static let socketSize = Distance(x: 0.1, y: 0.1, z: 0.1)
     }
     
     let tile: Tile

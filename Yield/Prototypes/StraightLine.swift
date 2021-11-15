@@ -8,12 +8,12 @@ import Euclid
 
 struct StraightLine {
     
-    public let start: Vector
-    public let end: Vector
+    public let start: Position
+    public let end: Position
     
-    public let points: [Vector]
+    public let points: [Position]
     
-    init(start: Vector, end: Vector) {
+    init(start: Position, end: Position) {
         
         self.start = start
         self.end = end
@@ -25,7 +25,7 @@ extension StraightLine {
     
     func polygon(color: Color) -> Euclid.Polygon? {
      
-        let ceiling = Vector(x: 0, y: Prototype.Constants.ceiling, z: 0)
+        let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
         
         let v0 = end + ceiling
         let v1 = start + ceiling

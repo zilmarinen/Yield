@@ -23,7 +23,7 @@ struct CornerBiscuit {
         
         let grid = SurfaceGrid()
         
-        let ceiling = Vector(x: 0, y: 1, z: 0)
+        let ceiling = Distance(x: 0, y: 1, z: 0)
         
         let (c0, c1) = ordinal.cardinals
         
@@ -40,8 +40,8 @@ struct CornerBiscuit {
             
         case .convex:
             
-            let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.normal, steps: 4, variance: Prototype.Constants.insetDepth)
-            let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.normal, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.direction, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.direction, steps: 4, variance: Prototype.Constants.insetDepth)
             
             switch (insets.left, insets.right) {
                 
@@ -83,7 +83,7 @@ struct CornerBiscuit {
             
         default:
             
-            let normal = -(c0.normal + c1.normal)
+            let normal = -Direction.mean(c0.direction, c1.direction)
             
             let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: 4, variance: Prototype.Constants.insetDepth)
             
@@ -97,8 +97,8 @@ struct CornerBiscuit {
         
         let upperFace = lowerFace.reversed().map { $0 + ceiling }
         
-        let lowerVertices = lowerFace.map { Vertex($0, -.up, nil, baseColor) }
-        let upperVertices = upperFace.map { Vertex($0, .up, nil, apexColor) }
+        let lowerVertices = lowerFace.map { Vertex($0, -.y, nil, baseColor) }
+        let upperVertices = upperFace.map { Vertex($0, .y, nil, apexColor) }
         
         guard let e0p = e0.polygon(color: edgeColor),
               let e1p = e1.polygon(color: edgeColor),

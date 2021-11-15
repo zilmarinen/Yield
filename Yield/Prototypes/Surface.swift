@@ -15,12 +15,12 @@ struct Surface {
         
         guard config.volume != .empty else { return Mesh([]) }
         
-        let floor = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
-        let ceiling = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
+        let floor = Distance(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
+        let ceiling = Distance(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
                                         (config.volume == .throne ? Prototype.Constants.throneHeight : Prototype.Constants.ceiling)), z: 0)
         
-        let lowerCorners = Ordinal.Coordinates.map { (Vector(coordinate: $0) * World.Constants.volumeSize) + floor }
-        let upperCorners = Ordinal.Coordinates.map { (Vector(coordinate: $0) * World.Constants.volumeSize) + ceiling }
+        let lowerCorners = Ordinal.corners.map { $0 + floor }
+        let upperCorners = Ordinal.corners.map { $0 + ceiling }
         
         let apexColor = config.material.apexColor(volume: config.volume)
         let edgeColor = config.material.edgeColor(volume: config.volume)
@@ -31,19 +31,18 @@ struct Surface {
         for cardinal in Cardinal.allCases {
             
             let (o0, o1) = cardinal.ordinals
-            let normal = cardinal.normal
             
             let corners = [upperCorners[o0.corner], upperCorners[o1.corner], lowerCorners[o1.corner], lowerCorners[o0.corner]]
             
-            let vertices = corners.map { Vertex($0, normal, .zero, edgeColor) }
+            let vertices = corners.map { Vertex($0, cardinal.direction, nil, edgeColor) }
             
             guard let polygon = Polygon(vertices) else { continue }
             
             polygons.append(polygon)
         }
         
-        let lowerVertices = lowerCorners.map { Vertex($0, -.up, .zero, baseColor) }
-        let upperVertices = upperCorners.reversed().map { Vertex($0, .up, .zero, apexColor) }
+        let lowerVertices = lowerCorners.map { Vertex($0, -.y, nil, baseColor) }
+        let upperVertices = upperCorners.reversed().map { Vertex($0, .y, nil, apexColor) }
         
         guard let lowerPolygon = Polygon(lowerVertices),
               let upperPolygon = Polygon(upperVertices) else { return Mesh(polygons) }

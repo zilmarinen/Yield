@@ -49,7 +49,7 @@ struct EdgeBiscuit {
             
             let grid = SurfaceGrid()
             
-            let ceiling = Vector(x: 0, y: 1, z: 0)
+            let ceiling = Distance(x: 0, y: 1, z: 0)
             
             let (o0, o1) = cardinal.ordinals
             let (c0, _) = cardinal.cardinals
@@ -64,8 +64,8 @@ struct EdgeBiscuit {
             let e1 = StraightLine(start: lv2, end: lv3)
             let e2 = StraightLine(start: lv1, end: lv2)
             
-            let l0 = WobblyLine(start: lv4, end: lv0, normal: cardinal.normal, steps: 4, variance: Prototype.Constants.insetDepth)
-            let l1 = WobblyLine(start: lv3, end: lv4, normal: -cardinal.normal, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l0 = WobblyLine(start: lv4, end: lv0, normal: cardinal.direction, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l1 = WobblyLine(start: lv3, end: lv4, normal: -cardinal.direction, steps: 4, variance: Prototype.Constants.insetDepth)
             
             guard let e0p = e0.polygon(color: edgeColor),
                   let e1p = e1.polygon(color: edgeColor),
@@ -76,8 +76,8 @@ struct EdgeBiscuit {
             
             let edges = [e0p, e1p, e2p] + l0.polygons(color: edgeColor) + l1.polygons(color: edgeColor)
                     
-            let lowerVertices = lowerFace.map { Vertex($0, -.up, nil, baseColor) }
-            let upperVertices = upperFace.map { Vertex($0, .up, nil, apexColor) }
+            let lowerVertices = lowerFace.map { Vertex($0, -.y, nil, baseColor) }
+            let upperVertices = upperFace.map { Vertex($0, .y, nil, apexColor) }
             
             guard let lowerPolygon = Polygon(lowerVertices),
                   let upperPolygon = Polygon(upperVertices) else { return Mesh(edges) }
