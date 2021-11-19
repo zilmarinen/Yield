@@ -26,6 +26,8 @@ struct Surface {
         let edgeColor = config.material.edgeColor(volume: config.volume)
         let baseColor = config.material.baseColor(volume: config.volume)
         
+        let uvs = UVs.corners.corners
+        
         var polygons: [Euclid.Polygon] = []
         
         for cardinal in Cardinal.allCases {
@@ -34,15 +36,15 @@ struct Surface {
             
             let corners = [upperCorners[o0.corner], upperCorners[o1.corner], lowerCorners[o1.corner], lowerCorners[o0.corner]]
             
-            let vertices = corners.map { Vertex($0, cardinal.direction, nil, edgeColor) }
+            let vertices = corners.indices.map { Vertex(corners[$0], cardinal.direction, uvs[$0], edgeColor) }
             
             guard let polygon = Polygon(vertices) else { continue }
             
             polygons.append(polygon)
         }
         
-        let lowerVertices = lowerCorners.map { Vertex($0, -.y, nil, baseColor) }
-        let upperVertices = upperCorners.reversed().map { Vertex($0, .y, nil, apexColor) }
+        let lowerVertices = lowerCorners.indices.map { Vertex(lowerCorners[$0], -.y, uvs[$0], baseColor) }
+        let upperVertices = upperCorners.indices.reversed().map { Vertex(upperCorners[$0], .y, uvs[$0], apexColor) }
         
         guard let lowerPolygon = Polygon(lowerVertices),
               let upperPolygon = Polygon(upperVertices) else { return Mesh(polygons) }

@@ -38,10 +38,8 @@ class PreviewViewController: NSViewController, QLPreviewingController {
         
             let model = try decoder.decode(Model.self, from: data)
             
-            guard let socket = model.tile.sockets.first else { return handler(nil) }
-            
             scene.model.geometry = SCNGeometry(model.mesh)
-            scene.sockets.setup(sockets: socket)
+            scene.sockets.setup(sockets: model.tile.sockets)
             
             handler(nil)
         }

@@ -5,17 +5,16 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct MonoPlateau: PrototypeTile {
     
     let config: SocketConfig
     
-    var rotations: [Ordinal] { [.northWest] }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
-        var sockets = Sockets()
+        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
         
         switch config.volume {
         case .crown,
@@ -25,9 +24,7 @@ struct MonoPlateau: PrototypeTile {
             
         case .mantle:
             
-            sockets.lower.set(value: config.material)
-            
-            sockets.upper.set(value: config.material)
+            sockets.set(value: config.material)
             
         default: break
         }

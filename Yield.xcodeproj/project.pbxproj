@@ -28,6 +28,8 @@
 		182B4F162733DECF0081C6BF /* Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F152733DECF0081C6BF /* Inset.swift */; };
 		182BE626272ED0A0008A160F /* WriteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BE625272ED0A0008A160F /* WriteOperation.swift */; };
 		182BE628272ED14F008A160F /* TilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182BE627272ED14F008A160F /* TilesetExportOperation.swift */; };
+		184D204627479B07005256A7 /* OrdinalPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D204527479B07005256A7 /* OrdinalPattern.swift */; };
+		184D204727479C78005256A7 /* OrdinalPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D204527479B07005256A7 /* OrdinalPattern.swift */; };
 		18643046271DACBB003575D4 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18643045271DACBB003575D4 /* Tile.swift */; };
 		18667D8927390E4400F13E4D /* ScallopedEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18667D8827390E4400F13E4D /* ScallopedEdge.swift */; };
 		18667D91273A7B0400F13E4D /* TriEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18667D90273A7B0400F13E4D /* TriEdge.swift */; };
@@ -47,9 +49,7 @@
 		18667DC7273C0A9500F13E4D /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3127298E8E001731C2 /* Volume.swift */; };
 		18667DC8273C0A9D00F13E4D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3727299547001731C2 /* ColorPalette.swift */; };
 		18667DC9273C0AA400F13E4D /* Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F152733DECF0081C6BF /* Inset.swift */; };
-		18667DCA273C0AAB00F13E4D /* Sockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* Sockets.swift */; };
-		18667DCB273C0AB100F13E4D /* SocketPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D53272D545E001731C2 /* SocketPattern.swift */; };
-		18667DCD273C0AD800F13E4D /* Meadow in Frameworks */ = {isa = PBXBuildFile; productRef = 18667DCC273C0AD800F13E4D /* Meadow */; };
+		18667DCA273C0AAB00F13E4D /* SurfaceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */; };
 		186B7D2D27298CBE001731C2 /* Surface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2C27298CBE001731C2 /* Surface.swift */; };
 		186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */; };
 		186B7D3227298E8E001731C2 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3127298E8E001731C2 /* Volume.swift */; };
@@ -63,12 +63,13 @@
 		186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */; };
 		186B7D4E272BDCB9001731C2 /* GrooveBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */; };
 		186B7D50272BDD1E001731C2 /* MonoGroove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4F272BDD1E001731C2 /* MonoGroove.swift */; };
-		186B7D54272D545E001731C2 /* SocketPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D53272D545E001731C2 /* SocketPattern.swift */; };
 		186B7D56272D5E57001731C2 /* WireframeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D55272D5E57001731C2 /* WireframeNode.swift */; };
 		186B7D58272D5E6E001731C2 /* SocketNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D57272D5E6E001731C2 /* SocketNode.swift */; };
 		187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CB272149D500FAC4E0 /* EditorViewModel.swift */; };
-		187213CE27214B3400FAC4E0 /* Sockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* Sockets.swift */; };
+		187213CE27214B3400FAC4E0 /* SurfaceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */; };
 		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
+		18808E292747955800A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E282747955800A9B019 /* Harvest */; };
+		18808E2B2747956000A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E2A2747956000A9B019 /* Harvest */; };
 		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
 		18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
 		18B007AB27369DF000E2C905 /* TriGroove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007AA27369DF000E2C905 /* TriGroove.swift */; };
@@ -76,7 +77,6 @@
 		18B007AF27369E0C00E2C905 /* DuoOuterCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007AE27369E0C00E2C905 /* DuoOuterCorner.swift */; };
 		18B007B12737E66C00E2C905 /* AdjacentEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007B02737E66C00E2C905 /* AdjacentEdge.swift */; };
 		18B007B32737EBDF00E2C905 /* AdjacentOuterCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007B22737EBDF00E2C905 /* AdjacentOuterCorner.swift */; };
-		18B196072725740B00FBF50D /* Meadow in Frameworks */ = {isa = PBXBuildFile; productRef = 18B196062725740B00FBF50D /* Meadow */; };
 		18B1960927269A4200FBF50D /* MonoPlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960827269A4200FBF50D /* MonoPlateau.swift */; };
 		18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960B2726A06C00FBF50D /* EditorScene.swift */; };
 		18D31AD42719C9F5006312BF /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D31AD32719C9F5006312BF /* ToolView.swift */; };
@@ -137,6 +137,7 @@
 		182B4F152733DECF0081C6BF /* Inset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inset.swift; sourceTree = "<group>"; };
 		182BE625272ED0A0008A160F /* WriteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteOperation.swift; sourceTree = "<group>"; };
 		182BE627272ED14F008A160F /* TilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesetExportOperation.swift; sourceTree = "<group>"; };
+		184D204527479B07005256A7 /* OrdinalPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalPattern.swift; sourceTree = "<group>"; };
 		18643045271DACBB003575D4 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		18667D8827390E4400F13E4D /* ScallopedEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScallopedEdge.swift; sourceTree = "<group>"; };
 		18667D90273A7B0400F13E4D /* TriEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriEdge.swift; sourceTree = "<group>"; };
@@ -163,12 +164,12 @@
 		186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBiscuit.swift; sourceTree = "<group>"; };
 		186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrooveBiscuit.swift; sourceTree = "<group>"; };
 		186B7D4F272BDD1E001731C2 /* MonoGroove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoGroove.swift; sourceTree = "<group>"; };
-		186B7D53272D545E001731C2 /* SocketPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketPattern.swift; sourceTree = "<group>"; };
 		186B7D55272D5E57001731C2 /* WireframeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireframeNode.swift; sourceTree = "<group>"; };
 		186B7D57272D5E6E001731C2 /* SocketNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketNode.swift; sourceTree = "<group>"; };
 		187213CB272149D500FAC4E0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
-		187213CD27214B3400FAC4E0 /* Sockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sockets.swift; sourceTree = "<group>"; };
+		187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceSockets.swift; sourceTree = "<group>"; };
 		187213CF27214BBC00FAC4E0 /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
+		18808E272747954B00A9B019 /* Harvest */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Harvest; path = ../Harvest; sourceTree = "<group>"; };
 		189F0EB3271B1B680077B81D /* Tileset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
 		18AE8C08272D778700E21E7F /* SocketSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketSet.swift; sourceTree = "<group>"; };
 		18B007AA27369DF000E2C905 /* TriGroove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriGroove.swift; sourceTree = "<group>"; };
@@ -176,7 +177,6 @@
 		18B007AE27369E0C00E2C905 /* DuoOuterCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoOuterCorner.swift; sourceTree = "<group>"; };
 		18B007B02737E66C00E2C905 /* AdjacentEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacentEdge.swift; sourceTree = "<group>"; };
 		18B007B22737EBDF00E2C905 /* AdjacentOuterCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjacentOuterCorner.swift; sourceTree = "<group>"; };
-		18B196042725740200FBF50D /* Meadow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Meadow; path = ../Meadow; sourceTree = "<group>"; };
 		18B1960827269A4200FBF50D /* MonoPlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoPlateau.swift; sourceTree = "<group>"; };
 		18B1960B2726A06C00FBF50D /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
 		18D31AD32719C9F5006312BF /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
@@ -201,8 +201,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18808E2B2747956000A9B019 /* Harvest in Frameworks */,
 				18667D9E273C087300F13E4D /* Quartz.framework in Frameworks */,
-				18667DCD273C0AD800F13E4D /* Meadow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18B196072725740B00FBF50D /* Meadow in Frameworks */,
+				18808E292747955800A9B019 /* Harvest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,8 +220,6 @@
 		1818463D273D0F7F0043BF26 /* Sockets */ = {
 			isa = PBXGroup;
 			children = (
-				186B7D53272D545E001731C2 /* SocketPattern.swift */,
-				187213CD27214B3400FAC4E0 /* Sockets.swift */,
 				182B4F0C273297980081C6BF /* SocketConfig.swift */,
 			);
 			path = Sockets;
@@ -396,6 +394,15 @@
 			path = Editor;
 			sourceTree = "<group>";
 		};
+		18808E2C27479A1900A9B019 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */,
+				184D204527479B07005256A7 /* OrdinalPattern.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		189F0EB2271B1B550077B81D /* Tileset */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +471,7 @@
 		18EC261C2719BFDE00049C13 = {
 			isa = PBXGroup;
 			children = (
-				18B196042725740200FBF50D /* Meadow */,
+				18808E272747954B00A9B019 /* Harvest */,
 				18EC26272719BFDE00049C13 /* Yield */,
 				18667D9F273C087300F13E4D /* Yield Quick Look */,
 				18EC26262719BFDE00049C13 /* Products */,
@@ -484,16 +491,17 @@
 		18EC26272719BFDE00049C13 /* Yield */ = {
 			isa = PBXGroup;
 			children = (
+				18EC262E2719BFE000049C13 /* Assets.xcassets */,
+				18808E2C27479A1900A9B019 /* Extensions */,
+				18EC26332719BFE000049C13 /* Info.plist */,
 				182BE624272ED096008A160F /* Operations */,
-				18B1960A2726A05F00FBF50D /* Scene */,
 				1827F126272570640030B099 /* Prototypes */,
+				18B1960A2726A05F00FBF50D /* Scene */,
 				189F0EB2271B1B550077B81D /* Tileset */,
 				18EC263B2719BFEA00049C13 /* View Models */,
 				18EC263A2719BFE600049C13 /* Views */,
-				18EC26282719BFDE00049C13 /* YieldApp.swift */,
-				18EC262E2719BFE000049C13 /* Assets.xcassets */,
-				18EC26332719BFE000049C13 /* Info.plist */,
 				18EC26342719BFE000049C13 /* Yield.entitlements */,
+				18EC26282719BFDE00049C13 /* YieldApp.swift */,
 			);
 			path = Yield;
 			sourceTree = "<group>";
@@ -540,7 +548,7 @@
 			);
 			name = "Yield Quick Look";
 			packageProductDependencies = (
-				18667DCC273C0AD800F13E4D /* Meadow */,
+				18808E2A2747956000A9B019 /* Harvest */,
 			);
 			productName = "Yield Quick Look";
 			productReference = 18667D9C273C087300F13E4D /* Yield Quick Look.appex */;
@@ -562,7 +570,7 @@
 			);
 			name = Yield;
 			packageProductDependencies = (
-				18B196062725740B00FBF50D /* Meadow */,
+				18808E282747955800A9B019 /* Harvest */,
 			);
 			productName = Yield;
 			productReference = 18EC26252719BFDE00049C13 /* Yield.app */;
@@ -629,9 +637,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184D204727479C78005256A7 /* OrdinalPattern.swift in Sources */,
 				18184644273D10680043BF26 /* TilesetTile.swift in Sources */,
-				18667DCA273C0AAB00F13E4D /* Sockets.swift in Sources */,
-				18667DCB273C0AB100F13E4D /* SocketPattern.swift in Sources */,
+				18667DCA273C0AAB00F13E4D /* SurfaceSockets.swift in Sources */,
 				18667DA1273C087300F13E4D /* PreviewViewController.swift in Sources */,
 				18667DA3273C087300F13E4D /* PreviewProvider.swift in Sources */,
 				18667DC8273C0A9D00F13E4D /* ColorPalette.swift in Sources */,
@@ -663,9 +671,8 @@
 				186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */,
 				18643046271DACBB003575D4 /* Tile.swift in Sources */,
 				186B7D3227298E8E001731C2 /* Volume.swift in Sources */,
-				186B7D54272D545E001731C2 /* SocketPattern.swift in Sources */,
 				182B4F0D273297980081C6BF /* SocketConfig.swift in Sources */,
-				187213CE27214B3400FAC4E0 /* Sockets.swift in Sources */,
+				187213CE27214B3400FAC4E0 /* SurfaceSockets.swift in Sources */,
 				18D31AE02719CCB3006312BF /* ToolPropertyGroupModel.swift in Sources */,
 				182B4F0927312B7B0081C6BF /* DuoPlateau.swift in Sources */,
 				182B4F0B27328B020081C6BF /* TileType.swift in Sources */,
@@ -697,6 +704,7 @@
 				18D31ADC2719CC74006312BF /* ToolPropertySection.swift in Sources */,
 				186B7D50272BDD1E001731C2 /* MonoGroove.swift in Sources */,
 				182B4F102732AAB30081C6BF /* SocketConfigView.swift in Sources */,
+				184D204627479B07005256A7 /* OrdinalPattern.swift in Sources */,
 				182B4EFC272ED4130081C6BF /* TetraTilesetExportOperation.swift in Sources */,
 				18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */,
 				18B007B32737EBDF00E2C905 /* AdjacentOuterCorner.swift in Sources */,
@@ -995,13 +1003,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		18667DCC273C0AD800F13E4D /* Meadow */ = {
+		18808E282747955800A9B019 /* Harvest */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Meadow;
+			productName = Harvest;
 		};
-		18B196062725740B00FBF50D /* Meadow */ = {
+		18808E2A2747956000A9B019 /* Harvest */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Meadow;
+			productName = Harvest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

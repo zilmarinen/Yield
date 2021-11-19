@@ -23,7 +23,7 @@ struct CornerBiscuit {
         
         let grid = SurfaceGrid()
         
-        let ceiling = Distance(x: 0, y: 1, z: 0)
+        let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
         
         let (c0, c1) = ordinal.cardinals
         
@@ -97,8 +97,8 @@ struct CornerBiscuit {
         
         let upperFace = lowerFace.reversed().map { $0 + ceiling }
         
-        let lowerVertices = lowerFace.map { Vertex($0, -.y, nil, baseColor) }
-        let upperVertices = upperFace.map { Vertex($0, .y, nil, apexColor) }
+        let lowerVertices = lowerFace.indices.map { Vertex(lowerFace[$0], -.y, lowerFace[$0], baseColor) }
+        let upperVertices = upperFace.indices.map { Vertex(upperFace[$0], .y, upperFace[$0], apexColor) }
         
         guard let e0p = e0.polygon(color: edgeColor),
               let e1p = e1.polygon(color: edgeColor),

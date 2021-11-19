@@ -5,17 +5,16 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct MonoEdge: PrototypeTile {
     
     let config: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
-        var sockets = Sockets()
+        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
         
         guard case let .edge(cardinal) = config.type else { return sockets }
         
@@ -30,11 +29,8 @@ struct MonoEdge: PrototypeTile {
             
         case .mantle:
             
-            sockets.lower.set(value: config.material, ordinal: o0)
-            sockets.lower.set(value: config.material, ordinal: o1)
-            
-            sockets.upper.set(value: config.material, ordinal: o0)
-            sockets.upper.set(value: config.material, ordinal: o1)
+            sockets.set(value: config.material, ordinal: o0)
+            sockets.set(value: config.material, ordinal: o1)
             
         default: break
         }

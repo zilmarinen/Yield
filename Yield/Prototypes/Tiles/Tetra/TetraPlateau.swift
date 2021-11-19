@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct TetraPlateau: PrototypeTile {
@@ -14,9 +15,7 @@ struct TetraPlateau: PrototypeTile {
     let tertiary: SocketConfig
     let quaternary: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
         let p0 = MonoOuterCorner(config: primary)
         let p1 = MonoOuterCorner(config: secondary)

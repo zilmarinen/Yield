@@ -5,23 +5,16 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct MonoGroove: PrototypeTile {
     
     let config: SocketConfig
     
-    var rotations: [Ordinal] {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
-        switch config.style {
-        case .straight: return Ordinal.allCases
-        default: return [.northWest, .northEast]
-        }
-    }
-    
-    var sockets: Sockets {
-        
-        var sockets = Sockets()
+        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
         
         guard case let .corner(ordinal) = config.type else { return sockets }
         
@@ -34,11 +27,8 @@ struct MonoGroove: PrototypeTile {
             
         case .mantle:
             
-            sockets.lower.set(value: config.material, ordinal: ordinal)
-            sockets.lower.set(value: config.material, ordinal: ordinal.opposite)
-            
-            sockets.upper.set(value: config.material, ordinal: ordinal)
-            sockets.upper.set(value: config.material, ordinal: ordinal.opposite)
+            sockets.set(value: config.material, ordinal: ordinal)
+            sockets.set(value: config.material, ordinal: ordinal.opposite)
             
         default: break
         }

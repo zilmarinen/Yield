@@ -6,6 +6,7 @@
 
 import Combine
 import Euclid
+import Harvest
 import Meadow
 
 class EditorTile: ObservableObject {
@@ -25,7 +26,7 @@ class EditorTile: ObservableObject {
                                              tertiary: tertiary,
                                              quaternary: quaternary) }
     
-    var sockets: Sockets { prototype.sockets }
+    var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
     
     var mesh: Mesh { prototype.mesh }
 }

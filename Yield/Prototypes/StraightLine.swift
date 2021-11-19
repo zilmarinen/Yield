@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Meadow
 
 struct StraightLine {
     
@@ -32,8 +33,9 @@ extension StraightLine {
         
         let face = [v1, v0, end, start]
         let normal = face.normal()
+        let uvs = UVs.corners.corners
         
-        let vertices = face.map{ Vertex($0, normal, nil, color) }
+        let vertices = face.indices.map { Vertex(face[$0], normal, uvs[$0], color) }
         
         return Polygon(vertices)
     }

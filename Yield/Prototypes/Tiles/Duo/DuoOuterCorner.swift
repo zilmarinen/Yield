@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct DuoOuterCorner: PrototypeTile {
@@ -12,9 +13,7 @@ struct DuoOuterCorner: PrototypeTile {
     let primary: SocketConfig
     let secondary: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
         let p0 = MonoOuterCorner(config: primary)
         let p1 = MonoOuterCorner(config: secondary)
@@ -32,25 +31,25 @@ struct DuoOuterCorner: PrototypeTile {
         
         let (o2, _) = o0.ordinals
         
-        var lhs0 = secondary.empty
+        var lhs0 = secondary.empty()
         var rhs0 = secondary
         var lhs1 = primary
-        var rhs1 = primary.empty
+        var rhs1 = primary.empty()
         
         if o0.opposite == o1 {
          
-            lhs0 = secondary.empty
-            rhs0 = secondary.empty
+            lhs0 = secondary.empty()
+            rhs0 = secondary.empty()
             
-            lhs1 = primary.empty
-            rhs1 = primary.empty
+            lhs1 = primary.empty()
+            rhs1 = primary.empty()
         }
         else if o1 == o2 {
             
             lhs0 = secondary
-            rhs0 = secondary.empty
+            rhs0 = secondary.empty()
             
-            lhs1 = primary.empty
+            lhs1 = primary.empty()
             rhs1 = primary
         }
         

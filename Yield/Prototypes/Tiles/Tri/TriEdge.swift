@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct TriEdge: PrototypeTile {
@@ -13,9 +14,7 @@ struct TriEdge: PrototypeTile {
     let secondary: SocketConfig
     let tertiary: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
         let p0 = MonoEdge(config: primary)
         let p1 = MonoOuterCorner(config: secondary)

@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Meadow
 
 struct WobblyLine {
     
@@ -59,8 +60,9 @@ extension WobblyLine {
             
             let face = [v3, v2, v1, v0]
             let normal = face.normal()
+            let uvs = UVs.corners.corners
             
-            let vertices = face.map{ Vertex($0, normal, nil, color) }
+            let vertices = face.indices.map { Vertex(face[$0], normal, uvs[$0], color) }
             
             guard let polygon = Polygon(vertices) else { continue }
             

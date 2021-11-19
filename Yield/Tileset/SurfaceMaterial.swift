@@ -21,6 +21,18 @@ extension SurfaceMaterial {
         }
     }
     
+    var remainder: [SurfaceMaterial] {
+        
+        switch self {
+            
+        case .air: return []
+        case .dirt: return [.sand, .stone, .undergrowth]
+        case .sand: return [.dirt, .stone, .undergrowth]
+        case .stone: return [.dirt, .sand, .undergrowth]
+        case .undergrowth: return [.dirt, .sand, .stone]
+        }
+    }
+    
     func inset(volume: Volume) -> Inset {
         
         switch volume {

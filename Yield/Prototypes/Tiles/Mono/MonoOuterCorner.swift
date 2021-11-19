@@ -5,17 +5,16 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct MonoOuterCorner: PrototypeTile {
     
     let config: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
-        var sockets = Sockets()
+        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
         
         guard case let .corner(ordinal) = config.type else { return sockets }
         
@@ -27,9 +26,7 @@ struct MonoOuterCorner: PrototypeTile {
             
         case .mantle:
             
-            sockets.lower.set(value: config.material, ordinal: ordinal)
-            
-            sockets.upper.set(value: config.material, ordinal: ordinal)
+            sockets.set(value: config.material, ordinal: ordinal)
             
         default: break
         }

@@ -5,13 +5,12 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 protocol PrototypeTile {
     
-    var rotations: [Ordinal] { get }
-    
-    var sockets: Sockets { get }
+    var sockets: SurfaceSockets<SurfaceMaterial> { get }
     
     var mesh: Mesh { get }
 }
@@ -36,8 +35,7 @@ struct Prototype: PrototypeTile {
     let tertiary: SocketConfig
     let quaternary: SocketConfig
     
-    var rotations: [Ordinal] { prototype.rotations }
-    var sockets: Sockets { prototype.sockets }
+    var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
     var mesh: Mesh { prototype.mesh }
 }
 

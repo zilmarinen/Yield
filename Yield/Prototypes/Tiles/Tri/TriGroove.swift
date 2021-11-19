@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct TriGroove: PrototypeTile {
@@ -13,9 +14,7 @@ struct TriGroove: PrototypeTile {
     let secondary: SocketConfig
     let tertiary: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
         let p0 = MonoGroove(config: primary)
         let p1 = MonoOuterCorner(config: secondary)
@@ -28,25 +27,30 @@ struct TriGroove: PrototypeTile {
         
         guard !sockets.isEmpty,
               !sockets.isFull,
-              case .corner = primary.type,
-              case .corner = secondary.type,
+              case let .corner(o0) = primary.type,
+              case let .corner(o1) = secondary.type,
               case .corner = tertiary.type else { return Mesh([]) }
         
-        let vc1 = secondary.with(style: primary.style == .straight ? .concave : .convex)
-        let vc2 = tertiary.with(style: primary.style == .convex ? .convex : .concave)
+        let (o2, _) = o0.ordinals
         
-        var result = AdjacentGroove(primary: primary, lhs: secondary, rhs: tertiary).mesh
+        let lhs = o1 == o2 ? tertiary : secondary
+        let rhs = o1 == o2 ? secondary : tertiary
+        
+        let vc1 = lhs.with(style: primary.style == .straight ? .concave : .convex)
+        let vc2 = rhs.with(style: primary.style == .convex ? .convex : .concave)
+        
+        var result = AdjacentGroove(primary: primary, lhs: lhs, rhs: rhs).mesh
         let c0 = AdjacentOuterCorner(primary: vc1, lhs: primary, rhs: primary).mesh
         let c1 = AdjacentOuterCorner(primary: vc2, lhs: primary, rhs: primary).mesh
         
-        if secondary.material != .air {
-            
-            result = result.union(c1)
-        }
-        
-        if tertiary.material != .air {
+        if vc1.material != .air {
             
             result = result.union(c0)
+        }
+        
+        if vc2.material != .air {
+            
+            result = result.union(c1)
         }
         
         return result

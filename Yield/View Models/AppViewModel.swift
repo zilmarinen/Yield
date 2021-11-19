@@ -27,35 +27,6 @@ class AppViewModel: ObservableObject {
         
         return queue
     }()
-    
-    init() {
-        
-        //
-    }
-    
-    init(fileWrapper: FileWrapper) throws {
-        
-        do {
-            
-            //
-        }
-        catch {
-            
-            throw error
-        }
-    }
-    
-    func fileWrapper() throws -> FileWrapper {
-        
-        do {
-            
-            return .init(directoryWithFileWrappers: [:])
-        }
-        catch {
-            
-            throw error
-        }
-    }
 }
 
 extension AppViewModel {
@@ -88,7 +59,7 @@ extension AppViewModel {
             
             let exportOperation = TilesetExportOperation()
             let writeOperation = WriteOperation(url: url)
-
+            
             let progress = exportOperation.passesResult(to: writeOperation).enqueueWithProgress(on: operationQueue) { result in
 
                 DispatchQueue.main.async { [weak self] in

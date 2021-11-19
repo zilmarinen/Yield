@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct DuoPlateau: PrototypeTile {
@@ -12,9 +13,7 @@ struct DuoPlateau: PrototypeTile {
     let primary: SocketConfig
     let secondary: SocketConfig
     
-    var rotations: [Ordinal] { Ordinal.allCases }
-    
-    var sockets: Sockets {
+    var sockets: SurfaceSockets<SurfaceMaterial> {
         
         let p0 = MonoEdge(config: primary)
         let p1 = MonoEdge(config: .init(material: secondary.material, style: secondary.style, volume: secondary.volume, type: secondary.type))

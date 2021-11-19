@@ -49,7 +49,7 @@ struct EdgeBiscuit {
             
             let grid = SurfaceGrid()
             
-            let ceiling = Distance(x: 0, y: 1, z: 0)
+            let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
             
             let (o0, o1) = cardinal.ordinals
             let (c0, _) = cardinal.cardinals
@@ -76,8 +76,8 @@ struct EdgeBiscuit {
             
             let edges = [e0p, e1p, e2p] + l0.polygons(color: edgeColor) + l1.polygons(color: edgeColor)
                     
-            let lowerVertices = lowerFace.map { Vertex($0, -.y, nil, baseColor) }
-            let upperVertices = upperFace.map { Vertex($0, .y, nil, apexColor) }
+            let lowerVertices = lowerFace.indices.map { Vertex(lowerFace[$0], -.y, lowerFace[$0], baseColor) }
+            let upperVertices = upperFace.indices.map { Vertex(upperFace[$0], .y, upperFace[$0], apexColor) }
             
             guard let lowerPolygon = Polygon(lowerVertices),
                   let upperPolygon = Polygon(upperVertices) else { return Mesh(edges) }

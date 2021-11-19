@@ -5,6 +5,7 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 import SceneKit
 
@@ -38,7 +39,7 @@ class SocketSet: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(sockets: Sockets) {
+    func setup(sockets: SurfaceSockets<SurfaceMaterial>) {
         
         lc0.material = sockets.lower.value(for: .northWest)
         lc1.material = sockets.lower.value(for: .northEast)
