@@ -52,61 +52,79 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
 
 extension MonoTilesetExportOperation {
     
+    typealias TileBuilder = ((_ m0: SurfaceMaterial, _ style: BiscuitStyle, _ volume: Volume) -> ([PrototypeTile]))
+    
+    private func tiles(with material: SurfaceMaterial, styles: [BiscuitStyle], builder: TileBuilder) -> [PrototypeTile] {
+        
+        return [Volume.crown, .mantle].flatMap { volume in
+                
+            styles.flatMap { style in
+                
+                builder(material, style, volume)
+            }
+        }
+    }
+    
     private func edges(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        return [Volume.crown, .mantle].flatMap {
+        let styles = BiscuitStyle.allCases
+        
+        return tiles(with: material, styles: styles) { m0, style, volume in
             
-            edges(with: .init(material: material, style: .straight, volume: $0, type: .edge(.north)))
+            edges(with: .init(material: m0, style: style, volume: volume, type: .edge(.north)))
         }
     }
     
     private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        return [Volume.crown, .mantle].flatMap {
+        let styles = [BiscuitStyle.concave, .convex]
+        
+        return tiles(with: material, styles: styles) { m0, style, volume in
             
-            grooves(with: .init(material: material, style: .straight, volume: $0, type: .corner(.northWest)))
+            grooves(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.northWest)))
         }
     }
     
     private func innerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
     
-        return [Volume.crown, .mantle].flatMap {
+        let styles = [BiscuitStyle.concave, .convex]
+        
+        return tiles(with: material, styles: styles) { m0, style, volume in
             
-            innerCorners(with: .init(material: material, style: .straight, volume: $0, type: .corner(.southWest)))
+            innerCorners(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.southWest)))
         }
     }
     
     private func outerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        return [Volume.crown, .mantle].flatMap {
+        let styles = [BiscuitStyle.concave, .convex]
+        
+        return tiles(with: material, styles: styles) { m0, style, volume in
             
-            outerCorners(with: .init(material: material, style: .straight, volume: $0, type: .corner(.northWest)))
+            outerCorners(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.northWest)))
         }
     }
     
     private func plateau(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        return [Volume.crown, .mantle].flatMap {
+        let styles = [BiscuitStyle.straight]
+        
+        return tiles(with: material, styles: styles) { m0, style, volume in
             
-            plateau(with: .init(material: material, style: .straight, volume: $0, type: .plateau))
+            plateau(with: .init(material: m0, style: .straight, volume: volume, type: .plateau))
         }
     }
 }
 
 extension MonoTilesetExportOperation {
     
-    private func edges(with primary: SocketConfig) -> [PrototypeTile] { [MonoEdge(config: primary.with(style: .concave)),
-                                                                         MonoEdge(config: primary.with(style: .convex)),
-                                                                         MonoEdge(config: primary.with(style: .straight))] }
+    private func edges(with primary: SocketConfig) -> [PrototypeTile] { [MonoEdge(config: primary)] }
     
-    private func grooves(with primary: SocketConfig) -> [PrototypeTile] { [MonoGroove(config: primary.with(style: .concave)),
-                                                                           MonoGroove(config: primary.with(style: .convex))] }
+    private func grooves(with primary: SocketConfig) -> [PrototypeTile] { [MonoGroove(config: primary)] }
     
-    private func innerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoInnerCorner(config: primary.with(style: .concave)),
-                                                                                MonoInnerCorner(config: primary.with(style: .convex))] }
+    private func innerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoInnerCorner(config: primary)] }
     
-    private func outerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoOuterCorner(config: primary.with(style: .concave)),
-                                                                                MonoOuterCorner(config: primary.with(style: .convex))] }
+    private func outerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoOuterCorner(config: primary)] }
     
-    private func plateau(with primary: SocketConfig) -> [PrototypeTile] { [MonoPlateau(config: primary.with(style: .straight))] }
+    private func plateau(with primary: SocketConfig) -> [PrototypeTile] { [MonoPlateau(config: primary)] }
 }

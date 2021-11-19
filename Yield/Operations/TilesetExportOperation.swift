@@ -20,7 +20,8 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
         
         mono.passesResult(to: duo)
             .passesResult(to: tri)
-            .passesResult(to: tetra).enqueue(on: internalQueue) { [weak self] result in
+            .passesResult(to: tetra)
+            .enqueue(on: internalQueue) { [weak self] result in
                 
             guard let self = self else { return }
             

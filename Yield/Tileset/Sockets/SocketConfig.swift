@@ -81,7 +81,7 @@ extension SocketConfig {
     var hasStyle: Bool { false }
     var hasVolume: Bool { false }
     
-    func empty(style: BiscuitStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
+    func empty(style: BiscuitStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: .air, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
     
     func with(style: BiscuitStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
 }
