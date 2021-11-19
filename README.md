@@ -1,5 +1,5 @@
 # Introduction
-Yield is a macOS application written with SwiftUI to facilitate the visualisation and generation of terrain tilesets for use in [Wave Function Collapse](https://en.wikipedia.org/wiki/Wave_function_collapse) and [Marching Cube](https://en.wikipedia.org/wiki/Marching_cubes) based terrain generation systems. Primarily built for usage with [Harvest](https://github.com/zilmarinen/Harvest) and [Meadow](https://github.com/zilmarinen/Meadow), Yield compiles a known set of tile configurations from a handful of surface materials that can be used as a tileset for terrain generation.
+Yield is a macOS application written with SwiftUI to facilitate the visualisation and generation of terrain tilesets for use in [Wave Function Collapse](https://en.wikipedia.org/wiki/Wave_function_collapse) and [Marching Cube](https://en.wikipedia.org/wiki/Marching_cubes) based terrain generation systems. Primarily built for usage with [Harvest](https://github.com/zilmarinen/Harvest) and [Meadow](https://github.com/zilmarinen/Meadow), Yield generates a set of over 1400 tile configurations from a handful of surface materials that can be used as a tileset for terrain generation.
 
 ![Image](Screenshots/screen_edge.png)
 ![Image](Screenshots/screen_edge_full.png)
