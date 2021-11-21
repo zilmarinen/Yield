@@ -13,6 +13,8 @@ protocol PrototypeTile {
     var sockets: SurfaceSockets<SurfaceMaterial> { get }
     
     var mesh: Mesh { get }
+    
+    var style: SurfaceStyle { get }
 }
 
 struct Prototype: PrototypeTile {
@@ -37,6 +39,7 @@ struct Prototype: PrototypeTile {
     
     var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
     var mesh: Mesh { prototype.mesh }
+    var style: SurfaceStyle { primary.style }
 }
 
 extension Prototype {

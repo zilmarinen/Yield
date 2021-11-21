@@ -4,6 +4,7 @@
 //  Created by Zack Brown on 03/11/2021.
 //
 
+import Harvest
 import Meadow
 import SwiftUI
 
@@ -40,7 +41,7 @@ struct SocketConfigView: View {
 
                         Picker("Style", selection: $config.style) {
 
-                            ForEach(BiscuitStyle.allCases, id: \.self) { style in
+                            ForEach(SurfaceStyle.allCases, id: \.self) { style in
 
                                 Text(style.id.capitalized).tag(style)
                             }

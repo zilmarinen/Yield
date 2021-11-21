@@ -40,6 +40,8 @@ struct MonoInnerCorner: PrototypeTile {
         return sockets
     }
     
+    var style: SurfaceStyle { config.style }
+    
     var mesh: Mesh {
         
         guard !sockets.isEmpty,

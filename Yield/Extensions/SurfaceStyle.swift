@@ -1,18 +1,14 @@
 //
-//  BiscuitStyle.swift
+//  SurfaceStyle.swift
 //
 //  Created by Zack Brown on 28/10/2021.
 //
 
-enum BiscuitStyle: String, CaseIterable, Identifiable {
+import Harvest
+
+extension SurfaceStyle {
     
-    case concave
-    case convex
-    case straight
-    
-    var id: String { rawValue }
-    
-    var opposite: BiscuitStyle {
+    var opposite: SurfaceStyle {
         
         switch self {
             

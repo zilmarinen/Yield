@@ -11,4 +11,5 @@ struct TilesetTile: Codable {
     
     let id: Int
     let sockets: SurfaceSockets<SurfaceMaterial>
+    let style: SurfaceStyle
 }

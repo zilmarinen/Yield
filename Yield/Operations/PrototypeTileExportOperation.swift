@@ -37,7 +37,7 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
             
             for prototype in prototypes {
                 
-                let tile = TilesetTile(id: id, sockets: prototype.sockets)
+                let tile = TilesetTile(id: id, sockets: prototype.sockets, style: prototype.style)
                 
                 tileCache.tiles.append(tile)
                 

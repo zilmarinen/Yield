@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Harvest
 import Meadow
 import PeakOperation
 
@@ -56,7 +57,7 @@ extension TetraTilesetExportOperation {
     private func plateau() -> [PrototypeTile] {
         
         let materials = SurfaceMaterial.solids
-        let styles = [BiscuitStyle.concave, .convex]
+        let styles = [SurfaceStyle.concave, .convex]
         
         let primary = materials[0]
         let secondary = materials[1]

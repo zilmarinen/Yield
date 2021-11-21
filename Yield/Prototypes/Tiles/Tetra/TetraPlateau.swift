@@ -25,6 +25,8 @@ struct TetraPlateau: PrototypeTile {
         return p0.sockets.union(sockets: p1.sockets).union(sockets: p2.sockets).union(sockets: p3.sockets)
     }
     
+    var style: SurfaceStyle { primary.style }
+    
     var mesh: Mesh {
         
         guard !sockets.isEmpty,

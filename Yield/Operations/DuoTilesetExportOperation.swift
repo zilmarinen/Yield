@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Harvest
 import Meadow
 import PeakOperation
 
@@ -63,10 +64,10 @@ extension DuoTilesetExportOperation {
     
     typealias TileBuilder = ((_ m0: SurfaceMaterial,
                               _ m1: SurfaceMaterial,
-                              _ style: BiscuitStyle,
+                              _ style: SurfaceStyle,
                               _ volume: Volume) -> ([PrototypeTile]))
     
-    private func tiles(with material: SurfaceMaterial, styles: [BiscuitStyle], builder: TileBuilder) -> [PrototypeTile] {
+    private func tiles(with material: SurfaceMaterial, styles: [SurfaceStyle], builder: TileBuilder) -> [PrototypeTile] {
         
         let materials = material.remainder
         
@@ -84,7 +85,7 @@ extension DuoTilesetExportOperation {
     
     private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = BiscuitStyle.allCases
+        let styles = SurfaceStyle.allCases
         
         return tiles(with: material, styles: styles) { m0, m1, style, volume in
             
@@ -95,7 +96,7 @@ extension DuoTilesetExportOperation {
     
     private func innerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
     
-        let styles = [BiscuitStyle.concave, BiscuitStyle.convex]
+        let styles = [SurfaceStyle.concave, SurfaceStyle.convex]
         
         return tiles(with: material, styles: styles) { m0, m1, style, volume in
             
@@ -106,7 +107,7 @@ extension DuoTilesetExportOperation {
     
     private func outerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = [BiscuitStyle.concave, BiscuitStyle.convex]
+        let styles = [SurfaceStyle.concave, SurfaceStyle.convex]
         
         return tiles(with: material, styles: styles) { m0, m1, style, volume in
             
@@ -117,7 +118,7 @@ extension DuoTilesetExportOperation {
     
     private func plateau(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = BiscuitStyle.allCases
+        let styles = SurfaceStyle.allCases
         
         return tiles(with: material, styles: styles) { m0, m1, style, volume in
             

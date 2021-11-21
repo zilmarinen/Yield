@@ -58,7 +58,7 @@
 		186B7D3D272A8295001731C2 /* WobblyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3C272A8295001731C2 /* WobblyLine.swift */; };
 		186B7D3F272AAE3E001731C2 /* MonoInnerCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3E272AAE3E001731C2 /* MonoInnerCorner.swift */; };
 		186B7D41272AAE5C001731C2 /* MonoOuterCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D40272AAE5C001731C2 /* MonoOuterCorner.swift */; };
-		186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */; };
+		186B7D43272AB0AC001731C2 /* SurfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */; };
 		186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D49272ADBF0001731C2 /* PrototypeToolView.swift */; };
 		186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */; };
 		186B7D4E272BDCB9001731C2 /* GrooveBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */; };
@@ -70,6 +70,7 @@
 		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
 		18808E292747955800A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E282747955800A9B019 /* Harvest */; };
 		18808E2B2747956000A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E2A2747956000A9B019 /* Harvest */; };
+		1882A264274A777D0082A46F /* SurfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */; };
 		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
 		18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
 		18B007AB27369DF000E2C905 /* TriGroove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007AA27369DF000E2C905 /* TriGroove.swift */; };
@@ -159,7 +160,7 @@
 		186B7D3C272A8295001731C2 /* WobblyLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WobblyLine.swift; sourceTree = "<group>"; };
 		186B7D3E272AAE3E001731C2 /* MonoInnerCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoInnerCorner.swift; sourceTree = "<group>"; };
 		186B7D40272AAE5C001731C2 /* MonoOuterCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoOuterCorner.swift; sourceTree = "<group>"; };
-		186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiscuitStyle.swift; sourceTree = "<group>"; };
+		186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceStyle.swift; sourceTree = "<group>"; };
 		186B7D49272ADBF0001731C2 /* PrototypeToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeToolView.swift; sourceTree = "<group>"; };
 		186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeBiscuit.swift; sourceTree = "<group>"; };
 		186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrooveBiscuit.swift; sourceTree = "<group>"; };
@@ -370,7 +371,6 @@
 		186B7D39272A7FB7001731C2 /* Biscuits */ = {
 			isa = PBXGroup;
 			children = (
-				186B7D42272AB0AC001731C2 /* BiscuitStyle.swift */,
 				186B7D3A272A7FC4001731C2 /* CornerBiscuit.swift */,
 				186B7D4B272AE33D001731C2 /* EdgeBiscuit.swift */,
 				186B7D4D272BDCB9001731C2 /* GrooveBiscuit.swift */,
@@ -397,6 +397,7 @@
 		18808E2C27479A1900A9B019 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */,
 				187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */,
 				184D204527479B07005256A7 /* OrdinalPattern.swift */,
 			);
@@ -648,6 +649,7 @@
 				18667DC5273C0A5500F13E4D /* SocketNode.swift in Sources */,
 				18667DC4273C0A3A00F13E4D /* SocketSet.swift in Sources */,
 				18667DC3273C0A3100F13E4D /* WireframeNode.swift in Sources */,
+				1882A264274A777D0082A46F /* SurfaceStyle.swift in Sources */,
 				18667DC2273C0A2600F13E4D /* EditorScene.swift in Sources */,
 				18667DC7273C0A9500F13E4D /* Volume.swift in Sources */,
 				18667DC9273C0AA400F13E4D /* Inset.swift in Sources */,
@@ -695,7 +697,7 @@
 				18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */,
 				18667D91273A7B0400F13E4D /* TriEdge.swift in Sources */,
 				186B7D3F272AAE3E001731C2 /* MonoInnerCorner.swift in Sources */,
-				186B7D43272AB0AC001731C2 /* BiscuitStyle.swift in Sources */,
+				186B7D43272AB0AC001731C2 /* SurfaceStyle.swift in Sources */,
 				186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */,
 				186B7D41272AAE5C001731C2 /* MonoOuterCorner.swift in Sources */,
 				182B4F00272ED4E10081C6BF /* TilesetTile.swift in Sources */,

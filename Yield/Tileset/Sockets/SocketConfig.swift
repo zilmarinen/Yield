@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Harvest
 import Meadow
 
 class SocketConfig: ObservableObject {
@@ -27,7 +28,7 @@ class SocketConfig: ObservableObject {
     }
     
     @Published var material: SurfaceMaterial
-    @Published var style: BiscuitStyle
+    @Published var style: SurfaceStyle
     @Published var volume: Volume
     @Published var type: SocketType
     
@@ -65,7 +66,7 @@ class SocketConfig: ObservableObject {
     }
     
     init(material: SurfaceMaterial = .dirt,
-         style: BiscuitStyle = .convex,
+         style: SurfaceStyle = .convex,
          volume: Volume = .crown,
          type: SocketType = .edge(.north)) {
         
@@ -81,7 +82,7 @@ extension SocketConfig {
     var hasStyle: Bool { false }
     var hasVolume: Bool { false }
     
-    func empty(style: BiscuitStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: .air, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
+    func empty(style: SurfaceStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: .air, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
     
-    func with(style: BiscuitStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
+    func with(style: SurfaceStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
 }

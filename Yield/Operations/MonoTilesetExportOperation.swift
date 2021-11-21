@@ -5,6 +5,7 @@
 //
 
 import Foundation
+import Harvest
 import Meadow
 import PeakOperation
 
@@ -52,9 +53,9 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
 
 extension MonoTilesetExportOperation {
     
-    typealias TileBuilder = ((_ m0: SurfaceMaterial, _ style: BiscuitStyle, _ volume: Volume) -> ([PrototypeTile]))
+    typealias TileBuilder = ((_ m0: SurfaceMaterial, _ style: SurfaceStyle, _ volume: Volume) -> ([PrototypeTile]))
     
-    private func tiles(with material: SurfaceMaterial, styles: [BiscuitStyle], builder: TileBuilder) -> [PrototypeTile] {
+    private func tiles(with material: SurfaceMaterial, styles: [SurfaceStyle], builder: TileBuilder) -> [PrototypeTile] {
         
         return [Volume.crown, .mantle].flatMap { volume in
                 
@@ -67,7 +68,7 @@ extension MonoTilesetExportOperation {
     
     private func edges(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = BiscuitStyle.allCases
+        let styles = SurfaceStyle.allCases
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
@@ -77,7 +78,7 @@ extension MonoTilesetExportOperation {
     
     private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = [BiscuitStyle.concave, .convex]
+        let styles = [SurfaceStyle.concave, .convex]
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
@@ -87,7 +88,7 @@ extension MonoTilesetExportOperation {
     
     private func innerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
     
-        let styles = [BiscuitStyle.concave, .convex]
+        let styles = [SurfaceStyle.concave, .convex]
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
@@ -97,7 +98,7 @@ extension MonoTilesetExportOperation {
     
     private func outerCorners(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = [BiscuitStyle.concave, .convex]
+        let styles = [SurfaceStyle.concave, .convex]
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
@@ -107,7 +108,7 @@ extension MonoTilesetExportOperation {
     
     private func plateau(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = [BiscuitStyle.straight]
+        let styles = [SurfaceStyle.straight]
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
