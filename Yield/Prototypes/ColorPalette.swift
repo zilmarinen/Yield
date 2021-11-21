@@ -28,11 +28,6 @@ extension ColorPalette {
                                    tertiary: Color(0.933, 0.69, 0.027),
                                    quaternary: Color(0.952, 0.878, 0.631))
     
-    static let snow = ColorPalette(primary: Color(0.968, 0.968, 0.968),
-                                   secondary: Color(0.854, 0.866, 0.988),
-                                   tertiary: Color(0.443, 0.874, 0.905),
-                                   quaternary: Color(0.760, 1.0, 0.976))
-    
     static let stone = ColorPalette(primary: Color(0.392, 0.423, 0.372),
                                     secondary: Color(0.329, 0.337, 0.333),
                                     tertiary: Color(0.439, 0.345, 0.321),
@@ -40,6 +35,6 @@ extension ColorPalette {
     
     static let undergrowth = ColorPalette(primary: Color(0.541, 0.525, 0.207),
                                           secondary: Color(0.196, 0.313, 0.180),
-                                          tertiary: Color(0.282, 0.203, 0.203),
-                                          quaternary: Color(0.176, 0.141, 0.141))
+                                          tertiary: Color(0.490, 0.352, 0.313),
+                                          quaternary: Color(0.525, 0.329, 0.223))
 }

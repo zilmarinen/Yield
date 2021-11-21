@@ -37,21 +37,24 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
             
             for prototype in prototypes {
                 
-                let tile = TilesetTile(id: id, sockets: prototype.sockets, style: prototype.style)
+                let hasMesh = !prototype.sockets.isEmpty && !prototype.sockets.isFull
                 
-                tileCache.tiles.append(tile)
+                let identifier = hasMesh ? "\(id)_\(type)" : nil
                 
-                if !prototype.sockets.isEmpty,
-                   !prototype.sockets.isFull {
-                    
-                    let model = Model(mesh: prototype.mesh, tile: tile)
+                let tile = TilesetTile(id: id, mesh: identifier, sockets: prototype.sockets, style: prototype.style)
                 
-                    let data = try encoder.encode(model)
-                    
-                    fileCache["\(type)_surface_tile_\(id).mesh"] = FileWrapper(regularFileWithContents: data)
-                }
+                tileCache.add(tile: tile)
                 
                 id += 1
+                
+                guard hasMesh,
+                      let identifier = identifier else { continue }
+                
+                let model = Model(mesh: prototype.mesh, tile: tile)
+            
+                let data = try encoder.encode(model)
+                
+                fileCache["\(identifier).mesh"] = FileWrapper(regularFileWithContents: data)
             }
             
             output = .success((tileCache, fileCache))

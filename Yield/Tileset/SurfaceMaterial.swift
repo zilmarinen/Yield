@@ -16,7 +16,6 @@ extension SurfaceMaterial {
         case .air: return .air
         case .dirt: return .dirt
         case .sand: return .sand
-        case .snow: return .snow
         case .stone: return .stone
         case .undergrowth: return .undergrowth
         }
@@ -27,18 +26,17 @@ extension SurfaceMaterial {
         switch self {
             
         case .air: return []
-        case .dirt: return [.sand, .snow, .stone, .undergrowth]
-        case .sand: return [.dirt, .snow, .stone, .undergrowth]
-        case .snow: return [.dirt, .sand, .stone, .undergrowth]
-        case .stone: return [.dirt, .sand, .snow, .undergrowth]
-        case .undergrowth: return [.dirt, .sand, .snow, .stone]
+        case .dirt: return [.sand, .stone, .undergrowth]
+        case .sand: return [.dirt, .stone, .undergrowth]
+        case .stone: return [.dirt, .sand, .undergrowth]
+        case .undergrowth: return [.dirt, .sand, .stone]
         }
     }
     
     func inset(volume: Volume) -> Inset {
         
         switch volume {
-        case .crown: return self == .dirt || self == .snow ? .inner : .none
+        case .crown: return self == .dirt ? .inner : .none
         case .throne: return self == .stone ? .inner : .none
         case .mantle: return self == .stone ? .inner : .none
         default: return .none

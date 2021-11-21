@@ -10,6 +10,7 @@ import Meadow
 struct TilesetTile: Codable {
     
     let id: Int
+    let mesh: String?
     let sockets: SurfaceSockets<SurfaceMaterial>
     let style: SurfaceStyle
 }

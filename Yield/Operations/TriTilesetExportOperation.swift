@@ -38,11 +38,7 @@ class TriTilesetExportOperation: ConcurrentOperation, ConsumesResult, ProducesRe
                 
                 guard let self = self else { return }
                 
-                switch result {
-                    
-                case .failure(let error): self.output = .failure(error)
-                case .success(let output): self.output = .success(output)
-                }
+                self.output = result
                 
                 group.leave()
             }

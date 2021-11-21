@@ -20,7 +20,12 @@ class TetraTilesetExportOperation: ConcurrentOperation, ConsumesResult, Produces
             
             let (tileset, wrappers) = try input.get()
             
-            let prototypes = plateau()
+            var prototypes: [PrototypeTile] = []
+            
+            for material in SurfaceMaterial.solids {
+                
+                prototypes.append(contentsOf: plateau(with: material))
+            }
             
             let exportOperation = PrototypeTileExportOperation(type: .tetra, prototypes: prototypes, tileCache: tileset, fileCache: wrappers)
             
@@ -32,11 +37,7 @@ class TetraTilesetExportOperation: ConcurrentOperation, ConsumesResult, Produces
                 
                 guard let self = self else { return }
                 
-                switch result {
-                    
-                case .failure(let error): self.output = .failure(error)
-                case .success(let output): self.output = .success(output)
-                }
+                self.output = result
                 
                 group.leave()
             }
@@ -54,25 +55,53 @@ class TetraTilesetExportOperation: ConcurrentOperation, ConsumesResult, Produces
 
 extension TetraTilesetExportOperation {
     
-    private func plateau() -> [PrototypeTile] {
+    typealias TileBuilder = ((_ m0: SurfaceMaterial,
+                              _ m1: SurfaceMaterial,
+                              _ m2: SurfaceMaterial,
+                              _ m3: SurfaceMaterial,
+                              _ style: SurfaceStyle,
+                              _ volume: Volume) -> ([PrototypeTile]))
+    
+    private func tiles(with material: SurfaceMaterial, styles: [SurfaceStyle], builder: TileBuilder) -> [PrototypeTile] {
         
-        let materials = SurfaceMaterial.solids
+        let secondaryMaterials = material.remainder
+        
+        var tiles: [PrototypeTile] = []
+        
+        [Volume.crown, .mantle].forEach { volume in
+            
+            styles.forEach { style in
+            
+                secondaryMaterials.forEach { secondary in
+                    
+                    let tertiaryMaterials = secondaryMaterials.filter { $0 != secondary }
+                    
+                    tertiaryMaterials.forEach { tertiary in
+                        
+                        let quaternaryMaterials = secondaryMaterials.filter { $0 != secondary && $0 != tertiary }
+                        
+                        quaternaryMaterials.forEach { quaternary in
+                    
+                            tiles.append(contentsOf: builder(material, secondary, tertiary, quaternary, style, volume))
+                        }
+                    }
+                }
+            }
+        }
+        
+        return tiles
+    }
+    
+    private func plateau(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
         let styles = [SurfaceStyle.concave, .convex]
         
-        let primary = materials[0]
-        let secondary = materials[1]
-        let tertiary = materials[2]
-        let quaternary = materials[3]
-        
-        return [Volume.crown, .mantle].flatMap { volume in
+        return tiles(with: material, styles: styles) { m0, m1, m2, m3, style, volume in
             
-            styles.flatMap { style in
-            
-                plateau(with: .init(material: primary, style: style, volume: volume, type: .corner(.northWest)),
-                        secondary: .init(material: secondary, style: style, volume: volume, type: .corner(.northEast)),
-                        tertiary: .init(material: tertiary, style: style, volume: volume, type: .corner(.southEast)),
-                        quaternary: .init(material: quaternary, style: style, volume: volume, type: .corner(.southWest)))
-            }
+            plateau(with: .init(material: m0, style: style, volume: volume, type: .corner(.northWest)),
+                    secondary: .init(material: m1, style: style, volume: volume, type: .corner(.northEast)),
+                    tertiary: .init(material: m2, style: style, volume: volume, type: .corner(.southEast)),
+                    quaternary: .init(material: m3, style: style, volume: volume, type: .corner(.southWest)))
         }
     }
 }

@@ -36,11 +36,7 @@ class MonoTilesetExportOperation: ConcurrentOperation, ProducesResult {
             
             guard let self = self else { return }
             
-            switch result {
-                
-            case .failure(let error): self.output = .failure(error)
-            case .success(let output): self.output = .success(output)
-            }
+            self.output = result
             
             group.leave()
         }
@@ -78,11 +74,11 @@ extension MonoTilesetExportOperation {
     
     private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
         
-        let styles = [SurfaceStyle.concave, .convex]
+        let styles = SurfaceStyle.allCases
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
-            grooves(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.northWest)))
+            grooves(with: .init(material: m0, style: style, volume: volume, type: .corner(.northWest)))
         }
     }
     
@@ -92,7 +88,7 @@ extension MonoTilesetExportOperation {
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
-            innerCorners(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.southWest)))
+            innerCorners(with: .init(material: m0, style: style, volume: volume, type: .corner(.southWest)))
         }
     }
     
@@ -102,7 +98,7 @@ extension MonoTilesetExportOperation {
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
-            outerCorners(with: .init(material: m0, style: .straight, volume: volume, type: .corner(.northWest)))
+            outerCorners(with: .init(material: m0, style: style, volume: volume, type: .corner(.northWest)))
         }
     }
     
@@ -112,7 +108,7 @@ extension MonoTilesetExportOperation {
         
         return tiles(with: material, styles: styles) { m0, style, volume in
             
-            plateau(with: .init(material: m0, style: .straight, volume: volume, type: .plateau))
+            plateau(with: .init(material: m0, style: style, volume: volume, type: .plateau))
         }
     }
 }

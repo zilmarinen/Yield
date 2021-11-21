@@ -8,3 +8,13 @@ struct Tileset: Codable {
     
     var tiles: [TilesetTile] = []
 }
+
+extension Tileset {
+    
+    mutating func add(tile: TilesetTile) {
+        
+        guard tiles.first(where: { $0.style == tile.style && $0.sockets == tile.sockets }) == nil else { return }
+        
+        tiles.append(tile)
+    }
+}
