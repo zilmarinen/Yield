@@ -39,7 +39,7 @@ class SocketSet: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(sockets: SurfaceSockets<SurfaceMaterial>) {
+    func setup(sockets: SurfaceSockets) {
         
         lc0.material = sockets.lower.value(for: .northWest)
         lc1.material = sockets.lower.value(for: .northEast)

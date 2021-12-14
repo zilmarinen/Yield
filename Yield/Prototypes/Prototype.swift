@@ -10,7 +10,7 @@ import Meadow
 
 protocol PrototypeTile {
     
-    var sockets: SurfaceSockets<SurfaceMaterial> { get }
+    var sockets: SurfaceSockets { get }
     
     var mesh: Mesh { get }
     
@@ -37,7 +37,7 @@ struct Prototype: PrototypeTile {
     let tertiary: SocketConfig
     let quaternary: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
+    var sockets: SurfaceSockets { prototype.sockets }
     var mesh: Mesh { prototype.mesh }
     var style: SurfaceStyle { primary.style }
 }

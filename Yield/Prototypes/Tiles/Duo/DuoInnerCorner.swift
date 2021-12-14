@@ -13,12 +13,12 @@ struct DuoInnerCorner: PrototypeTile {
     let primary: SocketConfig
     let secondary: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> {
+    var sockets: SurfaceSockets {
         
         let p0 = MonoInnerCorner(config: primary)
         let p1 = MonoOuterCorner(config: secondary)
         
-        return p0.sockets.union(sockets: p1.sockets)
+        return p0.sockets.merge(sockets: p1.sockets)
     }
     
     var style: SurfaceStyle { primary.style }

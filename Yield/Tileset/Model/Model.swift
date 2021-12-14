@@ -6,9 +6,10 @@
 
 import Euclid
 import Foundation
+import Harvest
 
 struct Model: Codable {
     
     let mesh: Mesh
-    let tile: TilesetTile
+    let tile: SurfaceTilesetTile
 }

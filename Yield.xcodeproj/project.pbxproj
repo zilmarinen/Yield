@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		18184642273D103B0043BF26 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18184641273D103B0043BF26 /* Model.swift */; };
 		18184643273D103B0043BF26 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18184641273D103B0043BF26 /* Model.swift */; };
-		18184644273D10680043BF26 /* TilesetTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFF272ED4E10081C6BF /* TilesetTile.swift */; };
 		1827F1282725706F0030B099 /* Prototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1272725706F0030B099 /* Prototype.swift */; };
 		1827F12A2725717B0030B099 /* MonoEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1292725717B0030B099 /* MonoEdge.swift */; };
 		182B4EF6272ED3FA0081C6BF /* MonoTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EF5272ED3FA0081C6BF /* MonoTilesetExportOperation.swift */; };
@@ -17,7 +16,6 @@
 		182B4EFA272ED40A0081C6BF /* TriTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EF9272ED40A0081C6BF /* TriTilesetExportOperation.swift */; };
 		182B4EFC272ED4130081C6BF /* TetraTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFB272ED4130081C6BF /* TetraTilesetExportOperation.swift */; };
 		182B4EFE272ED4A50081C6BF /* EditorTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFD272ED4A50081C6BF /* EditorTile.swift */; };
-		182B4F00272ED4E10081C6BF /* TilesetTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFF272ED4E10081C6BF /* TilesetTile.swift */; };
 		182B4F072731294C0081C6BF /* PrototypeTileExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F062731294C0081C6BF /* PrototypeTileExportOperation.swift */; };
 		182B4F0927312B7B0081C6BF /* DuoPlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F0827312B7B0081C6BF /* DuoPlateau.swift */; };
 		182B4F0B27328B020081C6BF /* TileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F0A27328B020081C6BF /* TileType.swift */; };
@@ -127,7 +125,6 @@
 		182B4EF9272ED40A0081C6BF /* TriTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriTilesetExportOperation.swift; sourceTree = "<group>"; };
 		182B4EFB272ED4130081C6BF /* TetraTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetraTilesetExportOperation.swift; sourceTree = "<group>"; };
 		182B4EFD272ED4A50081C6BF /* EditorTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTile.swift; sourceTree = "<group>"; };
-		182B4EFF272ED4E10081C6BF /* TilesetTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesetTile.swift; sourceTree = "<group>"; };
 		182B4F062731294C0081C6BF /* PrototypeTileExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeTileExportOperation.swift; sourceTree = "<group>"; };
 		182B4F0827312B7B0081C6BF /* DuoPlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoPlateau.swift; sourceTree = "<group>"; };
 		182B4F0A27328B020081C6BF /* TileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileType.swift; sourceTree = "<group>"; };
@@ -230,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				189F0EB3271B1B680077B81D /* Tileset.swift */,
-				182B4EFF272ED4E10081C6BF /* TilesetTile.swift */,
 			);
 			path = Tileset;
 			sourceTree = "<group>";
@@ -639,7 +635,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D204727479C78005256A7 /* OrdinalPattern.swift in Sources */,
-				18184644273D10680043BF26 /* TilesetTile.swift in Sources */,
 				18667DCA273C0AAB00F13E4D /* SurfaceSockets.swift in Sources */,
 				18667DA1273C087300F13E4D /* PreviewViewController.swift in Sources */,
 				18667DA3273C087300F13E4D /* PreviewProvider.swift in Sources */,
@@ -700,7 +695,6 @@
 				186B7D43272AB0AC001731C2 /* SurfaceStyle.swift in Sources */,
 				186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */,
 				186B7D41272AAE5C001731C2 /* MonoOuterCorner.swift in Sources */,
-				182B4F00272ED4E10081C6BF /* TilesetTile.swift in Sources */,
 				18667D8927390E4400F13E4D /* ScallopedEdge.swift in Sources */,
 				18D31AE32719CCD6006312BF /* BadgeModel.swift in Sources */,
 				18D31ADC2719CC74006312BF /* ToolPropertySection.swift in Sources */,

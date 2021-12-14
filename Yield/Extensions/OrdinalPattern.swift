@@ -9,8 +9,8 @@ import Meadow
 
 extension OrdinalPattern where T == SurfaceMaterial {
     
-    var isEmpty: Bool { count == 0 }
-    var isFull: Bool { count == 4 }
+    var isEmpty: Bool { isHomogenous(with: .air) }
+    var isFull: Bool { !contains(value: .air) }
     
     public var count: Int {
         
@@ -18,20 +18,5 @@ extension OrdinalPattern where T == SurfaceMaterial {
                 (northEast == .air ? 0 : 1) +
                 (southEast == .air ? 0 : 1) +
                 (southWest == .air ? 0 : 1)
-    }
-    
-    func union(pattern: OrdinalPattern) -> Self {
-        
-        var result = Self(value: .air)
-        
-        for ordinal in Ordinal.allCases {
-         
-            let lhs = value(for: ordinal)
-            let rhs = pattern.value(for: ordinal)
-            
-            result.set(value: lhs.rawValue > rhs.rawValue ? lhs : rhs, ordinal: ordinal)
-        }
-        
-        return result
     }
 }

@@ -26,7 +26,7 @@ class EditorTile: ObservableObject {
                                              tertiary: tertiary,
                                              quaternary: quaternary) }
     
-    var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
+    var sockets: SurfaceSockets { prototype.sockets }
     
     var mesh: Mesh { prototype.mesh }
 }

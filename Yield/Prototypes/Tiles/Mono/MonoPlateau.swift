@@ -12,9 +12,9 @@ struct MonoPlateau: PrototypeTile {
     
     let config: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> {
+    var sockets: SurfaceSockets {
         
-        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
+        var sockets = SurfaceSockets(value: .air)
         
         switch config.volume {
         case .crown,

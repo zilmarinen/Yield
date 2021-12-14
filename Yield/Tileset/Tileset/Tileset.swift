@@ -4,14 +4,16 @@
 //  Created by Zack Brown on 16/10/2021.
 //
 
-struct Tileset: Codable {
+import Harvest
+
+struct Tileset {
     
-    var tiles: [TilesetTile] = []
+    var tiles: [SurfaceTilesetTile] = []
 }
 
 extension Tileset {
     
-    mutating func add(tile: TilesetTile) {
+    mutating func add(tile: SurfaceTilesetTile) {
         
         guard tiles.first(where: { $0.style == tile.style && $0.sockets == tile.sockets }) == nil else { return }
         

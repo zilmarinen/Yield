@@ -12,9 +12,9 @@ struct MonoGroove: PrototypeTile {
     
     let config: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> {
+    var sockets: SurfaceSockets {
         
-        var sockets = SurfaceSockets<SurfaceMaterial>(value: .air)
+        var sockets = SurfaceSockets(value: .air)
         
         guard case let .corner(ordinal) = config.type else { return sockets }
         

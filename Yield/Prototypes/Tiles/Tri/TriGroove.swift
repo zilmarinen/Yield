@@ -14,13 +14,13 @@ struct TriGroove: PrototypeTile {
     let secondary: SocketConfig
     let tertiary: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> {
+    var sockets: SurfaceSockets {
         
         let p0 = MonoGroove(config: primary)
         let p1 = MonoOuterCorner(config: secondary)
         let p2 = MonoOuterCorner(config: tertiary)
         
-        return p0.sockets.union(sockets: p1.sockets).union(sockets: p2.sockets)
+        return p0.sockets.merge(sockets: p1.sockets).merge(sockets: p2.sockets)
     }
     
     var style: SurfaceStyle { primary.style }

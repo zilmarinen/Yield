@@ -14,13 +14,13 @@ struct TriEdge: PrototypeTile {
     let secondary: SocketConfig
     let tertiary: SocketConfig
     
-    var sockets: SurfaceSockets<SurfaceMaterial> {
+    var sockets: SurfaceSockets {
         
         let p0 = MonoEdge(config: primary)
         let p1 = MonoOuterCorner(config: secondary)
         let p2 = MonoOuterCorner(config: tertiary)
         
-        return p0.sockets.union(sockets: p1.sockets).union(sockets: p2.sockets)
+        return p0.sockets.merge(sockets: p1.sockets).merge(sockets: p2.sockets)
     }
     
     var style: SurfaceStyle { primary.style }
@@ -32,6 +32,16 @@ struct TriEdge: PrototypeTile {
               case let .edge(cardinal) = primary.type,
               case .corner = secondary.type,
               case .corner = tertiary.type else { return Mesh([]) }
+        
+        guard secondary.material != tertiary.material else {
+            
+            let adjacent = secondary.with(style: primary.style.opposite, type: .edge(cardinal.opposite))
+            
+            let e0 = AdjacentEdge(primary: primary, lhs: adjacent, rhs: adjacent).mesh
+            let e1 = AdjacentEdge(primary: adjacent, lhs: primary, rhs: primary).mesh
+            
+            return e0.union(e1)
+        }
         
         switch primary.style {
             
@@ -52,12 +62,12 @@ struct TriEdge: PrototypeTile {
             
             if secondary.material != .air {
                 
-                result = result.union(s0)
+                result = result.union(s1)
             }
             
             if tertiary.material != .air {
                 
-                result = result.union(s1)
+                result = result.union(s0)
             }
             
             return result
