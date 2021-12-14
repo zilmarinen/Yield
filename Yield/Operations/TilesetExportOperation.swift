@@ -18,6 +18,10 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
         let tri = TriTilesetExportOperation()
         let tetra = TetraTilesetExportOperation()
         
+        let group = DispatchGroup()
+        
+        group.enter()
+        
         mono.passesResult(to: duo)
             .passesResult(to: tri)
             .passesResult(to: tetra)
@@ -27,7 +31,11 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
             
             self.output = result
                 
-            self.finish()
+            group.leave()
         }
+        
+        group.wait()
+        
+        finish()
     }
 }

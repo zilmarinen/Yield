@@ -74,7 +74,7 @@ extension TriTilesetExportOperation {
             
                 secondaryMaterials.forEach { secondary in
                     
-                    let tertiaryMaterials = secondaryMaterials.filter { $0 != secondary }
+                    let tertiaryMaterials = secondary.remainder
                     
                     tertiaryMaterials.forEach { tertiary in
                     

@@ -115,13 +115,62 @@ extension MonoTilesetExportOperation {
 
 extension MonoTilesetExportOperation {
     
-    private func edges(with primary: SocketConfig) -> [PrototypeTile] { [MonoEdge(config: primary)] }
+    private func edges(with primary: SocketConfig) -> [PrototypeTile] {
+        
+        let volume = primary.volume == .mantle ? Volume.crown : Volume.mantle
+        
+        return [MonoEdge(config: primary),
+                
+                TriEdge(primary: primary,
+                        secondary: primary.with(volume: volume, type: .corner(.southEast)),
+                        tertiary: primary.empty(volume: volume, type: .corner(.southWest))),
+                
+                TriEdge(primary: primary,
+                        secondary: primary.empty(volume: volume, type: .corner(.southEast)),
+                        tertiary: primary.with(volume: volume, type: .corner(.southWest))),
+                
+                TriEdge(primary: primary,
+                        secondary: primary.with(volume: volume, type: .corner(.southEast)),
+                        tertiary: primary.with(volume: volume, type: .corner(.southWest)))]
+    }
     
-    private func grooves(with primary: SocketConfig) -> [PrototypeTile] { [MonoGroove(config: primary)] }
+    private func grooves(with primary: SocketConfig) -> [PrototypeTile] {
+        
+        let volume = primary.volume == .mantle ? Volume.crown : Volume.mantle
+        
+        return [MonoGroove(config: primary),
+        
+                TriGroove(primary: primary,
+                          secondary: primary.with(volume: volume, type: .corner(.northEast)),
+                          tertiary: primary.empty(volume: volume, type: .corner(.southWest))),
+        
+                TriGroove(primary: primary,
+                          secondary: primary.empty(volume: volume, type: .corner(.northEast)),
+                          tertiary: primary.with(volume: volume, type: .corner(.southWest)))]
+    }
     
-    private func innerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoInnerCorner(config: primary)] }
+    private func innerCorners(with primary: SocketConfig) -> [PrototypeTile] {
+        
+        let volume = primary.volume == .mantle ? Volume.crown : Volume.mantle
+        
+        return [MonoInnerCorner(config: primary),
+        
+                DuoInnerCorner(primary: primary,
+                               secondary: primary.with(volume: volume, type: .corner(.southWest)))]
+    }
     
-    private func outerCorners(with primary: SocketConfig) -> [PrototypeTile] { [MonoOuterCorner(config: primary)] }
+    private func outerCorners(with primary: SocketConfig) -> [PrototypeTile] {
+        
+        let volume = primary.volume == .mantle ? Volume.crown : Volume.mantle
+        
+        return [MonoOuterCorner(config: primary),
+        
+                DuoOuterCorner(primary: primary,
+                               secondary: primary.with(volume: volume, type: .corner(.northEast))),
+                
+                DuoOuterCorner(primary: primary,
+                               secondary: primary.with(volume: volume, type: .corner(.southWest)))]
+    }
     
     private func plateau(with primary: SocketConfig) -> [PrototypeTile] { [MonoPlateau(config: primary)] }
 }

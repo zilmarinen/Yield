@@ -24,6 +24,7 @@ class DuoTilesetExportOperation: ConcurrentOperation, ConsumesResult, ProducesRe
             
             for material in SurfaceMaterial.solids {
                 
+                prototypes.append(contentsOf: edges(with: material))
                 prototypes.append(contentsOf: grooves(with: material))
                 prototypes.append(contentsOf: innerCorners(with: material))
                 prototypes.append(contentsOf: outerCorners(with: material))
@@ -79,6 +80,17 @@ extension DuoTilesetExportOperation {
         }
     }
     
+    private func edges(with material: SurfaceMaterial) -> [PrototypeTile] {
+        
+        let styles = SurfaceStyle.allCases
+        
+        return tiles(with: material, styles: styles) { m0, m1, style, volume in
+            
+            edges(with: .init(material: m0, style: style, volume: volume, type: .edge(.north)),
+                  secondary: .init(material: m1, style: style, volume: volume, type: .corner(.southEast)))
+        }
+    }
+    
     private func grooves(with material: SurfaceMaterial) -> [PrototypeTile] {
         
         let styles = SurfaceStyle.allCases
@@ -126,12 +138,40 @@ extension DuoTilesetExportOperation {
 
 extension DuoTilesetExportOperation {
     
+    private func edges(with primary: SocketConfig, secondary: SocketConfig) -> [PrototypeTile] { [TriEdge(primary: primary,
+                                                                                                          secondary: secondary.with(volume: .crown, type: .corner(.southEast)),
+                                                                                                          tertiary: secondary.empty(volume: .crown, type: .corner(.southWest))),
+
+                                                                                                  TriEdge(primary: primary,
+                                                                                                          secondary: secondary.empty(volume: .crown, type: .corner(.southEast)),
+                                                                                                          tertiary: secondary.with(volume: .crown, type: .corner(.southWest))),
+
+                                                                                                  TriEdge(primary: primary,
+                                                                                                          secondary: secondary.with(volume: .mantle, type: .corner(.southEast)),
+                                                                                                          tertiary: secondary.empty(volume: .mantle, type: .corner(.southWest))),
+                                                                                                  
+                                                                                                  TriEdge(primary: primary,
+                                                                                                          secondary: secondary.empty(volume: .mantle, type: .corner(.southEast)),
+                                                                                                          tertiary: secondary.with(volume: .mantle, type: .corner(.southWest)))] }
+    
     private func grooves(with primary: SocketConfig, secondary: SocketConfig) -> [PrototypeTile] { [TriGroove(primary: primary,
                                                                                                               secondary: secondary.with(volume: .crown, type: .corner(.northEast)),
                                                                                                               tertiary: secondary.empty(volume: .crown, type: .corner(.southWest))),
                                                                                                     
                                                                                                     TriGroove(primary: primary,
                                                                                                               secondary: secondary.empty(volume: .crown, type: .corner(.northEast)),
+                                                                                                              tertiary: secondary.with(volume: .crown, type: .corner(.southWest))),
+                                                                                                    
+                                                                                                    TriGroove(primary: primary,
+                                                                                                              secondary: secondary.with(volume: .crown, type: .corner(.northEast)),
+                                                                                                              tertiary: secondary.with(volume: .crown, type: .corner(.southWest))),
+                                                                                                    
+                                                                                                    TriGroove(primary: primary,
+                                                                                                              secondary: secondary.with(volume: .crown, type: .corner(.northEast)),
+                                                                                                              tertiary: secondary.with(volume: .mantle, type: .corner(.southWest))),
+                                                                                                    
+                                                                                                    TriGroove(primary: primary,
+                                                                                                              secondary: secondary.with(volume: .mantle, type: .corner(.northEast)),
                                                                                                               tertiary: secondary.with(volume: .crown, type: .corner(.southWest))),
 
                                                                                                     TriGroove(primary: primary,

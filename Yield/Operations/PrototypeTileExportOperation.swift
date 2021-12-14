@@ -6,6 +6,7 @@
 
 import Euclid
 import Foundation
+import Harvest
 import PeakOperation
 
 class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
@@ -37,18 +38,16 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
             
             for prototype in prototypes {
                 
-                let hasMesh = !prototype.sockets.isEmpty && !prototype.sockets.isFull
+                let identifier = "surface_tile_\(id)"
                 
-                let identifier = hasMesh ? "\(id)_\(type)" : nil
-                
-                let tile = TilesetTile(id: id, mesh: identifier, sockets: prototype.sockets, style: prototype.style)
+                let tile = SurfaceTilesetTile(identifier: identifier, sockets: prototype.sockets, style: prototype.style)
                 
                 tileCache.add(tile: tile)
                 
                 id += 1
                 
-                guard hasMesh,
-                      let identifier = identifier else { continue }
+                guard !prototype.sockets.isEmpty,
+                      !prototype.sockets.isFull else { continue }
                 
                 let model = Model(mesh: prototype.mesh, tile: tile)
             
