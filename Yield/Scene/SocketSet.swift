@@ -16,10 +16,10 @@ class SocketSet: SCNNode {
     private let lc2 = SocketNode(position: SCNVector3(x: 0.5, y: 0, z: 0.5))
     private let lc3 = SocketNode(position: SCNVector3(x: -0.5, y: 0, z: 0.5))
     
-    private let uc0 = SocketNode(position: SCNVector3(x: -0.5, y: 1.0, z: -0.5))
-    private let uc1 = SocketNode(position: SCNVector3(x: 0.5, y: 1.0, z: -0.5))
-    private let uc2 = SocketNode(position: SCNVector3(x: 0.5, y: 1.0, z: 0.5))
-    private let uc3 = SocketNode(position: SCNVector3(x: -0.5, y: 1.0, z: 0.5))
+    private let uc0 = SocketNode(position: SCNVector3(x: -0.5, y: 0.5, z: -0.5))
+    private let uc1 = SocketNode(position: SCNVector3(x: 0.5, y: 0.5, z: -0.5))
+    private let uc2 = SocketNode(position: SCNVector3(x: 0.5, y: 0.5, z: 0.5))
+    private let uc3 = SocketNode(position: SCNVector3(x: -0.5, y: 0.5, z: 0.5))
     
     override init() {
         
@@ -41,14 +41,14 @@ class SocketSet: SCNNode {
     
     func setup(sockets: SurfaceSockets) {
         
-        lc0.material = sockets.lower.value(for: .northWest)
-        lc1.material = sockets.lower.value(for: .northEast)
-        lc2.material = sockets.lower.value(for: .southEast)
-        lc3.material = sockets.lower.value(for: .southWest)
+        lc0.material = sockets.material(for: .northWest)
+        lc1.material = sockets.material(for: .northEast)
+        lc2.material = sockets.material(for: .southEast)
+        lc3.material = sockets.material(for: .southWest)
         
-        uc0.material = sockets.upper.value(for: .northWest)
-        uc1.material = sockets.upper.value(for: .northEast)
-        uc2.material = sockets.upper.value(for: .southEast)
-        uc3.material = sockets.upper.value(for: .southWest)
+        uc0.material = sockets.material(for: .northWest)
+        uc1.material = sockets.material(for: .northEast)
+        uc2.material = sockets.material(for: .southEast)
+        uc3.material = sockets.material(for: .southWest)
     }
 }

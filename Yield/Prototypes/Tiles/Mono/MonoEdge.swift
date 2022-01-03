@@ -14,26 +14,19 @@ struct MonoEdge: PrototypeTile {
     
     var sockets: SurfaceSockets {
         
-        var sockets = SurfaceSockets(value: .air)
+        var sockets = SurfaceSockets(material: .air, volume: .empty)
         
         guard case let .edge(cardinal) = config.type else { return sockets }
         
         let (o0, o1) = cardinal.ordinals
         
-        switch config.volume {
-        case .crown,
-                .throne:
-            
-            sockets.lower.set(value: config.material, ordinal: o0)
-            sockets.lower.set(value: config.material, ordinal: o1)
-            
-        case .mantle:
-            
-            sockets.set(value: config.material, ordinal: o0)
-            sockets.set(value: config.material, ordinal: o1)
-            
-        default: break
-        }
+        sockets.set(material: config.material, ordinal: o0)
+        sockets.set(material: config.material, ordinal: o1)
+        
+        let volume = config.volume == .crown ? SurfaceVolume.crown : .throne
+        
+        sockets.set(volume: volume, ordinal: o0)
+        sockets.set(volume: volume, ordinal: o1)
         
         return sockets
     }
@@ -43,10 +36,9 @@ struct MonoEdge: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case .edge = config.type else { return Mesh([]) }
         
-        let volumes: [Volume] = config.volume == .mantle ? [.mantle] : [.crown, .throne]
+        let volumes: [BiscuitVolume] = config.volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

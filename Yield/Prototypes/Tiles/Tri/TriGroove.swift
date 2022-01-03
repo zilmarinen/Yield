@@ -28,7 +28,6 @@ struct TriGroove: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case let .corner(o0) = primary.type,
               case let .corner(o1) = secondary.type,
               case .corner = tertiary.type else { return Mesh([]) }

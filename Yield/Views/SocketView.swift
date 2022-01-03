@@ -8,7 +8,7 @@ import Meadow
 import SceneKit
 import SwiftUI
 
-struct SocketView: View {
+struct SocketMaterialView: View {
     
     let title: String
     
@@ -23,6 +23,21 @@ struct SocketView: View {
     }
 }
 
+struct SocketVolumeView: View {
+    
+    let title: String
+    
+    let volume: SurfaceVolume
+
+    var body: some View {
+        
+        ToolPropertyView(title: title, color: .pink) {
+
+            BadgeView(model: .init(title: "\(volume)", color: (volume != .empty ? .pink : .gray)))
+        }
+    }
+}
+
 struct SocketsView: View {
     
     @ObservedObject private(set) var prototype: EditorTile
@@ -33,19 +48,19 @@ struct SocketsView: View {
 
             ToolPropertyGroup(model: .init(title: "Sockets", badge: .init(title: "\(prototype.sockets.count)", color: .pink))) {
 
-                SocketView(title: "[nX, pY, pZ]", material: prototype.sockets.upper.value(for: .northWest))
-                SocketView(title: "[pX, pY, pZ]", material: prototype.sockets.upper.value(for: .northEast))
-                SocketView(title: "[pX, pY, nZ]", material: prototype.sockets.upper.value(for: .southEast))
-                SocketView(title: "[nX, pY, nZ]", material: prototype.sockets.upper.value(for: .southWest))
+                SocketMaterialView(title: "North West", material: prototype.sockets.material(for: .northWest))
+                SocketMaterialView(title: "North East", material: prototype.sockets.material(for: .northEast))
+                SocketMaterialView(title: "South East", material: prototype.sockets.material(for: .southEast))
+                SocketMaterialView(title: "South West", material: prototype.sockets.material(for: .southWest))
             }
             .padding(.bottom, YieldApp.Constants.padding)
             
             ToolPropertyGroup() {
                 
-                SocketView(title: "[nX, nY, pZ]", material: prototype.sockets.lower.value(for: .northWest))
-                SocketView(title: "[pX, nY, pZ]", material: prototype.sockets.lower.value(for: .northEast))
-                SocketView(title: "[pX, nY, nZ]", material: prototype.sockets.lower.value(for: .southEast))
-                SocketView(title: "[nX, nY, nZ]", material: prototype.sockets.lower.value(for: .southWest))
+                SocketVolumeView(title: "North West", volume: prototype.sockets.volume(for: .northWest))
+                SocketVolumeView(title: "North East", volume: prototype.sockets.volume(for: .northEast))
+                SocketVolumeView(title: "South East", volume: prototype.sockets.volume(for: .southEast))
+                SocketVolumeView(title: "South West", volume: prototype.sockets.volume(for: .southWest))
             }
         }
     }

@@ -9,16 +9,16 @@ import Meadow
 
 struct WobblyLine {
     
-    public let start: Position
-    public let end: Position
-    public let normal: Direction
+    public let start: Vector
+    public let end: Vector
+    public let normal: Vector
     
     public let steps: Int
     public let variance: Double
     
-    public let points: [Position]
+    public let points: [Vector]
     
-    init(start: Position, end: Position, normal: Direction, steps: Int, variance: Double) {
+    init(start: Vector, end: Vector, normal: Vector, steps: Int, variance: Double) {
         
         self.start = start
         self.end = end
@@ -47,7 +47,7 @@ extension WobblyLine {
     
     func polygons(color: Color) -> [Euclid.Polygon] {
      
-        let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
+        let ceiling = Vector(x: 0, y: Prototype.Constants.ceiling, z: 0)
         
         var polygons: [Euclid.Polygon] = []
         

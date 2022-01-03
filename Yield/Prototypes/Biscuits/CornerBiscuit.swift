@@ -23,7 +23,7 @@ struct CornerBiscuit {
         
         let grid = SurfaceGrid()
         
-        let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
+        let ceiling = Vector(x: 0, y: Prototype.Constants.ceiling, z: 0)
         
         let (c0, c1) = ordinal.cardinals
         
@@ -83,7 +83,7 @@ struct CornerBiscuit {
             
         default:
             
-            let normal = -Direction.mean(c0.direction, c1.direction)
+            let normal = -Vector.mean(c0.direction, c1.direction)
             
             let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: 4, variance: Prototype.Constants.insetDepth)
             

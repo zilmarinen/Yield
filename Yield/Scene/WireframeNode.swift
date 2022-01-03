@@ -10,12 +10,12 @@ import SceneKit
 
 class WireframeNode: SCNNode {
     
-    init(position: SCNVector3, size: Distance) {
+    init(position: SCNVector3, size: Vector) {
         
         super.init()
         
         self.position = position
-        self.geometry = SCNGeometry(wireframe: Mesh.cube(center: .origin, size: size, faces: .default, material: MDWColor.black))
+        self.geometry = SCNGeometry(wireframe: Mesh.cube(center: .zero, size: size, faces: .default, material: MDWColor.black))
     }
     
     required init?(coder: NSCoder) {

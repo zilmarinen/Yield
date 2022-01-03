@@ -28,7 +28,6 @@ struct TriEdge: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case let .edge(cardinal) = primary.type,
               case .corner = secondary.type,
               case .corner = tertiary.type else { return Mesh([]) }

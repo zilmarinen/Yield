@@ -55,7 +55,7 @@ struct SocketConfigView: View {
 
                         Picker("Volume", selection: $config.volume) {
 
-                            ForEach(Volume.allCases, id: \.self) { volume in
+                            ForEach(BiscuitVolume.solids, id: \.self) { volume in
 
                                 Text(volume.id.capitalized).tag(volume)
                             }
@@ -67,16 +67,16 @@ struct SocketConfigView: View {
                  
                     ToolPropertyView(title: "Format", color: .pink) {
 
-                        Picker("Format", selection: $config.format) {
+                        Picker("Format", selection: $config.shape) {
 
-                            ForEach(SocketConfig.Format.allCases, id: \.self) { format in
+                            ForEach(SocketConfig.Shape.allCases, id: \.self) { shape in
 
-                                Text(format.id.capitalized).tag(format)
+                                Text(shape.id.capitalized).tag(shape)
                             }
                         }
                     }
                     
-                    if config.format == .edge {
+                    if config.shape == .edge {
                         
                         ToolPropertyView(title: "Cardinal", color: .pink) {
 
@@ -90,7 +90,7 @@ struct SocketConfigView: View {
                         }
                     }
                     
-                    if config.format == .corner {
+                    if config.shape == .corner {
                     
                         ToolPropertyView(title: "Ordinal", color: .pink) {
 

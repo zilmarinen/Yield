@@ -46,8 +46,7 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
                 
                 id += 1
                 
-                guard !prototype.sockets.isEmpty,
-                      !prototype.sockets.isFull else { continue }
+                guard !prototype.sockets.isEmpty else { continue }
                 
                 let model = Model(mesh: prototype.mesh, tile: tile)
             

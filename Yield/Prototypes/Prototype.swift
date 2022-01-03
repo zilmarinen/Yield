@@ -21,13 +21,13 @@ struct Prototype: PrototypeTile {
     
     enum Constants {
         
-        static let throneHeight = 0.5 - crownHeight
+        static let throneHeight = ceiling - crownHeight
         static let crownHeight = 0.07
         static let insetDepth = 0.035
         
-        static let ceiling = 1.0
+        static let ceiling = 0.5
         
-        static let socketSize = Distance(x: 0.1, y: 0.1, z: 0.1)
+        static let socketSize = Vector(x: 0.1, y: 0.1, z: 0.1)
     }
     
     let tile: Tile

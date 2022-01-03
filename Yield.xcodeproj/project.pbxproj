@@ -11,10 +11,6 @@
 		18184643273D103B0043BF26 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18184641273D103B0043BF26 /* Model.swift */; };
 		1827F1282725706F0030B099 /* Prototype.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1272725706F0030B099 /* Prototype.swift */; };
 		1827F12A2725717B0030B099 /* MonoEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827F1292725717B0030B099 /* MonoEdge.swift */; };
-		182B4EF6272ED3FA0081C6BF /* MonoTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EF5272ED3FA0081C6BF /* MonoTilesetExportOperation.swift */; };
-		182B4EF8272ED4010081C6BF /* DuoTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EF7272ED4010081C6BF /* DuoTilesetExportOperation.swift */; };
-		182B4EFA272ED40A0081C6BF /* TriTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EF9272ED40A0081C6BF /* TriTilesetExportOperation.swift */; };
-		182B4EFC272ED4130081C6BF /* TetraTilesetExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFB272ED4130081C6BF /* TetraTilesetExportOperation.swift */; };
 		182B4EFE272ED4A50081C6BF /* EditorTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4EFD272ED4A50081C6BF /* EditorTile.swift */; };
 		182B4F072731294C0081C6BF /* PrototypeTileExportOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F062731294C0081C6BF /* PrototypeTileExportOperation.swift */; };
 		182B4F0927312B7B0081C6BF /* DuoPlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F0827312B7B0081C6BF /* DuoPlateau.swift */; };
@@ -44,13 +40,10 @@
 		18667DC4273C0A3A00F13E4D /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
 		18667DC5273C0A5500F13E4D /* SocketNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D57272D5E6E001731C2 /* SocketNode.swift */; };
 		18667DC6273C0A8800F13E4D /* SurfaceMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */; };
-		18667DC7273C0A9500F13E4D /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3127298E8E001731C2 /* Volume.swift */; };
 		18667DC8273C0A9D00F13E4D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3727299547001731C2 /* ColorPalette.swift */; };
 		18667DC9273C0AA400F13E4D /* Inset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B4F152733DECF0081C6BF /* Inset.swift */; };
-		18667DCA273C0AAB00F13E4D /* SurfaceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */; };
 		186B7D2D27298CBE001731C2 /* Surface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2C27298CBE001731C2 /* Surface.swift */; };
 		186B7D3027298CE6001731C2 /* SurfaceMaterial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */; };
-		186B7D3227298E8E001731C2 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3127298E8E001731C2 /* Volume.swift */; };
 		186B7D3827299547001731C2 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3727299547001731C2 /* ColorPalette.swift */; };
 		186B7D3B272A7FC4001731C2 /* CornerBiscuit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3A272A7FC4001731C2 /* CornerBiscuit.swift */; };
 		186B7D3D272A8295001731C2 /* WobblyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D3C272A8295001731C2 /* WobblyLine.swift */; };
@@ -64,11 +57,13 @@
 		186B7D56272D5E57001731C2 /* WireframeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D55272D5E57001731C2 /* WireframeNode.swift */; };
 		186B7D58272D5E6E001731C2 /* SocketNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D57272D5E6E001731C2 /* SocketNode.swift */; };
 		187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CB272149D500FAC4E0 /* EditorViewModel.swift */; };
-		187213CE27214B3400FAC4E0 /* SurfaceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */; };
 		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
 		18808E292747955800A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E282747955800A9B019 /* Harvest */; };
 		18808E2B2747956000A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E2A2747956000A9B019 /* Harvest */; };
 		1882A264274A777D0082A46F /* SurfaceStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */; };
+		189937CD2779E16500B2A1CA /* SurfaceSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189937CC2779E16500B2A1CA /* SurfaceSockets.swift */; };
+		189937CF2779F34F00B2A1CA /* BiscuitVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */; };
+		189937D02779F6B000B2A1CA /* BiscuitVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */; };
 		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
 		18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
 		18B007AB27369DF000E2C905 /* TriGroove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B007AA27369DF000E2C905 /* TriGroove.swift */; };
@@ -120,10 +115,6 @@
 		18184641273D103B0043BF26 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1827F1272725706F0030B099 /* Prototype.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype.swift; sourceTree = "<group>"; };
 		1827F1292725717B0030B099 /* MonoEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoEdge.swift; sourceTree = "<group>"; };
-		182B4EF5272ED3FA0081C6BF /* MonoTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonoTilesetExportOperation.swift; sourceTree = "<group>"; };
-		182B4EF7272ED4010081C6BF /* DuoTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoTilesetExportOperation.swift; sourceTree = "<group>"; };
-		182B4EF9272ED40A0081C6BF /* TriTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriTilesetExportOperation.swift; sourceTree = "<group>"; };
-		182B4EFB272ED4130081C6BF /* TetraTilesetExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetraTilesetExportOperation.swift; sourceTree = "<group>"; };
 		182B4EFD272ED4A50081C6BF /* EditorTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTile.swift; sourceTree = "<group>"; };
 		182B4F062731294C0081C6BF /* PrototypeTileExportOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypeTileExportOperation.swift; sourceTree = "<group>"; };
 		182B4F0827312B7B0081C6BF /* DuoPlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoPlateau.swift; sourceTree = "<group>"; };
@@ -151,7 +142,6 @@
 		18667DA8273C087300F13E4D /* Yield_Quick_Look.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yield_Quick_Look.entitlements; sourceTree = "<group>"; };
 		186B7D2C27298CBE001731C2 /* Surface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Surface.swift; sourceTree = "<group>"; };
 		186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceMaterial.swift; sourceTree = "<group>"; };
-		186B7D3127298E8E001731C2 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
 		186B7D3727299547001731C2 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		186B7D3A272A7FC4001731C2 /* CornerBiscuit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerBiscuit.swift; sourceTree = "<group>"; };
 		186B7D3C272A8295001731C2 /* WobblyLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WobblyLine.swift; sourceTree = "<group>"; };
@@ -165,9 +155,10 @@
 		186B7D55272D5E57001731C2 /* WireframeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireframeNode.swift; sourceTree = "<group>"; };
 		186B7D57272D5E6E001731C2 /* SocketNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketNode.swift; sourceTree = "<group>"; };
 		187213CB272149D500FAC4E0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
-		187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceSockets.swift; sourceTree = "<group>"; };
 		187213CF27214BBC00FAC4E0 /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
 		18808E272747954B00A9B019 /* Harvest */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Harvest; path = ../Harvest; sourceTree = "<group>"; };
+		189937CC2779E16500B2A1CA /* SurfaceSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceSockets.swift; sourceTree = "<group>"; };
+		189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiscuitVolume.swift; sourceTree = "<group>"; };
 		189F0EB3271B1B680077B81D /* Tileset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
 		18AE8C08272D778700E21E7F /* SocketSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketSet.swift; sourceTree = "<group>"; };
 		18B007AA27369DF000E2C905 /* TriGroove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriGroove.swift; sourceTree = "<group>"; };
@@ -257,11 +248,11 @@
 				1827F1272725706F0030B099 /* Prototype.swift */,
 				186B7D2C27298CBE001731C2 /* Surface.swift */,
 				186B7D2E27298CC4001731C2 /* Tiles */,
-				186B7D3127298E8E001731C2 /* Volume.swift */,
 				186B7D3C272A8295001731C2 /* WobblyLine.swift */,
 				182B4F132733DD8E0081C6BF /* StraightLine.swift */,
 				182B4F152733DECF0081C6BF /* Inset.swift */,
 				182B4F112733CA410081C6BF /* SurfaceGrid.swift */,
+				189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */,
 			);
 			path = Prototypes;
 			sourceTree = "<group>";
@@ -324,10 +315,6 @@
 			children = (
 				182BE625272ED0A0008A160F /* WriteOperation.swift */,
 				182BE627272ED14F008A160F /* TilesetExportOperation.swift */,
-				182B4EF5272ED3FA0081C6BF /* MonoTilesetExportOperation.swift */,
-				182B4EF7272ED4010081C6BF /* DuoTilesetExportOperation.swift */,
-				182B4EF9272ED40A0081C6BF /* TriTilesetExportOperation.swift */,
-				182B4EFB272ED4130081C6BF /* TetraTilesetExportOperation.swift */,
 				182B4F062731294C0081C6BF /* PrototypeTileExportOperation.swift */,
 			);
 			path = Operations;
@@ -394,8 +381,8 @@
 			isa = PBXGroup;
 			children = (
 				186B7D42272AB0AC001731C2 /* SurfaceStyle.swift */,
-				187213CD27214B3400FAC4E0 /* SurfaceSockets.swift */,
 				184D204527479B07005256A7 /* OrdinalPattern.swift */,
+				189937CC2779E16500B2A1CA /* SurfaceSockets.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -635,7 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D204727479C78005256A7 /* OrdinalPattern.swift in Sources */,
-				18667DCA273C0AAB00F13E4D /* SurfaceSockets.swift in Sources */,
+				189937D02779F6B000B2A1CA /* BiscuitVolume.swift in Sources */,
 				18667DA1273C087300F13E4D /* PreviewViewController.swift in Sources */,
 				18667DA3273C087300F13E4D /* PreviewProvider.swift in Sources */,
 				18667DC8273C0A9D00F13E4D /* ColorPalette.swift in Sources */,
@@ -646,7 +633,6 @@
 				18667DC3273C0A3100F13E4D /* WireframeNode.swift in Sources */,
 				1882A264274A777D0082A46F /* SurfaceStyle.swift in Sources */,
 				18667DC2273C0A2600F13E4D /* EditorScene.swift in Sources */,
-				18667DC7273C0A9500F13E4D /* Volume.swift in Sources */,
 				18667DC9273C0AA400F13E4D /* Inset.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -659,17 +645,14 @@
 				182BE628272ED14F008A160F /* TilesetExportOperation.swift in Sources */,
 				186B7D2D27298CBE001731C2 /* Surface.swift in Sources */,
 				18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */,
-				182B4EF8272ED4010081C6BF /* DuoTilesetExportOperation.swift in Sources */,
 				1827F12A2725717B0030B099 /* MonoEdge.swift in Sources */,
 				18D31ADD2719CC74006312BF /* ToolPropertyView.swift in Sources */,
-				182B4EF6272ED3FA0081C6BF /* MonoTilesetExportOperation.swift in Sources */,
 				182B4EFE272ED4A50081C6BF /* EditorTile.swift in Sources */,
+				189937CF2779F34F00B2A1CA /* BiscuitVolume.swift in Sources */,
 				18B007AD27369E0400E2C905 /* DuoInnerCorner.swift in Sources */,
 				186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */,
 				18643046271DACBB003575D4 /* Tile.swift in Sources */,
-				186B7D3227298E8E001731C2 /* Volume.swift in Sources */,
 				182B4F0D273297980081C6BF /* SocketConfig.swift in Sources */,
-				187213CE27214B3400FAC4E0 /* SurfaceSockets.swift in Sources */,
 				18D31AE02719CCB3006312BF /* ToolPropertyGroupModel.swift in Sources */,
 				182B4F0927312B7B0081C6BF /* DuoPlateau.swift in Sources */,
 				182B4F0B27328B020081C6BF /* TileType.swift in Sources */,
@@ -701,7 +684,6 @@
 				186B7D50272BDD1E001731C2 /* MonoGroove.swift in Sources */,
 				182B4F102732AAB30081C6BF /* SocketConfigView.swift in Sources */,
 				184D204627479B07005256A7 /* OrdinalPattern.swift in Sources */,
-				182B4EFC272ED4130081C6BF /* TetraTilesetExportOperation.swift in Sources */,
 				18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */,
 				18B007B32737EBDF00E2C905 /* AdjacentOuterCorner.swift in Sources */,
 				18B007AB27369DF000E2C905 /* TriGroove.swift in Sources */,
@@ -711,12 +693,12 @@
 				18B007B12737E66C00E2C905 /* AdjacentEdge.swift in Sources */,
 				187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */,
 				182BE626272ED0A0008A160F /* WriteOperation.swift in Sources */,
+				189937CD2779E16500B2A1CA /* SurfaceSockets.swift in Sources */,
 				182B4F162733DECF0081C6BF /* Inset.swift in Sources */,
 				1827F1282725706F0030B099 /* Prototype.swift in Sources */,
 				18667D97273AB11400F13E4D /* AdjacentGroove.swift in Sources */,
 				18EC263D2719C05C00049C13 /* AppViewModel.swift in Sources */,
 				18EC262D2719BFDF00049C13 /* AppView.swift in Sources */,
-				182B4EFA272ED40A0081C6BF /* TriTilesetExportOperation.swift in Sources */,
 				187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

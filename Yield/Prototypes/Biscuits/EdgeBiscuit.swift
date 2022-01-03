@@ -49,7 +49,7 @@ struct EdgeBiscuit {
             
             let grid = SurfaceGrid()
             
-            let ceiling = Distance(x: 0, y: Prototype.Constants.ceiling, z: 0)
+            let ceiling = Vector(x: 0, y: Prototype.Constants.ceiling, z: 0)
             
             let (o0, o1) = cardinal.ordinals
             let (c0, _) = cardinal.cardinals

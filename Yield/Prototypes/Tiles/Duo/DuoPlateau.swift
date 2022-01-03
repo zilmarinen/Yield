@@ -25,9 +25,7 @@ struct DuoPlateau: PrototypeTile {
     
     var mesh: Mesh {
         
-        guard !sockets.isEmpty,
-              !sockets.isFull,
-              case let .edge(c0) = primary.type,
+        guard case let .edge(c0) = primary.type,
               case let .edge(c1) = secondary.type,
               c0.opposite == c1 else { return Mesh([]) }
         

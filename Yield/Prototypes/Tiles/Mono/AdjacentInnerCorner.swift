@@ -16,7 +16,7 @@ struct AdjacentInnerCorner {
         
         var result = Mesh([])
         
-        let volumes: [Volume] = primary.volume == .mantle ? [.mantle] : [.crown, .throne]
+        let volumes: [BiscuitVolume] = primary.volume == .throne ? [.mantle] : [.crown, .throne]
         
         for volume in volumes {
             

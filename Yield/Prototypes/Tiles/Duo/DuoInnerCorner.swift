@@ -26,7 +26,6 @@ struct DuoInnerCorner: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case let .corner(o0) = primary.type,
               case let .corner(o1) = secondary.type,
               o0 == o1 else { return Mesh([]) }

@@ -12,18 +12,18 @@ struct SurfaceGrid {
     
     let corners = Ordinal.corners
     
-    var center: Position { .origin }
+    var center: Vector { .zero }
     
-    func corner(ordinal: Ordinal) -> Position { corners[ordinal.corner] }
+    func corner(ordinal: Ordinal) -> Vector { corners[ordinal.corner] }
     
-    func edge(cardinal: Cardinal) -> Position {
+    func edge(cardinal: Cardinal) -> Vector {
         
         let (o0, o1) = cardinal.ordinals
         
         return corners[o0.corner].lerp(corners[o1.corner], 0.5)
     }
     
-    func inner(corner ordinal: Ordinal) -> Position {
+    func inner(corner ordinal: Ordinal) -> Vector {
         
         let (c0, _) = ordinal.cardinals
         let (_, o1) = ordinal.ordinals
@@ -34,7 +34,7 @@ struct SurfaceGrid {
         return e0.lerp(e1, 0.5 - Prototype.Constants.insetDepth)
     }
     
-    func edge(cardinal: Cardinal, ordinal: Ordinal, inset: Inset) -> Position {
+    func edge(cardinal: Cardinal, ordinal: Ordinal, inset: Inset) -> Vector {
         
         switch inset {
         case .inner: return edge(cardinal: cardinal, ordinal: ordinal, interpolator: 0.5 - Prototype.Constants.insetDepth)
@@ -52,7 +52,7 @@ struct SurfaceGrid {
 
 extension SurfaceGrid {
     
-    private func edge(cardinal: Cardinal, ordinal: Ordinal, interpolator: Double) -> Position {
+    private func edge(cardinal: Cardinal, ordinal: Ordinal, interpolator: Double) -> Vector {
         
         let (c0, c1) = ordinal.cardinals
         let (o0, o1) = ordinal.ordinals

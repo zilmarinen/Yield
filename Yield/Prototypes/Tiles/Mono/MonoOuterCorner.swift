@@ -14,22 +14,15 @@ struct MonoOuterCorner: PrototypeTile {
     
     var sockets: SurfaceSockets {
         
-        var sockets = SurfaceSockets(value: .air)
+        var sockets = SurfaceSockets(material: .air, volume: .empty)
         
         guard case let .corner(ordinal) = config.type else { return sockets }
         
-        switch config.volume {
-        case .crown,
-                .throne:
-            
-            sockets.lower.set(value: config.material, ordinal: ordinal)
-            
-        case .mantle:
-            
-            sockets.set(value: config.material, ordinal: ordinal)
-            
-        default: break
-        }
+        sockets.set(material: config.material, ordinal: ordinal)
+        
+        let volume = config.volume == .crown ? SurfaceVolume.crown : .throne
+        
+        sockets.set(volume: volume, ordinal: ordinal)
         
         return sockets
     }
@@ -39,10 +32,9 @@ struct MonoOuterCorner: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case .corner = config.type else { return Mesh([]) }
         
-        let volumes: [Volume] = config.volume == .mantle ? [.mantle] : [.crown, .throne]
+        let volumes: [BiscuitVolume] = config.volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

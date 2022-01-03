@@ -12,7 +12,7 @@ class SocketNode: WireframeNode {
     
     enum Constants {
         
-        static let socketSize = Distance(x: 0.1, y: 0.1, z: 0.1)
+        static let socketSize = Vector(x: 0.1, y: 0.1, z: 0.1)
     }
     
     lazy var socket: SCNNode = { SCNNode(geometry: SCNBox(width: Constants.socketSize.x, height: Constants.socketSize.y, length: Constants.socketSize.z, chamferRadius: 0)) }()

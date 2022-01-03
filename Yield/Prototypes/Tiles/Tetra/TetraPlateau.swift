@@ -30,7 +30,6 @@ struct TetraPlateau: PrototypeTile {
     var mesh: Mesh {
         
         guard !sockets.isEmpty,
-              !sockets.isFull,
               case let .corner(ordinal) = primary.type,
               case .corner = secondary.type,
               case .corner = tertiary.type,

@@ -14,20 +14,13 @@ struct MonoPlateau: PrototypeTile {
     
     var sockets: SurfaceSockets {
         
-        var sockets = SurfaceSockets(value: .air)
+        var sockets = SurfaceSockets(material: .air, volume: .empty)
         
-        switch config.volume {
-        case .crown,
-                .throne:
-            
-            sockets.lower.set(value: config.material)
-            
-        case .mantle:
-            
-            sockets.set(value: config.material)
-            
-        default: break
-        }
+        sockets.set(material: config.material)
+        
+        let volume = config.volume == .crown ? SurfaceVolume.crown : .throne
+        
+        sockets.set(volume: volume)
         
         return sockets
     }
@@ -36,10 +29,9 @@ struct MonoPlateau: PrototypeTile {
     
     var mesh: Mesh {
         
-        guard !sockets.isEmpty,
-              !sockets.isFull else { return Mesh([]) }
+        guard !sockets.isEmpty else { return Mesh([]) }
         
-        let volumes: [Volume] = config.volume == .mantle ? [.mantle] : [.crown, .throne]
+        let volumes: [BiscuitVolume] = config.volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

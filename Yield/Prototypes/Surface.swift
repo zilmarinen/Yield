@@ -15,8 +15,8 @@ struct Surface {
         
         guard config.volume != .empty else { return Mesh([]) }
         
-        let floor = Distance(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
-        let ceiling = Distance(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
+        let floor = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight : 0), z: 0)
+        let ceiling = Vector(x: 0, y: (config.volume == .crown ? Prototype.Constants.throneHeight + Prototype.Constants.crownHeight :
                                         (config.volume == .throne ? Prototype.Constants.throneHeight : Prototype.Constants.ceiling)), z: 0)
         
         let lowerCorners = Ordinal.corners.map { $0 + floor }

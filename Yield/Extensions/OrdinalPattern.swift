@@ -9,14 +9,14 @@ import Meadow
 
 extension OrdinalPattern where T == SurfaceMaterial {
     
-    var isEmpty: Bool { isHomogenous(with: .air) }
-    var isFull: Bool { !contains(value: .air) }
+    public var isEmpty: Bool { isHomogenous(with: .air) }
+    public var isFull: Bool { !contains(value: .air) }
     
     public var count: Int {
         
-        return  (northWest == .air ? 0 : 1) +
-                (northEast == .air ? 0 : 1) +
-                (southEast == .air ? 0 : 1) +
-                (southWest == .air ? 0 : 1)
+        return  (value(for: .northWest) == .air ? 0 : 1) +
+                (value(for: .northEast) == .air ? 0 : 1) +
+                (value(for: .southEast) == .air ? 0 : 1) +
+                (value(for: .southWest) == .air ? 0 : 1)
     }
 }

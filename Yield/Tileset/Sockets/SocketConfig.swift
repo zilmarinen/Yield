@@ -10,9 +10,9 @@ import Meadow
 
 class SocketConfig: ObservableObject {
     
-    static let empty = SocketConfig(material: .air, style: .convex, volume: .mantle, type: .plateau)
+    static let empty = SocketConfig(material: .air, style: .convex, volume: .throne, type: .plateau)
     
-    enum Format: String, CaseIterable, Identifiable {
+    enum Shape: String, CaseIterable, Identifiable {
         
         case corner
         case edge
@@ -29,14 +29,14 @@ class SocketConfig: ObservableObject {
     
     @Published var material: SurfaceMaterial
     @Published var style: SurfaceStyle
-    @Published var volume: Volume
+    @Published var volume: BiscuitVolume
     @Published var type: SocketType
     
-    @Published var format: Format = .corner {
+    @Published var shape: Shape = .corner {
         
         didSet {
             
-            switch format {
+            switch shape {
             case .corner: type = .corner(ordinal)
             case .edge: type = .edge(cardinal)
             }
@@ -49,7 +49,7 @@ class SocketConfig: ObservableObject {
             
             if cardinal != oldValue {
                 
-                format = .edge
+                shape = .edge
             }
         }
     }
@@ -60,14 +60,14 @@ class SocketConfig: ObservableObject {
             
             if ordinal != oldValue {
                 
-                format = .corner
+                shape = .corner
             }
         }
     }
     
     init(material: SurfaceMaterial = .dirt,
          style: SurfaceStyle = .convex,
-         volume: Volume = .crown,
+         volume: BiscuitVolume = .crown,
          type: SocketType = .edge(.north)) {
         
         self.material = material
@@ -82,7 +82,7 @@ extension SocketConfig {
     var hasStyle: Bool { false }
     var hasVolume: Bool { false }
     
-    func empty(style: SurfaceStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: .air, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
+    func empty(style: SurfaceStyle? = nil, volume: BiscuitVolume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: .air, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
     
-    func with(style: SurfaceStyle? = nil, volume: Volume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
+    func with(style: SurfaceStyle? = nil, volume: BiscuitVolume? = nil, type: SocketType? = nil) -> SocketConfig { .init(material: material, style: style ?? self.style, volume: volume ?? self.volume, type: type ?? self.type) }
 }
