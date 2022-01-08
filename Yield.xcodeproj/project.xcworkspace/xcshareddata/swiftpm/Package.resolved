@@ -5,8 +5,8 @@
         "package": "Euclid",
         "repositoryURL": "https://github.com/zilmarinen/Euclid.git",
         "state": {
-          "branch": "feature/vertex_color_component_new",
-          "revision": "2639a91243c350af0744988b71331ad457c41475",
+          "branch": "develop",
+          "revision": "03780e394e4da62c34939cc9d9cbdf8218c9a832",
           "version": null
         }
       },

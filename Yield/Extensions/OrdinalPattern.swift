@@ -7,16 +7,13 @@
 import Harvest
 import Meadow
 
-extension OrdinalPattern where T == SurfaceMaterial {
-    
-    public var isEmpty: Bool { isHomogenous(with: .air) }
-    public var isFull: Bool { !contains(value: .air) }
+extension OrdinalPattern where T == SurfaceSocket {
     
     public var count: Int {
         
-        return  (value(for: .northWest) == .air ? 0 : 1) +
-                (value(for: .northEast) == .air ? 0 : 1) +
-                (value(for: .southEast) == .air ? 0 : 1) +
-                (value(for: .southWest) == .air ? 0 : 1)
+        return  (value(for: .northWest).outer ? 0 : 1) +
+                (value(for: .northEast).outer ? 0 : 1) +
+                (value(for: .southEast).outer ? 0 : 1) +
+                (value(for: .southWest).outer ? 0 : 1)
     }
 }

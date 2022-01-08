@@ -8,32 +8,17 @@ import Meadow
 import SceneKit
 import SwiftUI
 
-struct SocketMaterialView: View {
+struct SocketView: View {
     
     let title: String
     
-    let material: SurfaceMaterial
+    let occupied: Bool
 
     var body: some View {
         
         ToolPropertyView(title: title, color: .pink) {
 
-            BadgeView(model: .init(title: "\(material)", color: (material != .air ? .pink : .gray)))
-        }
-    }
-}
-
-struct SocketVolumeView: View {
-    
-    let title: String
-    
-    let volume: SurfaceVolume
-
-    var body: some View {
-        
-        ToolPropertyView(title: title, color: .pink) {
-
-            BadgeView(model: .init(title: "\(volume)", color: (volume != .empty ? .pink : .gray)))
+            BadgeView(model: .init(title: "\(occupied ? "o" : "x")", color: (occupied ? .pink : .gray)))
         }
     }
 }
@@ -46,21 +31,12 @@ struct SocketsView: View {
         
         ToolPropertySection {
 
-            ToolPropertyGroup(model: .init(title: "Sockets", badge: .init(title: "\(prototype.sockets.count)", color: .pink))) {
+            ToolPropertyGroup(model: .init(title: "Materials", badge: .init(title: "\(prototype.sockets.bitmask)", color: .pink))) {
 
-                SocketMaterialView(title: "North West", material: prototype.sockets.material(for: .northWest))
-                SocketMaterialView(title: "North East", material: prototype.sockets.material(for: .northEast))
-                SocketMaterialView(title: "South East", material: prototype.sockets.material(for: .southEast))
-                SocketMaterialView(title: "South West", material: prototype.sockets.material(for: .southWest))
-            }
-            .padding(.bottom, YieldApp.Constants.padding)
-            
-            ToolPropertyGroup() {
-                
-                SocketVolumeView(title: "North West", volume: prototype.sockets.volume(for: .northWest))
-                SocketVolumeView(title: "North East", volume: prototype.sockets.volume(for: .northEast))
-                SocketVolumeView(title: "South East", volume: prototype.sockets.volume(for: .southEast))
-                SocketVolumeView(title: "South West", volume: prototype.sockets.volume(for: .southWest))
+                SocketView(title: "North West", occupied: prototype.sockets.value(for: .northWest).outer)
+                SocketView(title: "North East", occupied: prototype.sockets.value(for: .northEast).outer)
+                SocketView(title: "South East", occupied: prototype.sockets.value(for: .southEast).outer)
+                SocketView(title: "South West", occupied: prototype.sockets.value(for: .southWest).outer)
             }
         }
     }

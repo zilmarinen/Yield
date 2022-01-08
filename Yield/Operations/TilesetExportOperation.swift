@@ -19,31 +19,25 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
         
         for material in SurfaceMaterial.solids {
             
-            let edgeConfig = SocketConfig(material: material, style: .concave, volume: .crown, type: .edge(.north))
-            let grooveConfig = SocketConfig(material: material, style: .concave, volume: .crown, type: .corner(.northWest))
-            let innerCornerConfig = SocketConfig(material: material, style: .concave, volume: .crown, type: .corner(.southWest))
-            let outerCornerConfig = SocketConfig(material: material, style: .concave, volume: .crown, type: .corner(.northWest))
-            let plateauConfig = SocketConfig(material: material, style: .concave, volume: .crown, type: .edge(.north))
+            prototypes.append(MonoEdge(shape: .concave, material: material, volume: .crown, cardinal: .north))
+            prototypes.append(MonoEdge(shape: .straight, material: material, volume: .crown, cardinal: .north))
+            prototypes.append(MonoEdge(shape: .convex, material: material, volume: .crown, cardinal: .north))
             
-            prototypes.append(MonoEdge(config: edgeConfig.with(style: .concave)))
-            prototypes.append(MonoEdge(config: edgeConfig.with(style: .straight)))
-            prototypes.append(MonoEdge(config: edgeConfig.with(style: .convex)))
+            prototypes.append(MonoGroove(shape: .concave, material: material, volume: .crown, ordinal: .northWest))
+            prototypes.append(MonoGroove(shape: .straight, material: material, volume: .crown, ordinal: .northWest))
+            prototypes.append(MonoGroove(shape: .convex, material: material, volume: .crown, ordinal: .northWest))
             
-            prototypes.append(MonoGroove(config: grooveConfig.with(style: .concave)))
-            prototypes.append(MonoGroove(config: grooveConfig.with(style: .straight)))
-            prototypes.append(MonoGroove(config: grooveConfig.with(style: .convex)))
+            prototypes.append(MonoInnerCorner(shape: .concave, material: material, volume: .crown, ordinal: .southWest))
+            prototypes.append(MonoInnerCorner(shape: .convex, material: material, volume: .crown, ordinal: .southWest))
             
-            prototypes.append(MonoInnerCorner(config: innerCornerConfig.with(style: .concave)))
-            prototypes.append(MonoInnerCorner(config: innerCornerConfig.with(style: .convex)))
+            prototypes.append(MonoOuterCorner(shape: .concave, material: material, volume: .crown, ordinal: .northWest))
+            prototypes.append(MonoOuterCorner(shape: .straight, material: material, volume: .crown, ordinal: .northWest))
+            prototypes.append(MonoOuterCorner(shape: .convex, material: material, volume: .crown, ordinal: .northWest))
             
-            prototypes.append(MonoOuterCorner(config: outerCornerConfig.with(style: .concave)))
-            prototypes.append(MonoOuterCorner(config: outerCornerConfig.with(style: .straight)))
-            prototypes.append(MonoOuterCorner(config: outerCornerConfig.with(style: .convex)))
-            
-            prototypes.append(MonoPlateau(config: plateauConfig))
+            prototypes.append(MonoPlateau(shape: .straight, material: material, volume: .crown))
         }
         
-        let exportOperation = PrototypeTileExportOperation(type: .mono, prototypes: prototypes, tileCache: Tileset(), fileCache: [:])
+        let exportOperation = PrototypeTileExportOperation(prototypes: prototypes, tileCache: Tileset(), fileCache: [:])
         
         let group = DispatchGroup()
         

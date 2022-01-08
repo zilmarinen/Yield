@@ -5,21 +5,22 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct CornerBiscuit {
     
-    let config: SocketConfig
-    
-    let insets: Insets
+    let shape: SurfaceShape
+    let material: SurfaceMaterial
+    let volume: BiscuitVolume
+    let ordinal: Ordinal
+    let inset: Inset
     
     var mesh: Mesh {
         
-        guard case let .corner(ordinal) = config.type else { return Mesh([]) }
-        
-        let apexColor = config.material.apexColor(volume: config.volume)
-        let edgeColor = config.material.edgeColor(volume: config.volume)
-        let baseColor = config.material.baseColor(volume: config.volume)
+        let apexColor = material.apexColor(volume: volume)
+        let edgeColor = material.edgeColor(volume: volume)
+        let baseColor = material.baseColor(volume: volume)
         
         let grid = SurfaceGrid()
         
@@ -28,26 +29,24 @@ struct CornerBiscuit {
         let (c0, c1) = ordinal.cardinals
         
         let lv1 = grid.corner(ordinal: ordinal)
-        let lv0 = grid.edge(cardinal: c0, ordinal: ordinal, inset: insets.left)
-        let lv2 = grid.edge(cardinal: c1, ordinal: ordinal, inset: insets.right)
-        let lv3 = grid.edge(cardinal: c1.opposite, ordinal: ordinal, inset: insets.right)
-        let lv4 = grid.edge(cardinal: c0.opposite, ordinal: ordinal, inset: insets.left)
+        let lv0 = grid.edge(cardinal: c0, ordinal: ordinal, inset: inset)
+        let lv2 = grid.edge(cardinal: c1, ordinal: ordinal, inset: inset)
+        let lv3 = grid.edge(cardinal: c1.opposite, ordinal: ordinal, inset: inset)
+        let lv4 = grid.edge(cardinal: c0.opposite, ordinal: ordinal, inset: inset)
         
         var lowerFace = [lv1]
         var edges: [Euclid.Polygon] = []
         
-        switch config.style {
+        switch shape {
             
         case .convex:
             
             let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.direction, steps: 4, variance: Prototype.Constants.insetDepth)
             let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.direction, steps: 4, variance: Prototype.Constants.insetDepth)
             
-            switch (insets.left, insets.right) {
-                
-            case (.inner, .inner),
-                (.inner, .none),
-                (.none, .inner):
+            switch inset {
+                            
+            case .inner:
                 
                 guard let lv5 = l0.points.dropLast().last,
                       let lv6 = l1.points.dropFirst().first else { break }
@@ -64,7 +63,7 @@ struct CornerBiscuit {
                 
                 edges.append(contentsOf: [e2p, e3p] + l0.polygons(color: edgeColor).dropLast() + l1.polygons(color: edgeColor).dropFirst())
                 
-            case (.none, .none):
+            case .none:
                 
                 lowerFace.append(contentsOf: l0.points + l1.points.dropFirst())
                 
@@ -83,7 +82,7 @@ struct CornerBiscuit {
             
         default:
             
-            let normal = -Vector.mean(c0.direction, c1.direction)
+            let normal = -(c0.direction + c1.direction)
             
             let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: 4, variance: Prototype.Constants.insetDepth)
             
@@ -97,8 +96,8 @@ struct CornerBiscuit {
         
         let upperFace = lowerFace.reversed().map { $0 + ceiling }
         
-        let lowerVertices = lowerFace.indices.map { Vertex(lowerFace[$0], -.y, lowerFace[$0], baseColor) }
-        let upperVertices = upperFace.indices.map { Vertex(upperFace[$0], .y, upperFace[$0], apexColor) }
+        let lowerVertices = lowerFace.indices.map { Vertex(lowerFace[$0], Vector(x: 0, y: -1, z: 0), lowerFace[$0], baseColor) }
+        let upperVertices = upperFace.indices.map { Vertex(upperFace[$0], Vector(x: 0, y: 1, z: 0), upperFace[$0], apexColor) }
         
         guard let e0p = e0.polygon(color: edgeColor),
               let e1p = e1.polygon(color: edgeColor),

@@ -21,36 +21,12 @@ extension SurfaceMaterial {
         }
     }
     
-    var remainder: [SurfaceMaterial] {
-        
-        switch self {
-            
-        case .air: return []
-        case .dirt: return [.sand, .stone, .undergrowth]
-        case .sand: return [.dirt, .stone, .undergrowth]
-        case .stone: return [.dirt, .sand, .undergrowth]
-        case .undergrowth: return [.dirt, .sand, .stone]
-        }
-    }
-    
     func inset(volume: BiscuitVolume) -> Inset {
         
         switch volume {
         case .crown: return self == .dirt ? .inner : .none
         case .throne: return self == .stone ? .inner : .none
         default: return .none
-        }
-    }
-    
-    func adjacentInset(volume: BiscuitVolume, material: SurfaceMaterial) -> Inset {
-        
-        switch volume {
-            
-        case .throne:
-            
-            return material.inset(volume: volume).opposite
-            
-        default: return inset(volume: volume)
         }
     }
     

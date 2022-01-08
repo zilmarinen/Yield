@@ -4,6 +4,7 @@
 //  Created by Zack Brown on 28/10/2021.
 //
 
+import Harvest
 import Meadow
 import SwiftUI
 
@@ -19,9 +20,9 @@ struct PrototypeToolView: View {
 
             ToolPropertyGroup(model: .init(title: "Tileset", imageName: "square.grid.3x3")) {
                 
-                ToolPropertyView(title: "Shape", color: .pink) {
+                ToolPropertyView(title: "Tile", color: .pink) {
 
-                    Picker("Shape", selection: $prototype.tile) {
+                    Picker("Tile", selection: $prototype.tile) {
 
                         ForEach(Tile.allCases, id: \.self) { tile in
 
@@ -30,13 +31,35 @@ struct PrototypeToolView: View {
                     }
                 }
                 
-                ToolPropertyView(title: "Type", color: .pink) {
+                ToolPropertyView(title: "Shape", color: .pink) {
 
-                    Picker("Type", selection: $prototype.type) {
+                    Picker("Shape", selection: $prototype.shape) {
 
-                        ForEach(TileType.allCases, id: \.self) { type in
+                        ForEach(SurfaceShape.allCases, id: \.self) { shape in
 
-                            Text(type.id.capitalized).tag(type)
+                            Text(shape.id.capitalized).tag(shape)
+                        }
+                    }
+                }
+                
+                ToolPropertyView(title: "Material", color: .pink) {
+
+                    Picker("Material", selection: $prototype.material) {
+
+                        ForEach(SurfaceMaterial.allCases, id: \.self) { material in
+
+                            Text(material.id.capitalized).tag(material)
+                        }
+                    }
+                }
+                
+                ToolPropertyView(title: "Volume", color: .pink) {
+
+                    Picker("Volume", selection: $prototype.volume) {
+
+                        ForEach(BiscuitVolume.solids, id: \.self) { volume in
+
+                            Text(volume.id.capitalized).tag(volume)
                         }
                     }
                 }

@@ -12,25 +12,18 @@ class SocketNode: WireframeNode {
     
     enum Constants {
         
-        static let socketSize = Vector(x: 0.1, y: 0.1, z: 0.1)
+        static let socketSize = Vector(x: 0.05, y: 0.05, z: 0.05)
     }
     
     lazy var socket: SCNNode = { SCNNode(geometry: SCNBox(width: Constants.socketSize.x, height: Constants.socketSize.y, length: Constants.socketSize.z, chamferRadius: 0)) }()
     
-    var material: SurfaceMaterial = .air {
+    var occupied: Bool = false {
         
         didSet {
             
-            guard material != .air else {
-                
-                isHidden = true
-                
-                return
-            }
+            isHidden = !occupied
             
-            isHidden = false
-            
-            socket.geometry?.firstMaterial?.diffuse.contents = material.colors.primary.osColor
+            socket.geometry?.firstMaterial?.diffuse.contents = occupied ? Color.green : Color.clear
         }
     }
     

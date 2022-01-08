@@ -13,15 +13,13 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
     
     public var output: Result<(Tileset, [String : FileWrapper]), Error> = Result { throw ResultError.noResult }
     
-    let type: TileType
     let prototypes: [PrototypeTile]
     
     var tileCache: Tileset
     var fileCache: [String : FileWrapper]
     
-    init(type: TileType, prototypes: [PrototypeTile], tileCache: Tileset, fileCache: [String : FileWrapper]) {
+    init(prototypes: [PrototypeTile], tileCache: Tileset, fileCache: [String : FileWrapper]) {
         
-        self.type = type
         self.prototypes = prototypes
         self.tileCache = tileCache
         self.fileCache = fileCache
@@ -40,13 +38,11 @@ class PrototypeTileExportOperation: ConcurrentOperation, ProducesResult {
                 
                 let identifier = "surface_tile_\(id)"
                 
-                let tile = SurfaceTilesetTile(identifier: identifier, sockets: prototype.sockets, style: prototype.style)
+                let tile = SurfaceTilesetTile(identifier: identifier, sockets: prototype.sockets, shape: prototype.shape)
                 
                 tileCache.add(tile: tile)
                 
                 id += 1
-                
-                guard !prototype.sockets.isEmpty else { continue }
                 
                 let model = Model(mesh: prototype.mesh, tile: tile)
             
