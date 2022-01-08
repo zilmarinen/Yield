@@ -12,21 +12,13 @@ import Meadow
 class EditorTile: ObservableObject {
     
     @Published var tile: Tile = .edge
-    @Published var type: TileType = .mono
+    @Published var shape: SurfaceShape = .straight
+    @Published var material: SurfaceMaterial = .dirt
+    @Published var volume: BiscuitVolume = .crown
     
-    @Published var primary = SocketConfig(material: .dirt)
-    @Published var secondary = SocketConfig(material: .sand)
-    @Published var tertiary = SocketConfig(material: .stone)
-    @Published var quaternary = SocketConfig(material: .undergrowth)
+    var prototype: PrototypeTile { Prototype(tile: tile, shape: shape, material: material, volume: volume) }
     
-    var prototype: PrototypeTile { Prototype(tile: tile,
-                                             type: type,
-                                             primary: primary,
-                                             secondary: secondary,
-                                             tertiary: tertiary,
-                                             quaternary: quaternary) }
-    
-    var sockets: SurfaceSockets<SurfaceMaterial> { prototype.sockets }
+    var sockets: OrdinalPattern<SurfaceSocket> { prototype.sockets }
     
     var mesh: Mesh { prototype.mesh }
 }

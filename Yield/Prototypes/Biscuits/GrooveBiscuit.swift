@@ -5,38 +5,40 @@
 //
 
 import Euclid
+import Harvest
 import Meadow
 
 struct GrooveBiscuit {
     
-    let config: SocketConfig
-    
-    let insets: Insets
+    let shape: SurfaceShape
+    let material: SurfaceMaterial
+    let volume: BiscuitVolume
+    let ordinal: Ordinal
     
     var mesh: Mesh {
         
-        guard case let .corner(ordinal) = config.type else { return Mesh([]) }
-        
-        var surface = Surface(config: config).mesh
+        var surface = Surface(material: material, volume: volume).mesh
         
         let (o0, o1) = ordinal.ordinals
         
-        let b0 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o0)), insets: insets.rhs.opposite).mesh
+        let inset = material.inset(volume: volume).opposite
+        
+        let b0 = CornerBiscuit(shape: shape, material: material, volume: volume, ordinal: o0, inset: inset).mesh
         
         surface = surface.subtract(b0)
         
-        switch config.style {
+        switch shape {
             
         case .convex,
                 .straight:
-                
-            let b1 = CornerBiscuit(config: .init(material: config.material, style: config.style, volume: config.volume, type: .corner(o1)), insets: insets.lhs.opposite).mesh
+            
+            let b1 = CornerBiscuit(shape: shape, material: material, volume: volume, ordinal: o1, inset: inset).mesh
             
             return surface.subtract(b1)
             
         default:
             
-            let b1 = CornerBiscuit(config: .init(material: config.material, style: .convex, volume: config.volume, type: .corner(o1)), insets: insets.lhs.opposite).mesh
+            let b1 = CornerBiscuit(shape: .convex, material: material, volume: volume, ordinal: o1, inset: inset).mesh
             
             return surface.subtract(b1)
         }

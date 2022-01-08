@@ -33,8 +33,8 @@ extension ColorPalette {
                                     tertiary: Color(0.439, 0.345, 0.321),
                                     quaternary: Color(0.313, 0.231, 0.239))
     
-    static let undergrowth = ColorPalette(primary: Color(0.776, 0.835, 0.494),
-                                          secondary: Color(0.807, 0.989, 0.815),
-                                          tertiary: Color(0.764, 0.407, 0.223),
-                                          quaternary: Color(0.670, 0.427, 0.137))
+    static let undergrowth = ColorPalette(primary: Color(0.541, 0.525, 0.207),
+                                          secondary: Color(0.196, 0.313, 0.180),
+                                          tertiary: Color(0.490, 0.352, 0.313),
+                                          quaternary: Color(0.525, 0.329, 0.223))
 }

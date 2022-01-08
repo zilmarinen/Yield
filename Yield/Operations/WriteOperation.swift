@@ -27,9 +27,9 @@ class WriteOperation: ConcurrentOperation, ConsumesResult, ProducesResult {
             
             var (tileset, wrappers) = try input.get()
             
-            let data = try JSONEncoder().encode(tileset)
+            let data = try JSONEncoder().encode(tileset.tiles)
             
-            wrappers["yield.json"] = FileWrapper(regularFileWithContents: data)
+            wrappers["surface_tilemap.json"] = FileWrapper(regularFileWithContents: data)
             
             let wrapper = FileWrapper(directoryWithFileWrappers: wrappers)
             

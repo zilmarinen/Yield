@@ -12,13 +12,13 @@ struct SocketView: View {
     
     let title: String
     
-    let material: SurfaceMaterial
+    let occupied: Bool
 
     var body: some View {
         
         ToolPropertyView(title: title, color: .pink) {
 
-            BadgeView(model: .init(title: "\(material)", color: (material != .air ? .pink : .gray)))
+            BadgeView(model: .init(title: "\(occupied ? "o" : "x")", color: (occupied ? .pink : .gray)))
         }
     }
 }
@@ -31,21 +31,12 @@ struct SocketsView: View {
         
         ToolPropertySection {
 
-            ToolPropertyGroup(model: .init(title: "Sockets", badge: .init(title: "\(prototype.sockets.count)", color: .pink))) {
+            ToolPropertyGroup(model: .init(title: "Materials", badge: .init(title: "\(prototype.sockets.bitmask)", color: .pink))) {
 
-                SocketView(title: "[nX, pY, pZ]", material: prototype.sockets.upper.value(for: .northWest))
-                SocketView(title: "[pX, pY, pZ]", material: prototype.sockets.upper.value(for: .northEast))
-                SocketView(title: "[pX, pY, nZ]", material: prototype.sockets.upper.value(for: .southEast))
-                SocketView(title: "[nX, pY, nZ]", material: prototype.sockets.upper.value(for: .southWest))
-            }
-            .padding(.bottom, YieldApp.Constants.padding)
-            
-            ToolPropertyGroup() {
-                
-                SocketView(title: "[nX, nY, pZ]", material: prototype.sockets.lower.value(for: .northWest))
-                SocketView(title: "[pX, nY, pZ]", material: prototype.sockets.lower.value(for: .northEast))
-                SocketView(title: "[pX, nY, nZ]", material: prototype.sockets.lower.value(for: .southEast))
-                SocketView(title: "[nX, nY, nZ]", material: prototype.sockets.lower.value(for: .southWest))
+                SocketView(title: "North West", occupied: prototype.sockets.value(for: .northWest).outer)
+                SocketView(title: "North East", occupied: prototype.sockets.value(for: .northEast).outer)
+                SocketView(title: "South East", occupied: prototype.sockets.value(for: .southEast).outer)
+                SocketView(title: "South West", occupied: prototype.sockets.value(for: .southWest).outer)
             }
         }
     }
