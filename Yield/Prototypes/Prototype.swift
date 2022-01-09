@@ -46,11 +46,12 @@ extension Prototype {
         
         switch tile {
             
-        case .edge: return MonoEdge(shape: shape, material: material, volume: volume, cardinal: .north)
-        case .groove: return MonoGroove(shape: shape, material: material, volume: volume, ordinal: .northWest)
-        case .innerCorner: return MonoInnerCorner(shape: shape, material: material, volume: volume, ordinal: .southWest)
-        case .outerCorner: return MonoOuterCorner(shape: shape, material: material, volume: volume, ordinal: .northWest)
-        case .plateau: return MonoPlateau(shape: shape, material: material, volume: volume)
+        case .edge: return PrototypeEdge(shape: shape, material: material, volume: volume, cardinal: .north)
+        case .groove: return PrototypeGroove(shape: shape, material: material, volume: volume, ordinal: .northWest)
+        case .innerCorner: return PrototypeInnerCorner(shape: shape, material: material, volume: volume, ordinal: .southWest)
+        case .outerCorner: return PrototypeOuterCorner(shape: shape, material: material, volume: volume, ordinal: .northWest)
+        case .plateau: return PrototypePlateau(shape: shape, material: material, volume: volume)
+        case .scallopedEdge: return PrototypeScallopedEdge(shape: shape, material: material, volume: volume, ordinal: .northWest, cardinal: .north)
         }
     }
 }

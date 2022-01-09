@@ -17,24 +17,29 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
         
         var prototypes: [PrototypeTile] = []
         
-        for material in SurfaceMaterial.solids {
+        for volume in BiscuitVolume.solids {
             
-            prototypes.append(MonoEdge(shape: .concave, material: material, volume: .crown, cardinal: .north))
-            prototypes.append(MonoEdge(shape: .straight, material: material, volume: .crown, cardinal: .north))
-            prototypes.append(MonoEdge(shape: .convex, material: material, volume: .crown, cardinal: .north))
-            
-            prototypes.append(MonoGroove(shape: .concave, material: material, volume: .crown, ordinal: .northWest))
-            prototypes.append(MonoGroove(shape: .straight, material: material, volume: .crown, ordinal: .northWest))
-            prototypes.append(MonoGroove(shape: .convex, material: material, volume: .crown, ordinal: .northWest))
-            
-            prototypes.append(MonoInnerCorner(shape: .concave, material: material, volume: .crown, ordinal: .southWest))
-            prototypes.append(MonoInnerCorner(shape: .convex, material: material, volume: .crown, ordinal: .southWest))
-            
-            prototypes.append(MonoOuterCorner(shape: .concave, material: material, volume: .crown, ordinal: .northWest))
-            prototypes.append(MonoOuterCorner(shape: .straight, material: material, volume: .crown, ordinal: .northWest))
-            prototypes.append(MonoOuterCorner(shape: .convex, material: material, volume: .crown, ordinal: .northWest))
-            
-            prototypes.append(MonoPlateau(shape: .straight, material: material, volume: .crown))
+            for material in SurfaceMaterial.solids {
+                
+                prototypes.append(PrototypeEdge(shape: .concave, material: material, volume: volume, cardinal: .north))
+                prototypes.append(PrototypeEdge(shape: .straight, material: material, volume: volume, cardinal: .north))
+                prototypes.append(PrototypeEdge(shape: .convex, material: material, volume: volume, cardinal: .north))
+                
+                prototypes.append(PrototypeGroove(shape: .concave, material: material, volume: volume, ordinal: .northWest))
+                prototypes.append(PrototypeGroove(shape: .straight, material: material, volume: volume, ordinal: .northWest))
+                prototypes.append(PrototypeGroove(shape: .convex, material: material, volume: volume, ordinal: .northWest))
+                
+                prototypes.append(PrototypeInnerCorner(shape: .concave, material: material, volume: volume, ordinal: .southWest))
+                prototypes.append(PrototypeInnerCorner(shape: .convex, material: material, volume: volume, ordinal: .southWest))
+                
+                prototypes.append(PrototypeOuterCorner(shape: .concave, material: material, volume: volume, ordinal: .northWest))
+                prototypes.append(PrototypeOuterCorner(shape: .convex, material: material, volume: volume, ordinal: .northWest))
+                
+                prototypes.append(PrototypePlateau(shape: .straight, material: material, volume: volume))
+                
+                prototypes.append(PrototypeScallopedEdge(shape: .straight, material: material, volume: volume, ordinal: .northWest, cardinal: .north))
+                prototypes.append(PrototypeScallopedEdge(shape: .straight, material: material, volume: volume, ordinal: .northWest, cardinal: .west))
+            }
         }
         
         let exportOperation = PrototypeTileExportOperation(prototypes: prototypes, tileCache: Tileset(), fileCache: [:])

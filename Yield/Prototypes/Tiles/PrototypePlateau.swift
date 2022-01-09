@@ -1,5 +1,5 @@
 //
-//  MonoPlateau.swift
+//  PrototypePlateau.swift
 //
 //  Created by Zack Brown on 25/10/2021.
 //
@@ -8,7 +8,7 @@ import Euclid
 import Harvest
 import Meadow
 
-struct MonoPlateau: PrototypeTile {
+struct PrototypePlateau: PrototypeTile {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial

@@ -1,5 +1,5 @@
 //
-//  MonoEdge.swift
+//  PrototypeEdge.swift
 //
 //  Created by Zack Brown on 24/10/2021.
 //
@@ -8,7 +8,7 @@ import Euclid
 import Harvest
 import Meadow
 
-struct MonoEdge: PrototypeTile {
+struct PrototypeEdge: PrototypeTile {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial

@@ -11,7 +11,15 @@ import Meadow
 
 class EditorTile: ObservableObject {
     
-    @Published var tile: Tile = .edge
+    @Published var tile: Tile = .edge {
+        
+        didSet {
+            
+            guard let validShape = tile.shapes.first else { return }
+            
+            shape = validShape
+        }
+    }
     @Published var shape: SurfaceShape = .straight
     @Published var material: SurfaceMaterial = .dirt
     @Published var volume: BiscuitVolume = .crown

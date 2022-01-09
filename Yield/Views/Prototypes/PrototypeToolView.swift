@@ -35,7 +35,7 @@ struct PrototypeToolView: View {
 
                     Picker("Shape", selection: $prototype.shape) {
 
-                        ForEach(SurfaceShape.allCases, id: \.self) { shape in
+                        ForEach(prototype.tile.shapes, id: \.self) { shape in
 
                             Text(shape.id.capitalized).tag(shape)
                         }

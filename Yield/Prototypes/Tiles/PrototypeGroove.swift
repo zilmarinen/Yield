@@ -1,5 +1,5 @@
 //
-//  MonoGroove.swift
+//  PrototypeGroove.swift
 //
 //  Created by Zack Brown on 29/10/2021.
 //
@@ -8,7 +8,7 @@ import Euclid
 import Harvest
 import Meadow
 
-struct MonoGroove: PrototypeTile {
+struct PrototypeGroove: PrototypeTile {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial

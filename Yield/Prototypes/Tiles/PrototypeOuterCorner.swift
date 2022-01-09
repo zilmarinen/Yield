@@ -1,5 +1,5 @@
 //
-//  MonoInnerCorner.swift
+//  PrototypeOuterCorner.swift
 //
 //  Created by Zack Brown on 28/10/2021.
 //
@@ -8,7 +8,7 @@ import Euclid
 import Harvest
 import Meadow
 
-struct MonoInnerCorner: PrototypeTile {
+struct PrototypeOuterCorner: PrototypeTile {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial
@@ -19,12 +19,7 @@ struct MonoInnerCorner: PrototypeTile {
         
         var sockets = OrdinalPattern<SurfaceSocket>(value: SurfaceSocket())
         
-        let (o0, o1) = ordinal.ordinals
-        
-        sockets.set(value: SurfaceSocket(inner: shape != .convex, outer: false), ordinal: ordinal)
-        sockets.set(value: SurfaceSocket(inner: true, outer: true), ordinal: ordinal.opposite)
-        sockets.set(value: SurfaceSocket(inner: true, outer: true), ordinal: o0)
-        sockets.set(value: SurfaceSocket(inner: true, outer: true), ordinal: o1)
+        sockets.set(value: SurfaceSocket(inner: shape == .convex, outer: true), ordinal: ordinal)
         
         return sockets
     }
@@ -38,10 +33,10 @@ struct MonoInnerCorner: PrototypeTile {
         for volume in volumes {
             
             let surface = Surface(material: material, volume: volume).mesh
+                
+            let biscuit = CornerBiscuit(shape: shape, material: material, volume: volume, ordinal: ordinal, inset: material.inset(volume: volume)).mesh
             
-            let biscuit = CornerBiscuit(shape: shape, material: material, volume: volume, ordinal: ordinal, inset: material.inset(volume: volume).opposite).mesh
-            
-            result = result.union(surface.subtract(biscuit))
+            result = result.union(surface.intersect(biscuit))
         }
         
         return result

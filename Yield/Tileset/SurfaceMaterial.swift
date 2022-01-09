@@ -25,8 +25,7 @@ extension SurfaceMaterial {
         
         switch volume {
         case .crown: return self == .dirt ? .inner : .none
-        case .throne: return self == .stone ? .inner : .none
-        default: return .none
+        default: return self == .stone ? .inner : .none
         }
     }
     
