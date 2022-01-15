@@ -10,11 +10,19 @@ import Meadow
 
 struct PrototypeScallopedEdge: PrototypeTile {
     
-    let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     let ordinal: Ordinal
     let cardinal: Cardinal
+    
+    var rotations: [Ordinal] { Ordinal.allCases }
+    
+    var variation: Int {
+        
+        let (o0, _) = cardinal.ordinals
+        
+        return Tile.scallopedEdge.bitmask + (ordinal == o0 ? 0 : 1)
+    }
     
     var sockets: OrdinalPattern<SurfaceSocket> {
         
@@ -31,7 +39,7 @@ struct PrototypeScallopedEdge: PrototypeTile {
     
     var mesh: Mesh {
         
-        let volumes: [BiscuitVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
+        let volumes: [SurfaceVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

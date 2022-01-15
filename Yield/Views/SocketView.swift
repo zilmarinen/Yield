@@ -12,13 +12,13 @@ struct SocketView: View {
     
     let title: String
     
-    let occupied: Bool
+    let material: SurfaceMaterial
 
     var body: some View {
         
         ToolPropertyView(title: title, color: .pink) {
 
-            BadgeView(model: .init(title: "\(occupied ? "o" : "x")", color: (occupied ? .pink : .gray)))
+            BadgeView(model: .init(title: "\(material)", color: (material != .air ? .pink : .gray)))
         }
     }
 }
@@ -33,10 +33,10 @@ struct SocketsView: View {
 
             ToolPropertyGroup(model: .init(title: "Materials", badge: .init(title: "\(prototype.sockets.bitmask)", color: .pink))) {
 
-                SocketView(title: "North West", occupied: prototype.sockets.value(for: .northWest).outer)
-                SocketView(title: "North East", occupied: prototype.sockets.value(for: .northEast).outer)
-                SocketView(title: "South East", occupied: prototype.sockets.value(for: .southEast).outer)
-                SocketView(title: "South West", occupied: prototype.sockets.value(for: .southWest).outer)
+                SocketView(title: "North West", material: prototype.sockets.value(for: .northWest).outer ? prototype.material : .air)
+                SocketView(title: "North East", material: prototype.sockets.value(for: .northEast).outer ? prototype.material : .air)
+                SocketView(title: "South East", material: prototype.sockets.value(for: .southEast).outer ? prototype.material : .air)
+                SocketView(title: "South West", material: prototype.sockets.value(for: .southWest).outer ? prototype.material : .air)
             }
         }
     }

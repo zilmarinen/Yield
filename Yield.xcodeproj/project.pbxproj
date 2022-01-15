@@ -51,9 +51,7 @@
 		187213D027214BBC00FAC4E0 /* SocketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187213CF27214BBC00FAC4E0 /* SocketView.swift */; };
 		18808E292747955800A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E282747955800A9B019 /* Harvest */; };
 		18808E2B2747956000A9B019 /* Harvest in Frameworks */ = {isa = PBXBuildFile; productRef = 18808E2A2747956000A9B019 /* Harvest */; };
-		189937CF2779F34F00B2A1CA /* BiscuitVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */; };
-		189937D02779F6B000B2A1CA /* BiscuitVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */; };
-		189F0EB4271B1B680077B81D /* Tileset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189F0EB3271B1B680077B81D /* Tileset.swift */; };
+		18866AFC278D747E00FF4C69 /* SurfaceShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18866AFB278D747E00FF4C69 /* SurfaceShape.swift */; };
 		18AE8C09272D778700E21E7F /* SocketSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE8C08272D778700E21E7F /* SocketSet.swift */; };
 		18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960827269A4200FBF50D /* PrototypePlateau.swift */; };
 		18B1960C2726A06C00FBF50D /* EditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1960B2726A06C00FBF50D /* EditorScene.swift */; };
@@ -132,8 +130,7 @@
 		187213CB272149D500FAC4E0 /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
 		187213CF27214BBC00FAC4E0 /* SocketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketView.swift; sourceTree = "<group>"; };
 		18808E272747954B00A9B019 /* Harvest */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Harvest; path = ../Harvest; sourceTree = "<group>"; };
-		189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiscuitVolume.swift; sourceTree = "<group>"; };
-		189F0EB3271B1B680077B81D /* Tileset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tileset.swift; sourceTree = "<group>"; };
+		18866AFB278D747E00FF4C69 /* SurfaceShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurfaceShape.swift; sourceTree = "<group>"; };
 		18AE8C08272D778700E21E7F /* SocketSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketSet.swift; sourceTree = "<group>"; };
 		18B1960827269A4200FBF50D /* PrototypePlateau.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrototypePlateau.swift; sourceTree = "<group>"; };
 		18B1960B2726A06C00FBF50D /* EditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorScene.swift; sourceTree = "<group>"; };
@@ -175,14 +172,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1818463E273D0F900043BF26 /* Tileset */ = {
-			isa = PBXGroup;
-			children = (
-				189F0EB3271B1B680077B81D /* Tileset.swift */,
-			);
-			path = Tileset;
-			sourceTree = "<group>";
-		};
 		1818463F273D0FA20043BF26 /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,7 +200,6 @@
 				182B4F132733DD8E0081C6BF /* StraightLine.swift */,
 				182B4F152733DECF0081C6BF /* Inset.swift */,
 				182B4F112733CA410081C6BF /* SurfaceGrid.swift */,
-				189937CE2779F34F00B2A1CA /* BiscuitVolume.swift */,
 			);
 			path = Prototypes;
 			sourceTree = "<group>";
@@ -298,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				184D204527479B07005256A7 /* OrdinalPattern.swift */,
+				18866AFB278D747E00FF4C69 /* SurfaceShape.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -307,7 +296,6 @@
 			children = (
 				18184640273D10300043BF26 /* Model */,
 				1818463F273D0FA20043BF26 /* Editor */,
-				1818463E273D0F900043BF26 /* Tileset */,
 				186B7D2F27298CE6001731C2 /* SurfaceMaterial.swift */,
 			);
 			path = Tileset;
@@ -536,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				184D204727479C78005256A7 /* OrdinalPattern.swift in Sources */,
-				189937D02779F6B000B2A1CA /* BiscuitVolume.swift in Sources */,
 				18667DA1273C087300F13E4D /* PreviewViewController.swift in Sources */,
 				18667DA3273C087300F13E4D /* PreviewProvider.swift in Sources */,
 				18667DC8273C0A9D00F13E4D /* ColorPalette.swift in Sources */,
@@ -561,12 +548,10 @@
 				1827F12A2725717B0030B099 /* PrototypeEdge.swift in Sources */,
 				18D31ADD2719CC74006312BF /* ToolPropertyView.swift in Sources */,
 				182B4EFE272ED4A50081C6BF /* EditorTile.swift in Sources */,
-				189937CF2779F34F00B2A1CA /* BiscuitVolume.swift in Sources */,
 				186B7D4A272ADBF0001731C2 /* PrototypeToolView.swift in Sources */,
 				18643046271DACBB003575D4 /* Tile.swift in Sources */,
 				18D31AE02719CCB3006312BF /* ToolPropertyGroupModel.swift in Sources */,
 				182B4F122733CA410081C6BF /* SurfaceGrid.swift in Sources */,
-				189F0EB4271B1B680077B81D /* Tileset.swift in Sources */,
 				182B4F142733DD8E0081C6BF /* StraightLine.swift in Sources */,
 				18184642273D103B0043BF26 /* Model.swift in Sources */,
 				186B7D3D272A8295001731C2 /* WobblyLine.swift in Sources */,
@@ -588,6 +573,7 @@
 				184D204627479B07005256A7 /* OrdinalPattern.swift in Sources */,
 				18D31ADB2719CC74006312BF /* ToolPropertyGroup.swift in Sources */,
 				18B1960927269A4200FBF50D /* PrototypePlateau.swift in Sources */,
+				18866AFC278D747E00FF4C69 /* SurfaceShape.swift in Sources */,
 				186B7D3827299547001731C2 /* ColorPalette.swift in Sources */,
 				186B7D4C272AE33D001731C2 /* EdgeBiscuit.swift in Sources */,
 				187213CC272149D500FAC4E0 /* EditorViewModel.swift in Sources */,

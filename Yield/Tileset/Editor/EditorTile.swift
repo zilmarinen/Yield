@@ -22,7 +22,7 @@ class EditorTile: ObservableObject {
     }
     @Published var shape: SurfaceShape = .straight
     @Published var material: SurfaceMaterial = .dirt
-    @Published var volume: BiscuitVolume = .crown
+    @Published var volume: SurfaceVolume = .crown
     
     var prototype: PrototypeTile { Prototype(tile: tile, shape: shape, material: material, volume: volume) }
     

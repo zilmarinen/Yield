@@ -12,7 +12,7 @@ struct EdgeBiscuit {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     let cardinal: Cardinal
     
     var mesh: Mesh {
@@ -66,8 +66,8 @@ struct EdgeBiscuit {
             let e1 = StraightLine(start: lv2, end: lv3)
             let e2 = StraightLine(start: lv1, end: lv2)
             
-            let l0 = WobblyLine(start: lv4, end: lv0, normal: cardinal.direction, steps: 4, variance: Prototype.Constants.insetDepth)
-            let l1 = WobblyLine(start: lv3, end: lv4, normal: -cardinal.direction, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l0 = WobblyLine(start: lv4, end: lv0, normal: cardinal.direction, steps: Prototype.Constants.edgeSteps, variance: Prototype.Constants.insetDepth)
+            let l1 = WobblyLine(start: lv3, end: lv4, normal: -cardinal.direction, steps: Prototype.Constants.edgeSteps, variance: Prototype.Constants.insetDepth)
             
             guard let e0p = e0.polygon(color: edgeColor),
                   let e1p = e1.polygon(color: edgeColor),

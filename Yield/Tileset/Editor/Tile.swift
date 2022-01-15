@@ -40,4 +40,17 @@ enum Tile: String, CaseIterable, Identifiable {
         case .scallopedEdge: return [.straight]
         }
     }
+    
+    var bitmask: Int {
+        
+        switch self {
+            
+        case .edge: return 0
+        case .groove: return 3
+        case .innerCorner: return 6
+        case .outerCorner: return 9
+        case .plateau: return 12
+        case .scallopedEdge: return 15
+        }
+    }
 }

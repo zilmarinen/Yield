@@ -5,11 +5,12 @@
 //
 
 import Foundation
+import Harvest
 import PeakOperation
 
 class WriteOperation: ConcurrentOperation, ConsumesResult, ProducesResult {
     
-    public var input: Result<(Tileset, [String : FileWrapper]), Error> = Result { throw ResultError.noResult }
+    public var input: Result<([SurfaceTilesetTile], [String : FileWrapper]), Error> = Result { throw ResultError.noResult }
     public var output: Result<Void, Error> = Result { throw ResultError.noResult }
     
     let url: URL
@@ -27,7 +28,7 @@ class WriteOperation: ConcurrentOperation, ConsumesResult, ProducesResult {
             
             var (tileset, wrappers) = try input.get()
             
-            let data = try JSONEncoder().encode(tileset.tiles)
+            let data = try JSONEncoder().encode(tileset)
             
             wrappers["surface_tilemap.json"] = FileWrapper(regularFileWithContents: data)
             

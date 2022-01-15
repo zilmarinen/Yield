@@ -21,7 +21,7 @@ extension SurfaceMaterial {
         }
     }
     
-    func inset(volume: BiscuitVolume) -> Inset {
+    func inset(volume: SurfaceVolume) -> Inset {
         
         switch volume {
         case .crown: return self == .dirt ? .inner : .none
@@ -29,7 +29,7 @@ extension SurfaceMaterial {
         }
     }
     
-    func apexColor(volume: BiscuitVolume) -> Color { volume == .crown ? colors.primary : colors.tertiary }
-    func edgeColor(volume: BiscuitVolume) -> Color { volume == .crown ? colors.secondary : colors.quaternary }
-    func baseColor(volume: BiscuitVolume) -> Color { volume == .crown ? colors.tertiary : colors.quaternary }
+    func apexColor(volume: SurfaceVolume) -> Color { volume == .crown ? colors.primary : colors.tertiary }
+    func edgeColor(volume: SurfaceVolume) -> Color { volume == .crown ? colors.secondary : colors.quaternary }
+    func baseColor(volume: SurfaceVolume) -> Color { volume == .crown ? colors.tertiary : colors.quaternary }
 }

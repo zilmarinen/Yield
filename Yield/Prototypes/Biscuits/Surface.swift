@@ -10,7 +10,7 @@ import Meadow
 struct Surface {
     
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     
     var mesh: Mesh {
         

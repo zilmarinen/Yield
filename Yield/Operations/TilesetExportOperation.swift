@@ -11,13 +11,13 @@ import PeakOperation
 
 class TilesetExportOperation: ConcurrentOperation, ProducesResult {
     
-    public var output: Result<(Tileset, [String : FileWrapper]), Error> = Result { throw ResultError.noResult }
+    public var output: Result<([SurfaceTilesetTile], [String : FileWrapper]), Error> = Result { throw ResultError.noResult }
     
     override func execute() {
         
         var prototypes: [PrototypeTile] = []
         
-        for volume in BiscuitVolume.solids {
+        for volume in SurfaceVolume.solids {
             
             for material in SurfaceMaterial.solids {
                 
@@ -35,14 +35,14 @@ class TilesetExportOperation: ConcurrentOperation, ProducesResult {
                 prototypes.append(PrototypeOuterCorner(shape: .concave, material: material, volume: volume, ordinal: .northWest))
                 prototypes.append(PrototypeOuterCorner(shape: .convex, material: material, volume: volume, ordinal: .northWest))
                 
-                prototypes.append(PrototypePlateau(shape: .straight, material: material, volume: volume))
+                prototypes.append(PrototypePlateau(material: material, volume: volume))
                 
-                prototypes.append(PrototypeScallopedEdge(shape: .straight, material: material, volume: volume, ordinal: .northWest, cardinal: .north))
-                prototypes.append(PrototypeScallopedEdge(shape: .straight, material: material, volume: volume, ordinal: .northWest, cardinal: .west))
+                prototypes.append(PrototypeScallopedEdge(material: material, volume: volume, ordinal: .northWest, cardinal: .north))
+                prototypes.append(PrototypeScallopedEdge(material: material, volume: volume, ordinal: .northWest, cardinal: .west))
             }
         }
         
-        let exportOperation = PrototypeTileExportOperation(prototypes: prototypes, tileCache: Tileset(), fileCache: [:])
+        let exportOperation = PrototypeTileExportOperation(prototypes: prototypes)
         
         let group = DispatchGroup()
         

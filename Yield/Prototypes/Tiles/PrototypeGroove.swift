@@ -12,8 +12,19 @@ struct PrototypeGroove: PrototypeTile {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     let ordinal: Ordinal
+    
+    var rotations: [Ordinal] {
+        
+        switch shape {
+        
+        case .concave: return Ordinal.allCases
+        default: return [.northWest, .northEast]
+        }
+    }
+    
+    var variation: Int { Tile.groove.bitmask + shape.bitmask }
     
     var sockets: OrdinalPattern<SurfaceSocket> {
         
@@ -32,7 +43,7 @@ struct PrototypeGroove: PrototypeTile {
     
     var mesh: Mesh {
         
-        let volumes: [BiscuitVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
+        let volumes: [SurfaceVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

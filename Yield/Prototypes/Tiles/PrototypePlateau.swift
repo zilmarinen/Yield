@@ -10,15 +10,18 @@ import Meadow
 
 struct PrototypePlateau: PrototypeTile {
     
-    let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
+    
+    var rotations: [Ordinal] { [.northWest] }
+    
+    var variation: Int { Tile.plateau.bitmask }
     
     var sockets: OrdinalPattern<SurfaceSocket> { OrdinalPattern<SurfaceSocket>(value: SurfaceSocket(inner: true, outer: true)) }
     
     var mesh: Mesh {
         
-        let volumes: [BiscuitVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
+        let volumes: [SurfaceVolume] = volume != .crown ? [.mantle] : [.crown, .throne]
         
         var result = Mesh([])
         

@@ -31,17 +31,6 @@ struct PrototypeToolView: View {
                     }
                 }
                 
-                ToolPropertyView(title: "Shape", color: .pink) {
-
-                    Picker("Shape", selection: $prototype.shape) {
-
-                        ForEach(prototype.tile.shapes, id: \.self) { shape in
-
-                            Text(shape.id.capitalized).tag(shape)
-                        }
-                    }
-                }
-                
                 ToolPropertyView(title: "Material", color: .pink) {
 
                     Picker("Material", selection: $prototype.material) {
@@ -57,9 +46,24 @@ struct PrototypeToolView: View {
 
                     Picker("Volume", selection: $prototype.volume) {
 
-                        ForEach(BiscuitVolume.solids, id: \.self) { volume in
+                        ForEach(SurfaceVolume.solids, id: \.self) { volume in
 
                             Text(volume.id.capitalized).tag(volume)
+                        }
+                    }
+                }
+                
+                if prototype.tile != .plateau,
+                   prototype.tile != .scallopedEdge {
+                    
+                    ToolPropertyView(title: "Shape", color: .pink) {
+
+                        Picker("Shape", selection: $prototype.shape) {
+
+                            ForEach(prototype.tile.shapes, id: \.self) { shape in
+
+                                Text(shape.id.capitalized).tag(shape)
+                            }
                         }
                     }
                 }

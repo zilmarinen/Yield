@@ -12,7 +12,7 @@ struct GrooveBiscuit {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     let ordinal: Ordinal
     
     var mesh: Mesh {

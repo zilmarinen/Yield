@@ -12,7 +12,7 @@ struct CornerBiscuit {
     
     let shape: SurfaceShape
     let material: SurfaceMaterial
-    let volume: BiscuitVolume
+    let volume: SurfaceVolume
     let ordinal: Ordinal
     let inset: Inset
     
@@ -41,8 +41,8 @@ struct CornerBiscuit {
             
         case .convex:
             
-            let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.direction, steps: 4, variance: Prototype.Constants.insetDepth)
-            let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.direction, steps: 4, variance: Prototype.Constants.insetDepth)
+            let l0 = WobblyLine(start: lv2, end: lv3, normal: c0.opposite.direction, steps: Prototype.Constants.edgeSteps, variance: Prototype.Constants.insetDepth)
+            let l1 = WobblyLine(start: lv4, end: lv0, normal: c1.direction, steps: Prototype.Constants.edgeSteps, variance: Prototype.Constants.insetDepth)
             
             switch inset {
                             
@@ -84,7 +84,7 @@ struct CornerBiscuit {
             
             let normal = -(c0.direction + c1.direction)
             
-            let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: 4, variance: Prototype.Constants.insetDepth)
+            let line = WobblyLine(start: lv2, end: lv0, normal: normal, steps: Prototype.Constants.edgeSteps, variance: Prototype.Constants.insetDepth)
             
             lowerFace.append(contentsOf: line.points)
             
