@@ -12,11 +12,22 @@ let package = Package(
                  targets: ["Yield"]),
     ],
     dependencies: [
+        .package(path: "../Bivouac"),
+        .package(path: "../Deltille"),
+        .package(path: "../Furrow"),
         .package(url: "git@github.com:nicklockwood/Euclid.git",
                  branch: "main"),
+        .package(path: "../Regolith"),
+        .package(path: "../Verdure")
     ],
     targets: [
         .target(name: "Yield",
-                dependencies: []),
+                dependencies: ["Bivouac",
+                               "Deltille",
+                               "Euclid",
+                               "Furrow",
+                               "Regolith",
+                               "Verdure"],
+                resources: [.process("Assets")]),
     ]
 )
