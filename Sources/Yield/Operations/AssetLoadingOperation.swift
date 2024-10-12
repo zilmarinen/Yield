@@ -20,7 +20,7 @@ public final class AssetLoadingOperation: ConcurrentOperation {
         
         let group = DispatchGroup()
         let queue = DispatchQueue(label: name ?? String(describing: self),
-                                          attributes: .concurrent)
+                                  attributes: .concurrent)
         
         let  operations = assets.map { $0.operation }
         

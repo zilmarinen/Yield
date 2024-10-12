@@ -10,6 +10,7 @@ public enum Asset: String,
                    CaseIterable,
                    Identifiable {
     
+    case building
     case foliage
     case path
     case terrain
@@ -23,6 +24,7 @@ extension Asset {
         
         switch self {
             
+        case .building: return BuildingMeshLoadingOperation()
         case .foliage: return FoliageMeshLoadingOperation()
         case .path: return PathMeshLoadingOperation()
         case .terrain: return TerrainKiteLoadingOperation()

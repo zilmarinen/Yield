@@ -43,6 +43,8 @@ public final class PathMeshLoadingOperation: ConcurrentOperation {
         
         pathCache.merge(meshes)
         
+        print("Loaded [\(meshes.count)] path meshes")
+        
         finish()
     }
 }

@@ -42,6 +42,8 @@ public final class TerrainKiteLoadingOperation: ConcurrentOperation {
         
         terrainCache.merge(meshes)
         
+        print("Loaded [\(meshes.count)] terrain kite meshes")
+        
         finish()
     }
 }

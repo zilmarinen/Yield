@@ -33,6 +33,8 @@ public final class FoliageMeshLoadingOperation: ConcurrentOperation {
         
         foliageCache.merge(meshes)
         
+        print("Loaded [\(meshes.count)] foliage meshes")
+        
         finish()
     }
 }

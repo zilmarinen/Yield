@@ -14,9 +14,10 @@ let package = Package(
     dependencies: [
         .package(path: "../Bivouac"),
         .package(path: "../Deltille"),
-        .package(path: "../Furrow"),
         .package(url: "git@github.com:nicklockwood/Euclid.git",
-                 branch: "main"),
+                 branch: "develop"),
+        .package(path: "../Furrow"),
+        .package(path: "../Lintel"),
         .package(path: "../Regolith"),
         .package(path: "../Verdure")
     ],
@@ -26,6 +27,7 @@ let package = Package(
                                "Deltille",
                                "Euclid",
                                "Furrow",
+                               "Lintel",
                                "Regolith",
                                "Verdure"],
                 resources: [.process("Assets")]),
