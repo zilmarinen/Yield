@@ -1,0 +1,3 @@
+# CHANGELOG
+
+## [0.1.0](https://github.com/zilmarinen/Yield/releases/tag/0.1.0) (05/01/2026)
