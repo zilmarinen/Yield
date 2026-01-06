@@ -12,11 +12,30 @@ let package = Package(
                  targets: ["Yield"]),
     ],
     dependencies: [
+        .package(path: "../Alluvium"),
+        .package(path: "../Cobble"),
         .package(path: "../Deltille"),
+        .package(path: "../Lintel"),
+        .package(path: "../Newel"),
+        .package(path: "../Verdure"),
     ],
     targets: [
+        .executableTarget(name: "Thresher",
+                          dependencies: ["Alluvium",
+                                         "Cobble",
+                                         "Deltille",
+                                         "Lintel",
+                                         "Newel",
+                                         "Verdure",
+                                         "Yield"],
+                          path: "Sources/Thresher"),
         .target(name: "Yield",
-                dependencies: ["Deltille"],
+                dependencies: ["Alluvium",
+                               "Cobble",
+                               "Deltille",
+                               "Lintel",
+                               "Newel",
+                               "Verdure"],
                 resources: [.process("Assets.xcassets")])
     ]
 )

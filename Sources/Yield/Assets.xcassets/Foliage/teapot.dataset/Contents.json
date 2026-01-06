@@ -1,0 +1,13 @@
+{
+  "data" : [
+    {
+      "filename" : "teapot.obj",
+      "idiom" : "universal",
+      "universal-type-identifier" : ""
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
