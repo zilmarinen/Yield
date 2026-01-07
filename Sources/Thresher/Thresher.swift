@@ -1,61 +1,95 @@
 //
 //  Thresher.swift
+//  Yield
 //
-//  Created by Zack Brown on 06/01/2026.
+//  Created by Zack Brown on 07/01/2026.
 //
 
 import Foundation
-import Yield
 
-@main
-public struct Thresher {
+internal class Thresher {
     
     internal enum Constant {
         
         static let assets = "Thresher.xcassets"
         static let contents = "Contents.json"
+        static let dataSet = ".dataset"
         static let directory = "/Sources/Yield/"
+        static let obj = ".obj"
     }
     
-    public static func main() {
+    internal let group = DispatchGroup()
+    internal let queue = OperationQueue()
+    
+    internal func execute() {
         
-        print("[Yield Thresher]")
+        // MARK: Setup
         
         let fileManager = FileManager.default
         
         let path = fileManager.currentDirectoryPath + Constant.directory + Constant.assets
+        let url = URL(fileURLWithPath: path)
         
-        let contents = Contents.default
-        let encoder = JSONEncoder.default
+        remove(file: path)
         
-        do {
+        // MARK: Meshing
+        
+        let operation = AssetCacheOperation()
+        
+        group.enter()
+        
+        operation.enqueue(on: queue) { [weak self] result in
+        
+            guard let self else { return }
             
-            let url = URL(fileURLWithPath: path)
-            
-            if fileManager.fileExists(atPath: path) {
+            switch result {
                 
-                try fileManager.removeItem(at: url)
+            case .success(let contents):
+                
+                let fileWrapper = FileWrapper(directoryWithFileWrappers: contents.files)
+                
+                self.write(fileWrapper: fileWrapper,
+                           to: url)
+                
+            case .failure(let error):
+                
+                print("Error: [\(error.localizedDescription)]")
             }
             
-            let data = try encoder.encode(contents)
-            
-            let json = FileWrapper(regularFileWithContents: data)
-            let folder = FileWrapper(directoryWithFileWrappers: [Constant.contents : json])
-            
-            let fileWrapper = FileWrapper(directoryWithFileWrappers: [Constant.contents : json,
-                                                                      "Type": folder])
-            
-            try fileWrapper.write(to: url,
-                                  originalContentsURL: url)
+            self.group.leave()
         }
-        catch {
-            
-            print("Error: \(error.localizedDescription)")
-        }
+        
+        group.wait()
     }
 }
 
 extension Thresher {
     
+    private func remove(file path: String) {
+        
+        guard FileManager.default.fileExists(atPath: path) else { return }
+        
+        do {
+            
+            try FileManager.default.removeItem(atPath: path)
+        }
+        catch {
+            
+            print("Error: [\(error.localizedDescription)]")
+        }
+    }
     
+    private func write(fileWrapper: FileWrapper,
+                       to url: URL) {
+        
+        do {
+            
+            try fileWrapper.write(to: url,
+                                  originalContentsURL: nil)
+        }
+        catch {
+            
+            print("Error: [\(error.localizedDescription)]")
+        }
+    }
 }

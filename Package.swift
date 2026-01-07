@@ -18,6 +18,8 @@ let package = Package(
         .package(path: "../Lintel"),
         .package(path: "../Newel"),
         .package(path: "../Verdure"),
+        .package(url: "git@github.com:3Squared/PeakOperation.git",
+                 branch: "master")
     ],
     targets: [
         .executableTarget(name: "Thresher",
@@ -26,6 +28,7 @@ let package = Package(
                                          "Deltille",
                                          "Lintel",
                                          "Newel",
+                                         "PeakOperation",
                                          "Verdure",
                                          "Yield"],
                           path: "Sources/Thresher"),

@@ -1,5 +1,5 @@
 {
-  "originHash" : "1f2ac65251984460cc2c4397ccf0495896aab866fafb744c6aad6713a385de4f",
+  "originHash" : "6417279ef4a723ebf369120df834f718fa5ef174b7681114d28b03db0ced97fe",
   "pins" : [
     {
       "identity" : "euclid",
@@ -8,6 +8,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "0409eab36ce4e726e5c66f8885500fb97b030994"
+      }
+    },
+    {
+      "identity" : "peakoperation",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:3Squared/PeakOperation.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f5070818152d65d001455992c0b414727f8e19d4"
       }
     }
   ],

@@ -1,6 +1,5 @@
 //
 //  JSONEncoder.swift
-//  Yield
 //
 //  Created by Zack Brown on 06/01/2026.
 //
