@@ -9,15 +9,6 @@ import Foundation
 
 internal class Thresher {
     
-    internal enum Constant {
-        
-        static let assets = "Thresher.xcassets"
-        static let contents = "Contents.json"
-        static let dataSet = ".dataset"
-        static let directory = "/Sources/Yield/"
-        static let obj = ".obj"
-    }
-    
     internal let group = DispatchGroup()
     internal let queue = OperationQueue()
     
@@ -27,7 +18,7 @@ internal class Thresher {
         
         let fileManager = FileManager.default
         
-        let path = fileManager.currentDirectoryPath + Constant.directory + Constant.assets
+        let path = fileManager.currentDirectoryPath + .directory + .assets
         let url = URL(fileURLWithPath: path)
         
         remove(file: path)

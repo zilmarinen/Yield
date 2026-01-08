@@ -9,69 +9,59 @@ import Foundation
 import PeakOperation
 import Yield
 
-internal class MeshingOperation: ConcurrentOperation,
-                                 ConsumesResult,
-                                 ProducesResult,
+internal class MeshingOperation: AssetCacheOperation,
                                  @unchecked Sendable {
     
-    typealias MeshingResult = (files: [String : FileWrapper],
-                               folder: String)
+    internal let category: Asset.Category
     
-    internal var input: Result<MeshingResult, Error> = Result { throw ResultError.noResult }
-    internal var output: Result<MeshingResult, Error> = Result { throw ResultError.noResult }
+    internal init(category: Asset.Category) {
+        
+        self.category = category
+        
+        super.init()
+        
+        self.name = category.id
+    }
     
     internal override func execute() {
         
-        print("Generating \(name ?? "") Meshes")
+        print("- Meshing \(category.id) Assets")
     }
     
     internal override func finish() {
         
         super.finish()
         
-        guard let startDate,
-              let finishDate else {
-            
-            return print(" - Finished Generating \(name ?? "") Meshes")
-        }
+        print(" - Finished Generating \(category.id) Meshes")
         
-        print(" - Finished Generating \(name ?? "") Meshes [\(finishDate.timeIntervalSince(startDate)) seconds]")
+        guard let startDate,
+              let finishDate else { return }
+        
+        print(String(format: " - %.2f seconds", finishDate.timeIntervalSince(startDate)))
     }
 }
 
 extension MeshingOperation {
     
-    internal func folder() throws -> [String : FileWrapper] {
-        
-        let contents = Contents.default
-        
-        let encoder = JSONEncoder.default
-        
-        let jsonData = try encoder.encode(contents)
-        
-        let jsonWrapper = FileWrapper(regularFileWithContents: jsonData)
-        
-        return [Thresher.Constant.contents : jsonWrapper]
-    }
-    
     internal func fileWrapper(for asset: Asset,
                               mesh: Mesh) throws -> FileWrapper {
         
-        let data = Contents.Data.init(filename: asset.id + Thresher.Constant.obj)
+        let data = Contents.Data.init(filename: asset.id + .obj)
         
         let contents = Contents.init(info: .default,
                                      data: [data])
         
         let encoder = JSONEncoder.default
         
-        let objData = try encoder.encode(mesh.objString())
+        guard let objData = mesh.objString().data(using: .utf8) else { throw CocoaError(.fileWriteUnsupportedScheme) }
+        
         let jsonData = try encoder.encode(contents)
         
         let objWrapper = FileWrapper(regularFileWithContents: objData)
         let jsonWrapper = FileWrapper(regularFileWithContents: jsonData)
         
-        let files = [asset.id + Thresher.Constant.obj : objWrapper,
-                     Thresher.Constant.contents : jsonWrapper]
+        let files = [asset.id + .obj : objWrapper,
+                     .contents : jsonWrapper]
         
         return FileWrapper(directoryWithFileWrappers: files)
     }

@@ -14,11 +14,9 @@ import Yield
 internal class FoliageMeshingOperation: MeshingOperation,
                                         @unchecked Sendable {
     
-    internal override init() {
+    internal init() {
         
-        super.init()
-        
-        self.name = Asset.Category.foliage.id
+        super.init(category: .foliage)
     }
     
     internal override func execute() {
@@ -40,13 +38,13 @@ internal class FoliageMeshingOperation: MeshingOperation,
                                             Mesh.canopyColorPalette,
                                             Mesh.trunkColorPalette)
                     
-                    files[asset.id + Thresher.Constant.dataSet] = try fileWrapper(for: asset,
-                                                                                  mesh: mesh)
+                    files[asset.id + .dataSet] = try fileWrapper(for: asset,
+                                                                 mesh: mesh)
                 }
             }
             
             output = .success((files,
-                               Asset.Category.foliage.id))
+                               category.id))
         }
         catch {
             

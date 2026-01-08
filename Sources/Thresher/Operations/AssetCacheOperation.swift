@@ -8,8 +8,14 @@
 import Foundation
 import PeakOperation
 
-internal class AssetCacheOperation: MeshingOperation,
+internal class AssetCacheOperation: ConcurrentOperation,
+                                    ProducesResult,
                                     @unchecked Sendable {
+    
+    typealias MeshingResult = (files: [String : FileWrapper],
+                               folder: String)
+    
+    internal var output: Result<MeshingResult, Error> = Result { throw ResultError.noResult }
     
     internal override init() {
         
@@ -21,14 +27,13 @@ internal class AssetCacheOperation: MeshingOperation,
     
     internal override func execute() {
         
-        super.execute()
-        
         do {
             
             var files = try folder()
             
             let operations = [FoliageMeshingOperation(),
-                              FootpathMeshingOperation()]
+                              FootpathMeshingOperation(),
+                              StepMeshingOperation()]
             
             let group = DispatchGroup()
             
@@ -58,7 +63,7 @@ internal class AssetCacheOperation: MeshingOperation,
             group.wait()
             
             output = .success((files,
-                               Thresher.Constant.assets))
+                               .assets))
         }
         catch {
             
@@ -66,5 +71,21 @@ internal class AssetCacheOperation: MeshingOperation,
         }
         
         finish()
+    }
+}
+
+extension AssetCacheOperation {
+    
+    internal func folder() throws -> [String : FileWrapper] {
+        
+        let contents = Contents.default
+        
+        let encoder = JSONEncoder.default
+        
+        let jsonData = try encoder.encode(contents)
+        
+        let jsonWrapper = FileWrapper(regularFileWithContents: jsonData)
+        
+        return [.contents : jsonWrapper]
     }
 }

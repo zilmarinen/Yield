@@ -17,11 +17,11 @@ public enum Asset: Identifiable {
                           CaseIterable,
                           Identifiable {
         
-        case bridges
-        case edifices
+        case bridge
+        case edifice
         case foliage
-        case footpaths
-        case steps
+        case footpath
+        case step
         
         public var id: String { rawValue.capitalized }
     }
@@ -31,7 +31,8 @@ public enum Asset: Identifiable {
     case edifice
     case foliage(_ septomino: Triangle.Septomino)
     case footpath
-    case steps
+    case steps(_ stoop: Stoop,
+               _ direction: Stoop.Direction)
     
     public var id: String {
         
@@ -40,9 +41,14 @@ public enum Asset: Identifiable {
         case .bridge: "Bridge"
         case .edifice: "Edifice"
         case .foliage(let septomino):
+            
             "Foliage_\(septomino.id)"
+            
         case .footpath: "Footpath"
-        case .steps: "Steps"
+        case .steps(let stoop,
+                    let direction):
+            
+            "Steps_\(stoop.id)_\(direction.id)"
         }
     }
     
@@ -50,11 +56,11 @@ public enum Asset: Identifiable {
         
         switch self {
             
-        case .bridge: .bridges
-        case .edifice: .edifices
+        case .bridge: .bridge
+        case .edifice: .edifice
         case .foliage: .foliage
-        case .footpath: .footpaths
-        case .steps: .steps
+        case .footpath: .footpath
+        case .steps: .step
         }
     }
 }

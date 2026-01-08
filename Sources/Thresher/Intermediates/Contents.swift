@@ -13,13 +13,11 @@ internal struct Contents: Codable {
         
         internal let filename: String
         internal let idiom: String
-        internal let universalTypeIdentifier : String
         
         internal init(filename: String) {
             
             self.filename = filename
             self.idiom = "universal"
-            self.universalTypeIdentifier = ""
         }
     }
     
