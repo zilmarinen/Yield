@@ -13,7 +13,7 @@ import PeakOperation
 import Yield
 
 internal class FootpathMeshingOperation: MeshingOperation,
-                                        @unchecked Sendable {
+                                         @unchecked Sendable {
     
     internal init() {
         

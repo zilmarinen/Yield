@@ -11,7 +11,9 @@ import Lintel
 import Newel
 import Verdure
 
-public enum Asset: Identifiable {
+public enum Asset: Hashable,
+                   Identifiable,
+                   Sendable {
     
     public enum Category: String,
                           CaseIterable,
@@ -28,7 +30,7 @@ public enum Asset: Identifiable {
 
     
     case bridge
-    case edifice
+    case edifice(_ septomino: Triangle.Septomino)
     case foliage(_ septomino: Triangle.Septomino)
     case footpath
     case steps(_ stoop: Stoop,
@@ -39,7 +41,10 @@ public enum Asset: Identifiable {
         switch self {
             
         case .bridge: "Bridge"
-        case .edifice: "Edifice"
+        case .edifice(let septomino):
+            
+            "Edifice_\(septomino.id)"
+            
         case .foliage(let septomino):
             
             "Foliage_\(septomino.id)"

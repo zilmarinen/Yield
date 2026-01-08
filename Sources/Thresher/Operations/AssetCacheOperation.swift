@@ -31,7 +31,8 @@ internal class AssetCacheOperation: ConcurrentOperation,
             
             var files = try folder()
             
-            let operations = [FoliageMeshingOperation(),
+            let operations = [EdificeMeshingOperation(),
+                              FoliageMeshingOperation(),
                               FootpathMeshingOperation(),
                               StepMeshingOperation()]
             

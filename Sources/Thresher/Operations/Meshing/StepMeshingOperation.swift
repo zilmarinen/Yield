@@ -12,7 +12,7 @@ import PeakOperation
 import Yield
 
 internal class StepMeshingOperation: MeshingOperation,
-                                        @unchecked Sendable {
+                                     @unchecked Sendable {
     
     internal init() {
         
