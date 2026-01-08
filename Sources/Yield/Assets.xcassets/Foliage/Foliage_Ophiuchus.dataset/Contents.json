@@ -1,12 +1,12 @@
 {
-  "data" : [
-    {
-      "idiom" : "universal",
-      "filename" : "Foliage_Ophiuchus.obj"
-    }
-  ],
   "info" : {
     "author" : "Yield",
     "version" : 1
-  }
+  },
+  "data" : [
+    {
+      "filename" : "Foliage_Ophiuchus.obj",
+      "idiom" : "universal"
+    }
+  ]
 }

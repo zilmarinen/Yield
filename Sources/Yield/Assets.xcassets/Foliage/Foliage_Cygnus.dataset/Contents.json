@@ -1,12 +1,12 @@
 {
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Cygnus.obj"
+      "filename" : "Foliage_Cygnus.obj",
+      "idiom" : "universal"
     }
   ]
 }

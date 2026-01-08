@@ -1,12 +1,12 @@
 {
-  "info" : {
-    "version" : 1,
-    "author" : "Yield"
-  },
   "data" : [
     {
       "filename" : "Steps_Large_Ascending.obj",
       "idiom" : "universal"
     }
-  ]
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  }
 }

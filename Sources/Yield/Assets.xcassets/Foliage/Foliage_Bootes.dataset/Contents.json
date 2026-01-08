@@ -5,8 +5,8 @@
   },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Bootes.obj"
+      "filename" : "Foliage_Bootes.obj",
+      "idiom" : "universal"
     }
   ]
 }

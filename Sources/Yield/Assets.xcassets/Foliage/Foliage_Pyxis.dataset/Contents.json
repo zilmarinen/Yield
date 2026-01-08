@@ -1,12 +1,12 @@
 {
-  "info" : {
-    "author" : "Yield",
-    "version" : 1
-  },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Pyxis.obj"
+      "filename" : "Foliage_Pyxis.obj",
+      "idiom" : "universal"
     }
-  ]
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  }
 }
