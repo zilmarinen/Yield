@@ -1,0 +1,12 @@
+{
+  "info" : {
+    "author" : "Yield",
+    "version" : 1
+  },
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Foliage_Grus.obj"
+    }
+  ]
+}
