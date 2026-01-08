@@ -12,10 +12,7 @@ internal class AssetCacheOperation: ConcurrentOperation,
                                     ProducesResult,
                                     @unchecked Sendable {
     
-    typealias MeshingResult = (files: [String : FileWrapper],
-                               folder: String)
-    
-    internal var output: Result<MeshingResult, Error> = Result { throw ResultError.noResult }
+    internal var output: Result<[String : FileWrapper], Error> = Result { throw ResultError.noResult }
     
     internal override init() {
         
@@ -27,12 +24,14 @@ internal class AssetCacheOperation: ConcurrentOperation,
     
     internal override func execute() {
         
+        print("\u{001B}[37m[Generating \(name ?? "")]\u{001B}[0m\n")
+        
         do {
             
-            var files = try folder()
+            var files = try Dictionary.folder()
             
             let operations = [EdificeMeshingOperation(),
-                              FoliageMeshingOperation(),
+                              //FoliageMeshingOperation(),
                               FootpathMeshingOperation(),
                               StepMeshingOperation()]
             
@@ -63,8 +62,7 @@ internal class AssetCacheOperation: ConcurrentOperation,
             
             group.wait()
             
-            output = .success((files,
-                               .assets))
+            output = .success(files)
         }
         catch {
             
@@ -73,20 +71,18 @@ internal class AssetCacheOperation: ConcurrentOperation,
         
         finish()
     }
-}
-
-extension AssetCacheOperation {
     
-    internal func folder() throws -> [String : FileWrapper] {
+    internal override func finish() {
         
-        let contents = Contents.default
+        super.finish()
         
-        let encoder = JSONEncoder.default
+        guard let startDate,
+              let finishDate else { return }
         
-        let jsonData = try encoder.encode(contents)
+        let duration = String(format: "%.2f",
+                              finishDate.timeIntervalSince(startDate))
         
-        let jsonWrapper = FileWrapper(regularFileWithContents: jsonData)
-        
-        return [.contents : jsonWrapper]
+        print("\u{001B}[37m[Finished Generating \(name ?? "")]\u{001B}[0m")
+        print("\u{001B}[32m[\(duration) seconds]\u{001B}[0m\n")
     }
 }

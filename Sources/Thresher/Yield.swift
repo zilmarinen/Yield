@@ -11,16 +11,12 @@ public struct Yield {
     
     public static func main() {
         
-        print("-------")
+        print("\n\u{001B}[94m-------")
         print("[Yield Thresher]")
-        print("-------")
+        print("-------\u{001B}[0m\n")
         
         let thresher = Thresher()
         
         thresher.execute()
-        
-        print("-------")
-        print("[Success]")
-        print("-------")
     }
 }

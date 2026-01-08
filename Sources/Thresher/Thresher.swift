@@ -37,7 +37,7 @@ internal class Thresher {
                 
             case .success(let contents):
                 
-                let fileWrapper = FileWrapper(directoryWithFileWrappers: contents.files)
+                let fileWrapper = FileWrapper(directoryWithFileWrappers: contents)
                 
                 self.write(fileWrapper: fileWrapper,
                            to: url)
