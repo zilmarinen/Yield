@@ -26,7 +26,7 @@ internal class FootpathMeshingOperation: MeshingOperation,
         
         do {
             
-            var files = try folder()
+            var files = try Dictionary.folder()
             
             //
             sleep(1)

@@ -25,7 +25,7 @@ internal class EdificeMeshingOperation: MeshingOperation,
         
         do {
             
-            var files = try folder()
+            var files = try Dictionary.folder()
             
             for septomino in Triangle.Septomino.allCases {
                 
