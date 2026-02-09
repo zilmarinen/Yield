@@ -1,5 +1,5 @@
 //
-//  StepMeshingOperation.swift
+//  StaircaseMeshingOperation.swift
 //
 //  Created by Zack Brown on 08/01/2026.
 //
@@ -11,8 +11,8 @@ import Newel
 import PeakOperation
 import Yield
 
-internal class StepMeshingOperation: MeshingOperation,
-                                     @unchecked Sendable {
+internal class StaircaseMeshingOperation: MeshingOperation,
+                                          @unchecked Sendable {
     
     internal init() {
         
@@ -27,14 +27,14 @@ internal class StepMeshingOperation: MeshingOperation,
             
             var files = try Dictionary.folder()
             
-            for stoop in Stoop.allCases {
+            for staircaseType in StaircaseType.allCases {
                 
-                for direction in Stoop.Direction.allCases {
+                for direction in StaircaseType.Direction.allCases {
                     
-                    let asset = Asset.steps(stoop,
+                    let asset = Asset.steps(staircaseType,
                                             direction)
                     
-                    let mesh = Mesh.staircase(stoop,
+                    let mesh = Mesh.staircase(staircaseType,
                                               7,
                                               1.0,
                                               direction)

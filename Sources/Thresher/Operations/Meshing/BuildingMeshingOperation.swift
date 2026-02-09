@@ -1,5 +1,5 @@
 //
-//  EdificeMeshingOperation.swift
+//  BuildingMeshingOperation.swift
 //
 //  Created by Zack Brown on 08/01/2026.
 //
@@ -11,12 +11,12 @@ import Lintel
 import PeakOperation
 import Yield
 
-internal class EdificeMeshingOperation: MeshingOperation,
-                                        @unchecked Sendable {
+internal class BuildingMeshingOperation: MeshingOperation,
+                                         @unchecked Sendable {
     
     internal init() {
         
-        super.init(category: .edifice)
+        super.init(category: .building)
     }
     
     internal override func execute() {
@@ -29,7 +29,7 @@ internal class EdificeMeshingOperation: MeshingOperation,
             
             for septomino in Triangle.Septomino.allCases {
                 
-                let asset = Asset.edifice(septomino)
+                let asset = Asset.building(septomino)
                 
                 let mesh = Mesh.building(septomino)
                 

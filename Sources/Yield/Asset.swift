@@ -20,40 +20,40 @@ public enum Asset: Hashable,
                           Identifiable {
         
         case bridge
-        case edifice
+        case building
         case foliage
         case footpath
-        case step
+        case staircase
         
         public var id: String { rawValue.capitalized }
     }
 
     
     case bridge
-    case edifice(_ septomino: Triangle.Septomino)
+    case building(_ septomino: Triangle.Septomino)
     case foliage(_ septomino: Triangle.Septomino)
     case footpath
-    case steps(_ stoop: Stoop,
-               _ direction: Stoop.Direction)
+    case staircase(_ staircaseType: StaircaseType,
+                   _ direction: StaircaseType.Direction)
     
     public var id: String {
         
         switch self {
             
         case .bridge: "Bridge"
-        case .edifice(let septomino):
+        case .building(let septomino):
             
-            "Edifice_\(septomino.id)"
+            "Building_\(septomino.id)"
             
         case .foliage(let septomino):
             
             "Foliage_\(septomino.id)"
             
         case .footpath: "Footpath"
-        case .steps(let stoop,
-                    let direction):
+        case .staircase(let staircaseType,
+                        let direction):
             
-            "Steps_\(stoop.id)_\(direction.id)"
+            "Steps_\(staircaseType.id)_\(direction.id)"
         }
     }
     
@@ -62,10 +62,10 @@ public enum Asset: Hashable,
         switch self {
             
         case .bridge: .bridge
-        case .edifice: .edifice
+        case .building: .building
         case .foliage: .foliage
         case .footpath: .footpath
-        case .steps: .step
+        case .staircase: .staircase
         }
     }
 }

@@ -30,10 +30,10 @@ internal class AssetCacheOperation: ConcurrentOperation,
             
             var files = try Dictionary.folder()
             
-            let operations = [EdificeMeshingOperation(),
-                              //FoliageMeshingOperation(),
+            let operations = [BuildingMeshingOperation(),
+                              FoliageMeshingOperation(),
                               FootpathMeshingOperation(),
-                              StepMeshingOperation()]
+                              StaircaseMeshingOperation()]
             
             let group = DispatchGroup()
             
