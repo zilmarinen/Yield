@@ -4,9 +4,9 @@
 //  Created by Zack Brown on 05/01/2026.
 //
 
+import Bivouac
 import Cobble
 import Deltille
-import Lattice
 import Lintel
 import Newel
 import Verdure
@@ -23,7 +23,7 @@ public enum Asset: Hashable,
         case building
         case foliage
         case footpath
-        case staircase
+        case slope
         
         public var id: String { rawValue.capitalized }
     }
@@ -33,8 +33,9 @@ public enum Asset: Hashable,
     case building(_ septomino: Triangle.Septomino)
     case foliage(_ septomino: Triangle.Septomino)
     case footpath
-    case staircase(_ staircaseType: StaircaseType,
-                   _ direction: StaircaseType.Direction)
+    case slope(_ slope: Slope,
+               _ rise: Rise,
+               _ cast: Cast)
     
     public var id: String {
         
@@ -50,10 +51,11 @@ public enum Asset: Hashable,
             "Foliage_\(septomino.id)"
             
         case .footpath: "Footpath"
-        case .staircase(let staircaseType,
-                        let direction):
+        case .slope(let slope,
+                    let rise,
+                    let cast):
             
-            "Steps_\(staircaseType.id)_\(direction.id)"
+            "Steps_\(slope.id)_\(cast.id)_\(rise.id)"
         }
     }
     
@@ -65,7 +67,7 @@ public enum Asset: Hashable,
         case .building: .building
         case .foliage: .foliage
         case .footpath: .footpath
-        case .staircase: .staircase
+        case .slope: .slope
         }
     }
 }

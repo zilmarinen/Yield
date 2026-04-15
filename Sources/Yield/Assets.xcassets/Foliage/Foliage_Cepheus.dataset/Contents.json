@@ -1,12 +1,12 @@
 {
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  },
   "data" : [
     {
       "filename" : "Foliage_Cepheus.obj",
       "idiom" : "universal"
     }
-  ],
-  "info" : {
-    "author" : "Yield",
-    "version" : 1
-  }
+  ]
 }

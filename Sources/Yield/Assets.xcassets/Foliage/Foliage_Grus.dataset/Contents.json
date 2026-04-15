@@ -5,8 +5,8 @@
   },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Grus.obj"
+      "filename" : "Foliage_Grus.obj",
+      "idiom" : "universal"
     }
   ]
 }

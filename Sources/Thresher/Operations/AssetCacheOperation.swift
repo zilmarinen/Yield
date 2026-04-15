@@ -33,7 +33,7 @@ internal class AssetCacheOperation: ConcurrentOperation,
             let operations = [BuildingMeshingOperation(),
                               FoliageMeshingOperation(),
                               FootpathMeshingOperation(),
-                              StaircaseMeshingOperation()]
+                              SlopeMeshingOperation()]
             
             let group = DispatchGroup()
             

@@ -5,8 +5,8 @@
   },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Antlia.obj"
+      "filename" : "Foliage_Antlia.obj",
+      "idiom" : "universal"
     }
   ]
 }

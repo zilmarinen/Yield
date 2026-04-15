@@ -5,8 +5,8 @@
   },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Indus.obj"
+      "filename" : "Foliage_Indus.obj",
+      "idiom" : "universal"
     }
   ]
 }

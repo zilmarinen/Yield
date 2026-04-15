@@ -1,12 +1,12 @@
 {
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Pictor.obj"
+      "filename" : "Foliage_Pictor.obj",
+      "idiom" : "universal"
     }
-  ],
-  "info" : {
-    "author" : "Yield",
-    "version" : 1
-  }
+  ]
 }

@@ -1,0 +1,12 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  },
+  "data" : [
+    {
+      "filename" : "Building_Norma.obj",
+      "idiom" : "universal"
+    }
+  ]
+}
