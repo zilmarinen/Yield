@@ -9,12 +9,13 @@ let package = Package(
                 .iOS(.v17)],
     products: [
         .library(name: "Yield",
-                 targets: ["Yield"]),
+                 targets: ["Yield"])
     ],
     dependencies: [
         .package(path: "../Alluvium"),
         .package(path: "../Cobble"),
-        .package(path: "../Deltille"),
+        .package(url: "git@github.com:zilmarinen/Deltille.git",
+                 branch: "main"),
         .package(path: "../Lintel"),
         .package(path: "../Newel"),
         .package(path: "../Verdure"),

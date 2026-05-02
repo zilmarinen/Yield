@@ -1,12 +1,12 @@
 {
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Foliage_Horologium.obj"
+    }
+  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  },
-  "data" : [
-    {
-      "filename" : "Foliage_Horologium.obj",
-      "idiom" : "universal"
-    }
-  ]
+  }
 }

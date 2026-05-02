@@ -1,12 +1,12 @@
 {
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Foliage_Antlia.obj"
+    }
+  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  },
-  "data" : [
-    {
-      "filename" : "Foliage_Antlia.obj",
-      "idiom" : "universal"
-    }
-  ]
+  }
 }

@@ -1,12 +1,12 @@
 {
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Foliage_Vela.obj"
+    }
+  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  },
-  "data" : [
-    {
-      "filename" : "Foliage_Vela.obj",
-      "idiom" : "universal"
-    }
-  ]
+  }
 }

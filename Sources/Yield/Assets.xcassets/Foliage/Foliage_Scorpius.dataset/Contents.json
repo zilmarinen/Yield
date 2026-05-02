@@ -1,12 +1,12 @@
 {
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Foliage_Scorpius.obj"
+    }
+  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  },
-  "data" : [
-    {
-      "filename" : "Foliage_Scorpius.obj",
-      "idiom" : "universal"
-    }
-  ]
+  }
 }

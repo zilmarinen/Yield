@@ -27,12 +27,12 @@ public enum Asset: Hashable,
         
         public var id: String { rawValue.capitalized }
     }
-
     
     case bridge
     case building(_ septomino: Triangle.Septomino)
     case foliage(_ septomino: Triangle.Septomino)
-    case footpath
+    case footpath(_ design: Design,
+                  _ wedge: Wedge)
     case slope(_ slope: Slope,
                _ rise: Rise,
                _ cast: Cast)
@@ -50,7 +50,11 @@ public enum Asset: Hashable,
             
             "Foliage_\(septomino.id)"
             
-        case .footpath: "Footpath"
+        case .footpath(let design,
+                       let wedge):
+            
+            "Footpath_\(design.id)_\(wedge.id)"
+            
         case .slope(let slope,
                     let rise,
                     let cast):
