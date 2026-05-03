@@ -1,12 +1,12 @@
 {
-  "data" : [
-    {
-      "idiom" : "universal",
-      "filename" : "Footpath_Rounded_tile.obj"
-    }
-  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  }
+  },
+  "data" : [
+    {
+      "idiom" : "universal",
+      "filename" : "Footpath_Rounded_Tile.obj"
+    }
+  ]
 }

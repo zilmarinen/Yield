@@ -1,12 +1,12 @@
 {
+  "info" : {
+    "author" : "Yield",
+    "version" : 1
+  },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Building_Pictor.obj"
+      "filename" : "Building_Pictor.obj",
+      "idiom" : "universal"
     }
-  ],
-  "info" : {
-    "version" : 1,
-    "author" : "Yield"
-  }
+  ]
 }

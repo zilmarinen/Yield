@@ -18,6 +18,7 @@ let package = Package(
                  branch: "main"),
         .package(path: "../Lintel"),
         .package(path: "../Newel"),
+        .package(path: "../Palisade"),
         .package(path: "../Verdure"),
         .package(url: "git@github.com:nicklockwood/Euclid.git",
                  branch: "main"),
@@ -32,6 +33,7 @@ let package = Package(
                                          "Euclid",
                                          "Lintel",
                                          "Newel",
+                                         "Palisade",
                                          "PeakOperation",
                                          "Verdure",
                                          "Yield"],
@@ -43,6 +45,7 @@ let package = Package(
                                "Euclid",
                                "Lintel",
                                "Newel",
+                               "Palisade",
                                "Verdure"],
                 resources: [.process("Assets.xcassets")])
     ]

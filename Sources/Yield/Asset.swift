@@ -9,6 +9,7 @@ import Cobble
 import Deltille
 import Lintel
 import Newel
+import Palisade
 import Verdure
 
 public enum Asset: Hashable,
@@ -21,6 +22,7 @@ public enum Asset: Hashable,
         
         case bridge
         case building
+        case fence
         case foliage
         case footpath
         case slope
@@ -30,6 +32,8 @@ public enum Asset: Hashable,
     
     case bridge
     case building(_ septomino: Triangle.Septomino)
+    case fence(_ rampart: Rampart,
+               _ segment: Segment)
     case foliage(_ septomino: Triangle.Septomino)
     case footpath(_ design: Design,
                   _ wedge: Wedge)
@@ -45,6 +49,11 @@ public enum Asset: Hashable,
         case .building(let septomino):
             
             "Building_\(septomino.id)"
+            
+        case .fence(let rampart,
+                    let segment):
+            
+            "Fence_\(rampart.id)_\(segment.id)"
             
         case .foliage(let septomino):
             
@@ -69,6 +78,7 @@ public enum Asset: Hashable,
             
         case .bridge: .bridge
         case .building: .building
+        case .fence: .fence
         case .foliage: .foliage
         case .footpath: .footpath
         case .slope: .slope

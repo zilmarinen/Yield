@@ -1,12 +1,12 @@
 {
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Building_Scorpius.obj"
+      "filename" : "Building_Scorpius.obj",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   }
 }

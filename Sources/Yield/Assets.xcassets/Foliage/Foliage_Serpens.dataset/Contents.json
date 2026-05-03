@@ -1,12 +1,12 @@
 {
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Foliage_Serpens.obj"
+      "filename" : "Foliage_Serpens.obj",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   }
 }

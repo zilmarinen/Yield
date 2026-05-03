@@ -1,12 +1,12 @@
 {
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Steps_Wide_Sloped_Ascending.obj"
+      "filename" : "Steps_Wide_Sloped_Ascending.obj",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   }
 }

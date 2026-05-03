@@ -1,12 +1,12 @@
 {
-  "data" : [
-    {
-      "idiom" : "universal",
-      "filename" : "Foliage_Musca.obj"
-    }
-  ],
   "info" : {
     "version" : 1,
     "author" : "Yield"
-  }
+  },
+  "data" : [
+    {
+      "filename" : "Foliage_Musca.obj",
+      "idiom" : "universal"
+    }
+  ]
 }

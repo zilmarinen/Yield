@@ -2,11 +2,11 @@
   "data" : [
     {
       "idiom" : "universal",
-      "filename" : "Footpath_Wedge_tile.obj"
+      "filename" : "Footpath_Wedge_Tile.obj"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   }
 }

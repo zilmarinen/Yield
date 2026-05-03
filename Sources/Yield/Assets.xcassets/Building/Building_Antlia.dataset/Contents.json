@@ -1,12 +1,12 @@
 {
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Building_Antlia.obj"
+      "filename" : "Building_Antlia.obj",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "Yield"
+    "author" : "Yield",
+    "version" : 1
   }
 }

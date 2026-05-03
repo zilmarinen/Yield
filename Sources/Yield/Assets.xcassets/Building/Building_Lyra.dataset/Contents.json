@@ -1,12 +1,12 @@
 {
+  "info" : {
+    "author" : "Yield",
+    "version" : 1
+  },
   "data" : [
     {
-      "idiom" : "universal",
-      "filename" : "Building_Lyra.obj"
+      "filename" : "Building_Lyra.obj",
+      "idiom" : "universal"
     }
-  ],
-  "info" : {
-    "version" : 1,
-    "author" : "Yield"
-  }
+  ]
 }
