@@ -1,12 +1,12 @@
 {
-  "info" : {
-    "author" : "Yield",
-    "version" : 1
-  },
   "data" : [
     {
-      "filename" : "Building_Serpens.obj",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "Building_Serpens.obj"
     }
-  ]
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  }
 }

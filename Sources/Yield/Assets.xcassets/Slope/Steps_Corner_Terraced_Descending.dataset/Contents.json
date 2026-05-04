@@ -1,12 +1,12 @@
 {
   "data" : [
     {
-      "filename" : "Steps_Corner_Terraced_Descending.obj",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "Steps_Corner_Terraced_Descending.obj"
     }
   ],
   "info" : {
-    "author" : "Yield",
-    "version" : 1
+    "version" : 1,
+    "author" : "Yield"
   }
 }

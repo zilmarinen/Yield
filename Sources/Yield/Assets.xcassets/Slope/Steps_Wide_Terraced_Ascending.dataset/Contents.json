@@ -1,12 +1,12 @@
 {
-  "info" : {
-    "author" : "Yield",
-    "version" : 1
-  },
   "data" : [
     {
-      "filename" : "Steps_Wide_Terraced_Ascending.obj",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "Steps_Wide_Terraced_Ascending.obj"
     }
-  ]
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "Yield"
+  }
 }
